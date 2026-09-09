@@ -31,7 +31,7 @@ const TEMPLATES_DATA = [
       { name: "Om Guldsmeden", desc: "Mesterens håndværkstradition, bæredygtigt genanvendt guld og atelier" },
       { name: "Privat Tidsbestilling", desc: "Forespørgsel på diskret rådgivning i salonen eller privat fremvisning via formular" }
     ],
-    highlights: ["Svungen kursiv luksustypografi", "Privat Concierge tidsbestilling", "Diamant & Carat specifikationer", "Højopløseligt smykkegalleri"]
+    highlights: ["Svungen kursiv luksustypografi", "Privat Concierge kontaktformular", "Diamant & Carat specifikationer", "Højopløseligt smykkegalleri"]
   },
   {
     id: "boutique-hotel",
