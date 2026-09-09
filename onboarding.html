@@ -159,9 +159,18 @@
               <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 8px; color: #fff; display: flex; align-items: center; gap: 8px;">
                 <span style="color: #3b82f6;">03.</span> Vælg Visuel Inspiration (25 eksempler)
               </h3>
-              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 18px;">
-                Klik direkte på det visuelle design, du bedst kan lide. Det danner inspirationsgrundlag for din nye hjemmesides layout, farver og stemning. Alt tilpasses 100% til dig.
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 14px;">
+                Klik direkte på det visuelle design, du bedst kan lide. Det danner inspirationsgrundlag for din nye hjemmesides layout, farver og stemning.
               </p>
+
+              <!-- Frit valg uanset branche banner -->
+              <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+                <span style="font-size: 1.35rem; line-height: 1;">🎨</span>
+                <div style="font-size: 0.88rem; color: #d1d5db; line-height: 1.5;">
+                  <strong style="color: #60a5fa;">Vælg frit uanset din branche:</strong><br>
+                  Eksemplet behøver overhovedet ikke matche din branche! Kan du lide stilen eller layoutet fra en smykkebutik, en restaurant eller et advokatkontor, vælger du bare dét. Vi overfører strukturen og tilpasser alle farver, logo, billeder og tekster 100% til din virksomhed.
+                </div>
+              </div>
 
               <!-- Skjult felt til form submit -->
               <input type="hidden" id="selected-template-input" name="selected_template" value="">
@@ -183,7 +192,12 @@
                     </div>
                     <h4 id="showcase-title" style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 8px 0 4px;">Design Titel</h4>
                     <p id="showcase-target" style="font-size: 0.88rem; color: #38bdf8; font-weight: 600; margin-bottom: 8px;">Målgruppe</p>
-                    <p id="showcase-desc" style="font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">Beskrivelse</p>
+                    <p id="showcase-desc" style="font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 12px;">Beskrivelse</p>
+                    
+                    <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.84rem; color: #a7f3d0; line-height: 1.45;">
+                      ✨ <strong>Webland tilpasser til din branche:</strong> Vi tager udgangspunkt i dette designs layout og æstetik – og udskifter logo, tekster, ydelser og billeder, så det passer 100% til din virksomhed.
+                    </div>
+
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                       <button type="button" class="btn btn-emerald btn-sm" id="showcase-modal-btn">
                         👁️ Se stort popop preview
@@ -437,6 +451,7 @@
       <div class="modal-header-banner" id="modal-banner">
         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;">
           <span class="badge badge-emerald" id="modal-target">Branche</span>
+          <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">✓ Frit valg uanset din branche</span>
         </div>
         <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 6px;" id="modal-title">Eksempel Navn</h3>
         <p style="color: var(--color-text-muted); font-size: 0.95rem; margin: 0; max-width: 800px;" id="modal-desc">
@@ -463,7 +478,7 @@
           <img id="modal-image" src="" alt="Eksempel på hjemmeside" class="modal-preview-img">
         </div>
         <div class="modal-img-caption">
-          <span>💡 <strong>Inspirationsbillede:</strong> Dette er et visuelt eksempel på layout og stemning. Dit logo, indhold og farver tilpasses 100%.</span>
+          <span>💡 <strong>Frit valg af stilart:</strong> Du kan vælge dette design uanset branche. Vi tilpasser layout, farver, logo og tekster 100% til din virksomhed!</span>
           <span style="color: #34d399; font-weight: 600;">Klar på maks. 72 timer</span>
         </div>
       </div>
@@ -494,7 +509,7 @@
   </div>
 
   <div class="toast-container" id="toast-container"></div>
-  <script src="templates-data.js?v=3"></script>
-  <script src="app.js?v=3"></script>
+  <script src="templates-data.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

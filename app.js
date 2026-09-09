@@ -111,6 +111,10 @@ function initTemplatesGrid(filter = 'all') {
           </div>
         </div>
 
+        <div style="font-size: 0.76rem; color: #94a3b8; display: flex; align-items: center; gap: 5px; margin-bottom: 12px;">
+          <span style="color: #38bdf8;">✨</span> <span>Kan tilpasses til <strong>enhver branche</strong></span>
+        </div>
+
         <div class="template-actions">
           <button class="btn btn-outline btn-sm btn-details" onclick="openTemplateModal('${template.id}')">
             Se detaljer
@@ -247,7 +251,7 @@ window.selectTemplate = function(id) {
     window.selectVisualTemplate(id);
     const showcase = document.getElementById('selected-template-showcase');
     if (showcase) showcase.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    showToast(`Visuel inspiration valgt: "${template.title}". Skemaet er opdateret!`, 'success');
+    showToast(`Visuel inspiration valgt: "${template.title}". Vi tilpasser 100% til din branche!`, 'success');
   } else {
     // Hvis vi er på eksempler.html eller forsiden, navigér til onboarding.html med parameter
     window.location.href = `onboarding.html?eksempel=${encodeURIComponent(id)}`;
@@ -316,7 +320,7 @@ function initOnboardingForm() {
           if (img) img.src = matched.image;
           if (badge) badge.textContent = `${matched.badge}`;
           if (title) title.textContent = matched.title;
-          if (target) target.textContent = `${matched.target} • Fast pris 10.000 kr.`;
+          if (target) target.textContent = `${matched.target} • Tilpasses til enhver branche`;
           if (desc) desc.textContent = matched.shortDesc || matched.fullDesc;
           if (urlMock) urlMock.textContent = `https://${matched.id}.webland-demo.dk`;
           if (modalBtn) modalBtn.onclick = () => openTemplateModal(matched.id);
@@ -356,7 +360,7 @@ function initOnboardingForm() {
       const matched = TEMPLATES_DATA.find(t => t.id === preselectedId);
       if (matched) {
         setTimeout(() => {
-          showToast(`Visuel inspiration forudvalgt: "${matched.title}"`, 'success');
+          showToast(`Visuel inspiration forudvalgt: "${matched.title}". Vi tilpasser det 100% til din branche!`, 'success');
         }, 300);
       }
     } else {
