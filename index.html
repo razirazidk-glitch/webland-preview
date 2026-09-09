@@ -8,7 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=25.1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 </head>
 <body>
 
@@ -213,27 +216,51 @@
     </section>
 
     <!-- ==========================================================================
-         Teaser: 25 Eksempler på hjemmesider vi kan bygge
+         25 Eksempler på hjemmesider vi kan bygge (Fuld visning på forsiden)
          ========================================================================== -->
-    <section class="templates-section">
+    <section class="templates-section" id="eksempler">
       <div class="container">
         <div class="section-header">
           <span class="badge">Inspiration & Webdesign</span>
           <h2>25 eksempler på hjemmesider vi kan bygge</h2>
           <p>
-            Her er 25 konkrete eksempler på hjemmesider, vi kan bygge til dig. Vælg frit det design, hvis stil og layout du bedst kan lide – det behøver ikke matche din branche! Vi tilpasser farver, tekster, billeder og logo 100% efter din forretning.
+            Her ser du alle 25 konkrete eksempler på hjemmesider, vi kan bygge til dig. De danner grundlag for din inspiration – vælg frit det design du synes bedst om uanset din branche, så tilpasser vi farver, tekster, billeder og logo 100% til dig på maks. 72 timer.
           </p>
+
+          <!-- Frit valg uanset branche banner -->
+          <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 14px 20px; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; display: flex; align-items: center; gap: 14px; text-align: left;">
+            <span style="font-size: 1.5rem; line-height: 1;">🎨</span>
+            <div style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.5;">
+              <strong style="color: #60a5fa;">Vælg frit på tværs af alle brancher:</strong> Eksemplet behøver overhovedet ikke matche dit eget fag! Kan du lide stilen på en restaurant, en smykkebutik eller et advokatkontor, tager vi det som visuelt udgangspunkt og skræddersyr det 100% til din virksomhed.
+            </div>
+          </div>
         </div>
 
-        <!-- Viser de første 3 eksempler som teaser -->
-        <div class="templates-grid" id="templates-grid" data-limit="3">
+        <!-- Filter Bar med 5 kategorier á 5 eksempler (i alt 25) -->
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all">Alle eksempler (25)</button>
+          <button class="filter-btn" data-filter="luksus">Luksus, Livsstil & Fancy (5)</button>
+          <button class="filter-btn" data-filter="handvaerk">Håndværk & Service (5)</button>
+          <button class="filter-btn" data-filter="gastronomi">Gastronomi & Oplevelser (5)</button>
+          <button class="filter-btn" data-filter="sundhed">Sundhed & Velvære (5)</button>
+          <button class="filter-btn" data-filter="erhverv">Erhverv, Finans & B2B (5)</button>
+        </div>
+
+        <!-- Alle 25 eksempler renderes dynamisk via app.js -->
+        <div class="templates-grid" id="templates-grid">
           <!-- Dynamisk indsat via app.js -->
         </div>
 
-        <div style="text-align: center; margin-top: 48px;">
-          <a href="eksempler.html" class="btn btn-primary btn-lg">
-            Se alle 25 eksempler på hjemmesider →
-          </a>
+        <!-- Næste skridt info boks efter eksemplerne -->
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 36px 30px; margin-top: 50px; text-align: center;">
+          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: #fff;">Fandt du et eksempel, der passer til din smag?</h3>
+          <p style="color: var(--color-text-muted); max-width: 620px; margin: 0 auto 20px; font-size: 0.92rem;">
+            Aftal domænet med din sælger først, hvorefter du vælger dit favoritdesign i vores enkle onboarding-skema. Så er din nye hjemmeside klar på maks. 72 timer!
+          </p>
+          <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="kontakt.html" class="btn btn-outline">Ring til en sælger</a>
+            <a href="onboarding.html" class="btn btn-emerald btn-lg">Udfyld onboarding-skema →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -457,7 +484,7 @@
   </div>
 
   <div class="toast-container" id="toast-container"></div>
-  <script src="templates-data.js?v=4"></script>
-  <script src="app.js?v=4"></script>
+  <script src="templates-data.js?v=25.1"></script>
+  <script src="app.js?v=25.1"></script>
 </body>
 </html>
