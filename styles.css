@@ -1182,6 +1182,130 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
+   E-mail Oprettelse Checkboxes & Custom Emails (Sektion 02)
+   ========================================================================== */
+.email-checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .email-checkbox-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.email-checkbox-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.email-checkbox-card:hover {
+  background: var(--color-bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.email-checkbox-card.active {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.email-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--color-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  background: transparent;
+}
+
+.email-checkbox-card.active .email-checkbox-box {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.email-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.email-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email-card-desc {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.email-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.email-tag-chip.standard {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.email-tag-remove {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: #fff;
+  transition: background 0.15s ease;
+  border: none;
+  padding: 0;
+}
+
+.email-tag-remove:hover {
+  background: #ef4444;
+}
+
+/* ==========================================================================
    Visuel Eksempelvælger i Onboarding-skema (Erstatter dropdown)
    ========================================================================== */
 .selected-showcase-box {

@@ -368,6 +368,161 @@ function initOnboardingForm() {
     }
   }
 
+  // 5b. E-mail Checkboxes & Custom E-mails System (Sektion 02)
+  const domainInput = document.getElementById('domain-name-input');
+  const customEmailInput = document.getElementById('custom-email-input');
+  const customEmailsList = document.getElementById('custom-emails-list');
+  const emailsSummaryChips = document.getElementById('emails-summary-chips');
+  const emailsCountBadge = document.getElementById('emails-count-badge');
+  const selectedEmailsHidden = document.getElementById('selected-emails-input');
+
+  const selectedStandardEmails = new Set(['kontakt']);
+  const customEmails = [];
+
+  function getCleanDomain() {
+    if (!domainInput) return 'ditdomæne.dk';
+    let val = domainInput.value.trim().toLowerCase();
+    val = val.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
+    return val || 'ditdomæne.dk';
+  }
+
+  function updateDomainSuffixes() {
+    const domain = getCleanDomain();
+    document.querySelectorAll('.domain-preview-suffix').forEach(el => {
+      el.textContent = domain;
+    });
+    document.querySelectorAll('.custom-domain-suffix').forEach(el => {
+      el.textContent = domain;
+    });
+    renderEmailsSummary();
+  }
+
+  function renderEmailsSummary() {
+    if (!emailsSummaryChips) return;
+    const domain = getCleanDomain();
+    const allEmails = [];
+
+    selectedStandardEmails.forEach(prefix => {
+      allEmails.push({ email: `${prefix}@${domain}`, isStandard: true, prefix });
+    });
+
+    customEmails.forEach((prefix, idx) => {
+      allEmails.push({ email: `${prefix}@${domain}`, isStandard: false, index: idx, prefix });
+    });
+
+    if (allEmails.length === 0) {
+      emailsSummaryChips.innerHTML = `
+        <span style="font-size: 0.82rem; color: #f59e0b;">
+          ⚠️ Ingen e-mails valgt. Vi anbefaler at vælge mindst <em>kontakt@</em> til henvendelser.
+        </span>
+      `;
+      if (emailsCountBadge) emailsCountBadge.textContent = '0 valgt';
+      if (selectedEmailsHidden) selectedEmailsHidden.value = '';
+      return;
+    }
+
+    emailsSummaryChips.innerHTML = allEmails.map(item => `
+      <span class="email-tag-chip ${item.isStandard ? 'standard' : ''}">
+        <span>${item.email}</span>
+      </span>
+    `).join('');
+
+    if (emailsCountBadge) {
+      emailsCountBadge.textContent = `${allEmails.length} ${allEmails.length === 1 ? 'valgt' : 'valgte'}`;
+    }
+
+    if (selectedEmailsHidden) {
+      selectedEmailsHidden.value = allEmails.map(i => i.email).join(', ');
+    }
+  }
+
+  function renderCustomEmailsList() {
+    if (!customEmailsList) return;
+    const domain = getCleanDomain();
+
+    if (customEmails.length === 0) {
+      customEmailsList.innerHTML = '';
+      return;
+    }
+
+    customEmailsList.innerHTML = customEmails.map((prefix, idx) => `
+      <span class="email-tag-chip">
+        <span>${prefix}@${domain}</span>
+        <button type="button" class="email-tag-remove" onclick="removeCustomEmail(${idx})" title="Fjern e-mail">✕</button>
+      </span>
+    `).join('');
+  }
+
+  window.toggleEmailOption = function(prefix) {
+    const card = document.getElementById(`email-opt-${prefix}`);
+    if (!card) return;
+
+    if (selectedStandardEmails.has(prefix)) {
+      selectedStandardEmails.delete(prefix);
+      card.classList.remove('active');
+      const box = card.querySelector('.email-checkbox-box');
+      if (box) box.textContent = '';
+    } else {
+      selectedStandardEmails.add(prefix);
+      card.classList.add('active');
+      const box = card.querySelector('.email-checkbox-box');
+      if (box) box.textContent = '✓';
+    }
+
+    renderEmailsSummary();
+  };
+
+  window.addCustomEmail = function() {
+    if (!customEmailInput) return;
+    let val = customEmailInput.value.trim().toLowerCase();
+    val = val.replace(/@.*$/, '').replace(/[^a-z0-9._-]/g, '');
+
+    if (!val) {
+      showToast('Indtast venligst et gyldigt e-mailnavn (f.eks. peter, salg)', 'warning');
+      return;
+    }
+
+    if (selectedStandardEmails.has(val) || customEmails.includes(val)) {
+      showToast(`E-mailen "${val}@" er allerede på din liste.`, 'info');
+      return;
+    }
+
+    customEmails.push(val);
+    customEmailInput.value = '';
+    renderCustomEmailsList();
+    renderEmailsSummary();
+    showToast(`E-mail "${val}@${getCleanDomain()}" tilføjet til oprettelse!`, 'success');
+  };
+
+  window.removeCustomEmail = function(idx) {
+    if (idx >= 0 && idx < customEmails.length) {
+      const removed = customEmails.splice(idx, 1);
+      renderCustomEmailsList();
+      renderEmailsSummary();
+      showToast(`"${removed[0]}@" fjernet.`, 'info');
+    }
+  };
+
+  if (domainInput) {
+    domainInput.addEventListener('input', () => {
+      updateDomainSuffixes();
+      renderCustomEmailsList();
+    });
+  }
+
+  if (customEmailInput) {
+    customEmailInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        window.addCustomEmail();
+      }
+    });
+  }
+
+  // Initial render
+  updateDomainSuffixes();
+  renderEmailsSummary();
+
   // Logo Radio Cards Switch
   const logoCards = document.querySelectorAll('.logo-radio-card');
   const uploadContainer = document.getElementById('logo-upload-container');
