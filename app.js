@@ -279,21 +279,27 @@ function initOnboardingForm() {
       pickerGrid.innerHTML = list.map(t => {
         const isSelected = t.id === selectedId;
         return `
-          <div class="visual-picker-card ${isSelected ? 'active' : ''}" data-id="${t.id}" onclick="selectVisualTemplate('${t.id}')">
-            <div class="visual-picker-thumb">
+          <div class="visual-picker-card ${isSelected ? 'active' : ''}" data-id="${t.id}">
+            <div class="visual-picker-thumb" onclick="openTemplateModal('${t.id}')" title="Tryk på billedet for at se det i en stor popup">
               <img src="${t.image}" alt="${t.title}" loading="lazy">
+              <div class="visual-picker-thumb-overlay">
+                <span>👁️ Se i stor popup</span>
+              </div>
               <div class="visual-picker-check">${isSelected ? '✓' : ''}</div>
             </div>
             <div class="visual-picker-body">
               <div class="visual-picker-badge">${t.badge}</div>
               <div class="visual-picker-title">${t.title}</div>
-              <div class="visual-picker-footer">
-                <span class="visual-picker-preview-link" onclick="event.stopPropagation(); openTemplateModal('${t.id}')" title="Se stort billede og undersider">
-                  👁️ Se detaljer
-                </span>
-                <span class="visual-picker-select-btn ${isSelected ? 'btn-emerald' : 'btn-outline'}" style="display: inline-block;">
-                  ${isSelected ? '✓ Valgt' : 'Vælg'}
-                </span>
+              <div class="visual-picker-desc">${t.shortDesc}</div>
+              <div class="visual-picker-actions">
+                <button type="button" 
+                        class="btn ${isSelected ? 'btn-emerald' : 'btn-primary'} visual-picker-wide-btn" 
+                        onclick="selectVisualTemplate('${t.id}')">
+                  ${isSelected ? '✓ Dette eksempel er valgt' : 'Vælg dette eksempel'}
+                </button>
+                <div class="visual-picker-preview-link" onclick="openTemplateModal('${t.id}')">
+                  👁️ Se stort popop preview
+                </div>
               </div>
             </div>
           </div>
