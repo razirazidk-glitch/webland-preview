@@ -239,43 +239,128 @@ window.selectTemplate = function(id) {
   const template = TEMPLATES_DATA.find(t => t.id === id);
   if (!template) return;
 
-  const select = document.getElementById('selected-template-input');
-  const onboardingSection = document.getElementById('onboarding');
+  const hiddenInput = document.getElementById('selected-template-input');
+  const onboardingSection = document.getElementById('onboarding') || document.querySelector('.onboarding-section');
 
-  // Hvis vi allerede er på onboarding-siden
-  if (select && onboardingSection) {
-    select.value = template.id;
-    onboardingSection.scrollIntoView({ behavior: 'smooth' });
-    showToast(`Inspiration valgt: "${template.title}". Skemaet er forudfyldt!`, 'success');
+  // Hvis vi allerede er på onboarding-siden med visuel vælger
+  if (hiddenInput && typeof window.selectVisualTemplate === 'function') {
+    window.selectVisualTemplate(id);
+    const showcase = document.getElementById('selected-template-showcase');
+    if (showcase) showcase.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast(`Visuel inspiration valgt: "${template.title}". Skemaet er opdateret!`, 'success');
   } else {
     // Hvis vi er på eksempler.html eller forsiden, navigér til onboarding.html med parameter
     window.location.href = `onboarding.html?eksempel=${encodeURIComponent(id)}`;
   }
 };
 
-// 5. Onboarding Form & Logo Valg
+// 5. Onboarding Form & Visuel Eksempelvælger
 function initOnboardingForm() {
-  const select = document.getElementById('selected-template-input');
-  if (select && typeof TEMPLATES_DATA !== 'undefined') {
-    select.innerHTML = '<option value="">-- Vælg et eksempel som inspiration (eller aftal nærmere med sælger) --</option>';
-    TEMPLATES_DATA.forEach(t => {
-      const opt = document.createElement('option');
-      opt.value = t.id;
-      opt.textContent = `${t.title} (${t.target})`;
-      select.appendChild(opt);
+  const hiddenInput = document.getElementById('selected-template-input');
+  const pickerGrid = document.getElementById('visual-picker-grid');
+  const showcase = document.getElementById('selected-template-showcase');
+  const neutralCard = document.getElementById('neutral-choice-card');
+  const filterBtns = document.querySelectorAll('.picker-tab-btn');
+
+  if (pickerGrid && typeof TEMPLATES_DATA !== 'undefined') {
+    let currentFilter = 'all';
+
+    function renderVisualPickerCards() {
+      const list = currentFilter === 'all'
+        ? TEMPLATES_DATA
+        : TEMPLATES_DATA.filter(t => t.category === currentFilter);
+
+      const selectedId = hiddenInput ? hiddenInput.value : '';
+
+      pickerGrid.innerHTML = list.map(t => {
+        const isSelected = t.id === selectedId;
+        return `
+          <div class="visual-picker-card ${isSelected ? 'active' : ''}" data-id="${t.id}" onclick="selectVisualTemplate('${t.id}')">
+            <div class="visual-picker-thumb">
+              <img src="${t.image}" alt="${t.title}" loading="lazy">
+              <div class="visual-picker-check">${isSelected ? '✓' : ''}</div>
+            </div>
+            <div class="visual-picker-body">
+              <div class="visual-picker-badge">${t.badge}</div>
+              <div class="visual-picker-title">${t.title}</div>
+              <div class="visual-picker-footer">
+                <span class="visual-picker-preview-link" onclick="event.stopPropagation(); openTemplateModal('${t.id}')" title="Se stort billede og undersider">
+                  👁️ Se detaljer
+                </span>
+                <span class="visual-picker-select-btn ${isSelected ? 'btn-emerald' : 'btn-outline'}" style="display: inline-block;">
+                  ${isSelected ? '✓ Valgt' : 'Vælg'}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.selectVisualTemplate = function(id) {
+      if (hiddenInput) hiddenInput.value = id;
+
+      const matched = TEMPLATES_DATA.find(t => t.id === id);
+      if (matched) {
+        if (neutralCard) neutralCard.classList.remove('active');
+        if (showcase) {
+          showcase.style.display = 'block';
+          const img = document.getElementById('showcase-img');
+          const badge = document.getElementById('showcase-badge');
+          const title = document.getElementById('showcase-title');
+          const target = document.getElementById('showcase-target');
+          const desc = document.getElementById('showcase-desc');
+          const urlMock = document.getElementById('showcase-url');
+          const modalBtn = document.getElementById('showcase-modal-btn');
+
+          if (img) img.src = matched.image;
+          if (badge) badge.textContent = `${matched.badge}`;
+          if (title) title.textContent = matched.title;
+          if (target) target.textContent = `${matched.target} • Fast pris 10.000 kr.`;
+          if (desc) desc.textContent = matched.shortDesc || matched.fullDesc;
+          if (urlMock) urlMock.textContent = `https://${matched.id}.webland-demo.dk`;
+          if (modalBtn) modalBtn.onclick = () => openTemplateModal(matched.id);
+        }
+      }
+      renderVisualPickerCards();
+    };
+
+    window.selectNoTemplate = function() {
+      if (hiddenInput) hiddenInput.value = '';
+      if (showcase) showcase.style.display = 'none';
+      if (neutralCard) neutralCard.classList.add('active');
+      renderVisualPickerCards();
+    };
+
+    // Filter knapper
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-picker-filter');
+        renderVisualPickerCards();
+      });
     });
+
+    // Showcase clear knap
+    const clearBtn = document.getElementById('showcase-clear-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', window.selectNoTemplate);
+    }
 
     // Tjek om der er et eksempel overført i URL-parameter (?eksempel=)
     const urlParams = new URLSearchParams(window.location.search);
     const preselectedId = urlParams.get('eksempel') || urlParams.get('skabelon');
     if (preselectedId) {
-      select.value = preselectedId;
+      window.selectVisualTemplate(preselectedId);
       const matched = TEMPLATES_DATA.find(t => t.id === preselectedId);
       if (matched) {
         setTimeout(() => {
-          showToast(`Inspiration forudvalgt: "${matched.title}"`, 'success');
+          showToast(`Visuel inspiration forudvalgt: "${matched.title}"`, 'success');
         }, 300);
       }
+    } else {
+      renderVisualPickerCards();
     }
   }
 
