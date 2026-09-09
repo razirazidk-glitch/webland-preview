@@ -376,7 +376,7 @@ function initOnboardingForm() {
   const emailsCountBadge = document.getElementById('emails-count-badge');
   const selectedEmailsHidden = document.getElementById('selected-emails-input');
 
-  const selectedStandardEmails = new Set(['kontakt']);
+  const selectedStandardEmails = new Set();
   const customEmails = [];
 
   function getCleanDomain() {
@@ -412,12 +412,16 @@ function initOnboardingForm() {
 
     if (allEmails.length === 0) {
       emailsSummaryChips.innerHTML = `
-        <span style="font-size: 0.82rem; color: #f59e0b;">
-          ⚠️ Ingen e-mails valgt. Vi anbefaler at vælge mindst <em>kontakt@</em> til henvendelser.
-        </span>
+        <div style="font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 8px; padding: 4px 0;">
+          <span>👆</span> <span><strong>Ingen e-mails valgt endnu.</strong> Tag et aktivt valg ovenfor: Klik på de adresser du ønsker oprettet (eller brug hurtigknappen <em>"👉 Jeg ønsker kun kontakt@"</em>).</span>
+        </div>
       `;
-      if (emailsCountBadge) emailsCountBadge.textContent = '0 valgt';
-      if (selectedEmailsHidden) selectedEmailsHidden.value = '';
+      if (emailsCountBadge) {
+        emailsCountBadge.textContent = '0 valgt (Aktivt valg)';
+        emailsCountBadge.style.background = 'rgba(255, 255, 255, 0.06)';
+        emailsCountBadge.style.color = '#94a3b8';
+      }
+      if (selectedEmailsHidden) selectedEmailsHidden.value = 'Ingen e-mails (bruger ekstern mail)';
       return;
     }
 
@@ -428,7 +432,9 @@ function initOnboardingForm() {
     `).join('');
 
     if (emailsCountBadge) {
-      emailsCountBadge.textContent = `${allEmails.length} ${allEmails.length === 1 ? 'valgt' : 'valgte'}`;
+      emailsCountBadge.textContent = `${allEmails.length} ${allEmails.length === 1 ? 'e-mail valgt' : 'e-mails valgte'}`;
+      emailsCountBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+      emailsCountBadge.style.color = '#34d399';
     }
 
     if (selectedEmailsHidden) {
@@ -470,6 +476,42 @@ function initOnboardingForm() {
     }
 
     renderEmailsSummary();
+  };
+
+  // Aktivt valg: Vælg udelukkende kontakt@
+  window.selectOnlyKontakt = function() {
+    selectedStandardEmails.clear();
+    selectedStandardEmails.add('kontakt');
+    ['kontakt', 'info', 'bogholderi', 'faktura'].forEach(p => {
+      const card = document.getElementById(`email-opt-${p}`);
+      if (!card) return;
+      const box = card.querySelector('.email-checkbox-box');
+      if (p === 'kontakt') {
+        card.classList.add('active');
+        if (box) box.textContent = '✓';
+      } else {
+        card.classList.remove('active');
+        if (box) box.textContent = '';
+      }
+    });
+    renderEmailsSummary();
+    showToast('Aktivt valg registreret: Kun kontakt@ oprettes.', 'success');
+  };
+
+  // Aktivt valg: Fravælg alle Simply.com e-mails (hvis ekstern e-mail benyttes)
+  window.clearAllEmails = function() {
+    selectedStandardEmails.clear();
+    customEmails.length = 0;
+    ['kontakt', 'info', 'bogholderi', 'faktura'].forEach(p => {
+      const card = document.getElementById(`email-opt-${p}`);
+      if (!card) return;
+      card.classList.remove('active');
+      const box = card.querySelector('.email-checkbox-box');
+      if (box) box.textContent = '';
+    });
+    renderCustomEmailsList();
+    renderEmailsSummary();
+    showToast('Alle Simply.com e-mails fravalgt (du bruger ekstern mail som f.eks. Google Workspace eller Microsoft 365).', 'info');
   };
 
   window.addCustomEmail = function() {

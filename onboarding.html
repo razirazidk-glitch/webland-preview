@@ -125,106 +125,128 @@
               </div>
             </div>
 
-            <!-- 2. Domæne, Simply.com Webhotel & E-mail -->
+            <!-- 2. Aftalt Domæne, Simply.com Webhotel & E-mail -->
             <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">02.</span> Domæne & Simply.com E-mailadresser
+              <span style="color: #3b82f6;">02.</span> Aftalt Domæne & Simply.com E-mailadresser
             </h3>
 
+            <!-- Vigtigt infobanner: Domænet skal være aftalt med sælger -->
+            <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px;">
+              <span style="font-size: 1.5rem; line-height: 1;">🤝</span>
+              <div style="font-size: 0.88rem; color: #d1d5db; line-height: 1.55;">
+                <strong style="color: #60a5fa; font-size: 0.95rem;">Domænet skal være aftalt med sælger på forhånd:</strong><br>
+                Du og din Webland-sælger finder et ledigt domænenavn sammen, inden skemaet her udfyldes. Sælgeren verificerer navnet i domæneregistret, så vi er 100% sikre på, at det er ledigt og klar til registrering.<br>
+                <span style="color: #94a3b8; font-size: 0.82rem; margin-top: 6px; display: inline-block;">
+                  Har du ikke talt med en sælger endnu? <a href="kontakt.html" style="color: #38bdf8; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
+                </span>
+              </div>
+            </div>
+
             <!-- Domæne input felt -->
-            <div class="form-field" style="margin-bottom: 24px;">
+            <div class="form-field" style="margin-bottom: 26px;">
               <label class="form-label" for="domain-name-input">
-                <span>Aftalt eller ønsket domæne <span style="color: #ef4444;">*</span></span>
-                <small>Webland køber og opsætter dette på Simply.com for dig</small>
+                <span>Det aftalte domæne <span style="color: #ef4444;">*</span></span>
+                <small>Fundet og bekræftet ledigt sammen med sælger</small>
               </label>
-              <input type="text" id="domain-name-input" class="form-input" placeholder="f.eks. jensentoemrer.dk" required>
+              <input type="text" id="domain-name-input" class="form-input" placeholder="f.eks. jensentoemrer.dk (aftalt med sælger)" required>
             </div>
 
-            <!-- E-mail præferencer header -->
-            <div style="margin-bottom: 12px;">
-              <label class="form-label">
-                <span>Hvilke e-mailadresser ønsker du oprettet på Simply.com?</span>
-                <small>Kryds af med flueben • Alle er inkluderet</small>
-              </label>
-              <p style="font-size: 0.84rem; color: var(--color-text-muted); margin-top: 4px;">
-                Vælg med flueben hvilke officielle konti vi skal konfigurere på dit nye domæne hos Simply.com. Du kan også tilføje dine egne personlige navne:
+            <!-- E-mailvalg Boks (Aktivt valg) -->
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+                  <span>📬</span> Vælg hvilke e-mailadresser du ønsker oprettet (Aktivt valg)
+                </h4>
+                <span class="badge badge-emerald" style="font-size: 0.72rem;">Inkluderet i fast pris</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 16px; line-height: 1.5;">
+                Kryds af med flueben hvilke adresser du vil have oprettet på dit Simply.com webhotel. <strong>Mange har kun brug for kontakt@ og intet andet</strong> – du tager selv et aktivt valg herunder:
               </p>
-            </div>
 
-            <!-- Fluebens Checkbox Gruppe for standard e-mails -->
-            <div class="email-checkbox-group">
-              <div class="email-checkbox-card active" data-email-prefix="kontakt" id="email-opt-kontakt" onclick="toggleEmailOption('kontakt')">
-                <div class="email-checkbox-box">✓</div>
-                <div class="email-card-text">
-                  <div class="email-card-title">
-                    <span>kontakt@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
+              <!-- Fluebens Checkbox Gruppe for standard e-mails -->
+              <div class="email-checkbox-group">
+                <div class="email-checkbox-card" data-email-prefix="kontakt" id="email-opt-kontakt" onclick="toggleEmailOption('kontakt')">
+                  <div class="email-checkbox-box"></div>
+                  <div class="email-card-text">
+                    <div class="email-card-title">
+                      <span>kontakt@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
+                    </div>
+                    <div class="email-card-desc">Primær kontaktmail til din hjemmeside</div>
                   </div>
-                  <div class="email-card-desc">Standard primær kontaktmail (anbefales)</div>
+                </div>
+
+                <div class="email-checkbox-card" data-email-prefix="info" id="email-opt-info" onclick="toggleEmailOption('info')">
+                  <div class="email-checkbox-box"></div>
+                  <div class="email-card-text">
+                    <div class="email-card-title">
+                      <span>info@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
+                    </div>
+                    <div class="email-card-desc">Til generelle henvendelser og info</div>
+                  </div>
+                </div>
+
+                <div class="email-checkbox-card" data-email-prefix="bogholderi" id="email-opt-bogholderi" onclick="toggleEmailOption('bogholderi')">
+                  <div class="email-checkbox-box"></div>
+                  <div class="email-card-text">
+                    <div class="email-card-title">
+                      <span>bogholderi@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
+                    </div>
+                    <div class="email-card-desc">Til regnskab, løn og økonomi</div>
+                  </div>
+                </div>
+
+                <div class="email-checkbox-card" data-email-prefix="faktura" id="email-opt-faktura" onclick="toggleEmailOption('faktura')">
+                  <div class="email-checkbox-box"></div>
+                  <div class="email-card-text">
+                    <div class="email-card-title">
+                      <span>faktura@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
+                    </div>
+                    <div class="email-card-desc">Til modtagelse og udsendelse af fakturaer</div>
+                  </div>
                 </div>
               </div>
 
-              <div class="email-checkbox-card" data-email-prefix="info" id="email-opt-info" onclick="toggleEmailOption('info')">
-                <div class="email-checkbox-box"></div>
-                <div class="email-card-text">
-                  <div class="email-card-title">
-                    <span>info@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
-                  </div>
-                  <div class="email-card-desc">Til generelle henvendelser og info</div>
-                </div>
-              </div>
-
-              <div class="email-checkbox-card" data-email-prefix="bogholderi" id="email-opt-bogholderi" onclick="toggleEmailOption('bogholderi')">
-                <div class="email-checkbox-box"></div>
-                <div class="email-card-text">
-                  <div class="email-card-title">
-                    <span>bogholderi@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
-                  </div>
-                  <div class="email-card-desc">Til regnskab, løn og økonomi</div>
-                </div>
-              </div>
-
-              <div class="email-checkbox-card" data-email-prefix="faktura" id="email-opt-faktura" onclick="toggleEmailOption('faktura')">
-                <div class="email-checkbox-box"></div>
-                <div class="email-card-text">
-                  <div class="email-card-title">
-                    <span>faktura@</span><span class="domain-preview-suffix">ditdomæne.dk</span>
-                  </div>
-                  <div class="email-card-desc">Til modtagelse og udsendelse af fakturaer</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tilføj egne e-mails felt -->
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 20px;">
-              <label class="form-label" for="custom-email-input" style="margin-bottom: 8px;">
-                <span>Tilføj egne e-mails (f.eks. fornavn, salg osv.)</span>
-                <small>Valgfrit</small>
-              </label>
-              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                <div style="position: relative; flex: 1; min-width: 220px;">
-                  <input type="text" id="custom-email-input" class="form-input" placeholder="Skriv f.eks. peter, salg, support" style="padding-right: 140px;">
-                  <span style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 0.88rem; pointer-events: none;">@<span class="custom-domain-suffix">ditdomæne.dk</span></span>
-                </div>
-                <button type="button" class="btn btn-outline" id="add-custom-email-btn" onclick="addCustomEmail()" style="padding: 11px 18px; white-space: nowrap;">
-                  + Tilføj e-mail
+              <!-- Hurtigknapper til aktivt valg -->
+              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
+                <button type="button" class="btn btn-outline btn-sm" onclick="selectOnlyKontakt()" style="font-size: 0.8rem; padding: 6px 14px;">
+                  👉 Jeg ønsker kun kontakt@
+                </button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="clearAllEmails()" style="font-size: 0.8rem; padding: 6px 14px; color: var(--color-text-dim);">
+                  ✕ Fravælg alle (jeg bruger ekstern mail)
                 </button>
               </div>
 
-              <!-- Tags for egne tilføjede e-mails -->
-              <div id="custom-emails-list" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;"></div>
-            </div>
-
-            <!-- Live oversigt over valgte e-mails -->
-            <div style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 14px 18px; margin-bottom: 24px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-                <div style="font-size: 0.88rem; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 6px;">
-                  <span>✓</span> E-mailadresser der oprettes på dit Simply.com webhotel:
+              <!-- Tilføj egne e-mails felt -->
+              <div style="background: rgba(0, 0, 0, 0.2); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 18px;">
+                <label class="form-label" for="custom-email-input" style="margin-bottom: 8px;">
+                  <span>Vil du tilføje en personlig e-mail? (f.eks. fornavn, salg)</span>
+                  <small>Valgfrit</small>
+                </label>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <div style="position: relative; flex: 1; min-width: 220px;">
+                    <input type="text" id="custom-email-input" class="form-input" placeholder="Skriv f.eks. peter, salg, support" style="padding-right: 140px;">
+                    <span style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 0.88rem; pointer-events: none;">@<span class="custom-domain-suffix">ditdomæne.dk</span></span>
+                  </div>
+                  <button type="button" class="btn btn-primary btn-sm" id="add-custom-email-btn" onclick="addCustomEmail()" style="padding: 10px 18px; white-space: nowrap;">
+                    + Tilføj e-mail
+                  </button>
                 </div>
-                <span id="emails-count-badge" class="badge badge-emerald" style="font-size: 0.74rem;">1 valgt</span>
+                <div id="custom-emails-list" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;"></div>
               </div>
-              <div id="emails-summary-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                <!-- Dynamisk genereret via app.js -->
+
+              <!-- Live status boks for aktivt valg -->
+              <div id="emails-summary-container" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 10px; padding: 14px 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                  <div style="font-size: 0.86rem; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 6px;">
+                    <span>📋</span> Dit aktive valg til Simply.com:
+                  </div>
+                  <span id="emails-count-badge" class="badge" style="font-size: 0.72rem; background: rgba(255,255,255,0.06); color: #94a3b8;">0 valgt</span>
+                </div>
+                <div id="emails-summary-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <!-- Vises dynamisk -->
+                </div>
+                <input type="hidden" id="selected-emails-input" name="selected_emails" value="Ingen e-mails ønsket">
               </div>
-              <input type="hidden" id="selected-emails-input" name="selected_emails" value="kontakt@">
             </div>
 
             <!-- Simply.com Webhotel & Mail Info Box -->
@@ -232,7 +254,7 @@
               <span style="font-size: 1.3rem; line-height: 1;">🚀</span>
               <div style="font-size: 0.86rem; color: #d1d5db; line-height: 1.5;">
                 <strong style="color: #60a5fa;">Simply.com Webhotel & E-mail inkluderet:</strong><br>
-                Vi opretter dit webhotel hos Danmarks førende Simply.com med lynhurtig NVMe SSD-lagring og gratis SSL. Samtidig opretter og konfigurerer vi alle dine valgte e-mailkonti, så du kan sende og modtage mails direkte på dit nye domæne fra dag ét. Du modtager webmail-adgang og nemme guides til opsætning på mobil og computer.
+                Vi opretter dit webhotel hos Danmarks førende Simply.com med lynhurtig NVMe SSD-lagring og gratis SSL. Samtidig opretter og konfigurerer vi dine aktive e-mailvalg, så du kan sende og modtage mails direkte på dit nye domæne fra dag ét. Du modtager webmail-adgang og nemme guides til opsætning på mobil og computer.
               </div>
             </div>
 
