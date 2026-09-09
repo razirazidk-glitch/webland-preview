@@ -76,22 +76,18 @@ function initTemplatesGrid(filter = 'all') {
     card.setAttribute('data-id', template.id);
 
     card.innerHTML = `
-      <div class="mockup-preview">
+      <div class="mockup-preview" onclick="openTemplateModal('${template.id}')" title="Klik for at se visuelt eksempel på designet">
         <div class="mockup-bar">
           <div class="mockup-dot"></div>
           <div class="mockup-dot"></div>
           <div class="mockup-dot"></div>
-          <span class="mockup-url">webland.dk/demo/${template.id}</span>
+          <span class="mockup-url">webland.dk/eksempler/${template.id}</span>
+          <span class="mockup-preview-hint">👁️ Se design</span>
         </div>
-        <div class="mockup-body">
-          <div class="mockup-hero-block" style="border-left: 3px solid ${template.accentColor};">
-            <span style="font-size: 0.72rem; font-weight: 700; color: #fff;">${template.title}</span>
-            <div class="mockup-accent-pill" style="background: ${template.accentColor};"></div>
-          </div>
-          <div class="mockup-grid-blocks">
-            <div class="mockup-sub-block"></div>
-            <div class="mockup-sub-block"></div>
-            <div class="mockup-sub-block"></div>
+        <div class="mockup-img-container">
+          <img src="${template.image}" alt="${template.title}" class="mockup-card-img" loading="lazy">
+          <div class="mockup-overlay-badge">
+            <span>👁️ Se fuld forhåndsvisning</span>
           </div>
         </div>
       </div>
@@ -174,10 +170,26 @@ window.openTemplateModal = function(id) {
   const modalPagesList = document.getElementById('modal-pages-list');
   const modalHighlights = document.getElementById('modal-highlights');
   const modalBanner = document.getElementById('modal-banner');
+  const modalImage = document.getElementById('modal-image');
+  const modalUrl = document.getElementById('modal-url');
+  const modalViewFull = document.getElementById('modal-view-full');
 
   if (modalTitle) modalTitle.textContent = template.title;
   if (modalTarget) modalTarget.textContent = `${template.target} • ${template.badge}`;
   if (modalDesc) modalDesc.textContent = template.fullDesc;
+
+  if (modalImage) {
+    modalImage.src = template.image;
+    modalImage.alt = `Visuelt forhåndsvisningsbillede: ${template.title}`;
+  }
+
+  if (modalUrl) {
+    modalUrl.textContent = `https://${template.id}.webland-demo.dk`;
+  }
+
+  if (modalViewFull) {
+    modalViewFull.href = template.image;
+  }
 
   if (modalBanner) {
     modalBanner.style.borderBottom = `3px solid ${template.accentColor}`;

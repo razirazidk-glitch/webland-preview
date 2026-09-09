@@ -6,6 +6,7 @@
 const TEMPLATES_DATA = [
   {
     id: "handvaerk-byg",
+    image: "images/examples/handvaerk-byg.jpg",
     title: "MesterByg & Håndværk",
     category: "handvaerk",
     target: "Erhverv & Håndværkere",
@@ -25,6 +26,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "frisor-skoenhed",
+    image: "images/examples/frisor-skoenhed.jpg",
     title: "Aura Frisør & Skønhed",
     category: "sundhed",
     target: "Klinikker & Salonér",
@@ -44,6 +46,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "restaurant-cafe",
+    image: "images/examples/restaurant-cafe.jpg",
     title: "Bistro & Spisehus",
     category: "butik",
     target: "Restauranter & Caféer",
@@ -63,6 +66,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "advokat-juridisk",
+    image: "images/examples/advokat-juridisk.jpg",
     title: "LexConsult Advokatfirma",
     category: "erhverv",
     target: "Advokater & Jurister",
@@ -82,6 +86,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "fysioterapi-sundhed",
+    image: "images/examples/fysioterapi-sundhed.jpg",
     title: "Klinik Sundhed & Fysio",
     category: "sundhed",
     target: "Fysioterapeuter & Kiropraktorer",
@@ -101,6 +106,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "fitness-coach",
+    image: "images/examples/fitness-coach.jpg",
     title: "IronFit & Performance Coach",
     category: "kreativ",
     target: "Personlige Trænere & Fitness",
@@ -120,6 +126,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "arkitekt-design",
+    image: "images/examples/arkitekt-design.jpg",
     title: "Nordic Arkitektur & Rum",
     category: "erhverv",
     target: "Arkitekter & Designstudier",
@@ -139,6 +146,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "revisor-bogholderi",
+    image: "images/examples/revisor-bogholderi.jpg",
     title: "Tal & Rådgivning Statsautoriseret",
     category: "erhverv",
     target: "Revisorer & Bogholdere",
@@ -158,6 +166,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "butik-showroom",
+    image: "images/examples/butik-showroom.jpg",
     title: "LokalButik & Galleri",
     category: "butik",
     target: "Specialbutikker & Showrooms",
@@ -177,6 +186,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "fotograf-portfolio",
+    image: "images/examples/fotograf-portfolio.jpg",
     title: "Lumiere Foto & Studio",
     category: "kreativ",
     target: "Fotografer & Videografer",
@@ -196,6 +206,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "b2b-konsulent",
+    image: "images/examples/b2b-konsulent.jpg",
     title: "Vanguard Management Consult",
     category: "erhverv",
     target: "Management & B2B Konsulenter",
@@ -215,6 +226,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "ejendomsmaegler",
+    image: "images/examples/ejendomsmaegler.jpg",
     title: "BoligMatch Ejendomsrådgivning",
     category: "erhverv",
     target: "Ejendomsmæglere & Udlejere",
@@ -234,6 +246,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "rengoering-service",
+    image: "images/examples/rengoering-service.jpg",
     title: "RenGlans Ejendomsservice",
     category: "handvaerk",
     target: "Rengøringsfirmaer & Service",
@@ -253,6 +266,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "musiker-kunstner",
+    image: "images/examples/musiker-kunstner.jpg",
     title: "Nordic Sound & Kunst",
     category: "kreativ",
     target: "Kunstnere, Musikere & Kreative",
@@ -272,6 +286,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "forening-klub",
+    image: "images/examples/forening-klub.jpg",
     title: "Klub Liv & Fællesskab",
     category: "kreativ",
     target: "Foreninger, Sportsklubber & Netværk",

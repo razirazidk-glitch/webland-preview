@@ -161,30 +161,59 @@
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Luk modal">✕</button>
       
       <div class="modal-header-banner" id="modal-banner">
-        <span class="badge badge-emerald" id="modal-target" style="width: fit-content; margin-bottom: 8px;">Branche</span>
-        <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff;" id="modal-title">Eksempel Navn</h3>
-      </div>
-
-      <div class="modal-body">
-        <p style="color: var(--color-text-muted); font-size: 1rem; line-height: 1.6;" id="modal-desc">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="badge badge-emerald" id="modal-target">Branche</span>
+        </div>
+        <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 6px;" id="modal-title">Eksempel Navn</h3>
+        <p style="color: var(--color-text-muted); font-size: 0.95rem; margin: 0; max-width: 800px;" id="modal-desc">
           Beskrivelse af eksemplet...
         </p>
+      </div>
 
-        <div style="margin-top: 20px;" id="modal-highlights"></div>
+      <!-- Browser Preview Showcase med faktisk billede -->
+      <div class="modal-browser-showcase">
+        <div class="modal-browser-toolbar">
+          <div class="mockup-dot" style="background: #ef4444;"></div>
+          <div class="mockup-dot" style="background: #f59e0b;"></div>
+          <div class="mockup-dot" style="background: #10b981;"></div>
+          <div class="modal-browser-url">
+            <span>🔒</span>
+            <span id="modal-url">https://webland.dk/eksempler/</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+            <span class="badge badge-emerald" style="font-size: 0.72rem;">✓ Faktisk Design Preview</span>
+            <a id="modal-view-full" href="#" target="_blank" class="btn btn-outline btn-sm" style="font-size: 0.75rem; padding: 4px 10px;">Åbn i fuld skærm ↗</a>
+          </div>
+        </div>
+        <div class="modal-browser-img-wrap">
+          <img id="modal-image" src="" alt="Eksempel på hjemmeside" class="modal-preview-img">
+        </div>
+        <div class="modal-img-caption">
+          <span>💡 <strong>Inspirationsbillede:</strong> Dette er et visuelt eksempel på layout og stemning. Dit logo, indhold og farver tilpasses 100%.</span>
+          <span style="color: #34d399; font-weight: 600;">Klar på maks. 72 timer</span>
+        </div>
+      </div>
 
-        <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 28px; color: #fff;">
+      <div class="modal-body" style="padding-top: 0;">
+        <div style="margin-bottom: 20px;" id="modal-highlights"></div>
+
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; color: #fff;">
           De 5 undersider i dette eksempel:
         </h4>
         <div class="modal-pages-list" id="modal-pages-list"></div>
 
-        <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 24px;">
+        <div class="modal-footer-cta">
           <div>
-            <div style="font-size: 0.85rem; color: var(--color-text-dim);">FAST PRIS FOR DETTE DESIGN</div>
-            <div style="font-size: 1.3rem; font-weight: 800; color: #fff;">10.000 kr. + moms <span style="font-size: 0.85rem; font-weight: 500; color: #34d399;">• Klar på 72 timer</span></div>
+            <div style="font-size: 0.75rem; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">FAST PRIS FOR DETTE DESIGN</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: #fff;">10.000 kr. + moms <span style="font-size: 0.85rem; font-weight: 500; color: #34d399;">• Ingen månedlige gebyrer</span></div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Inkluderer Simply.com opsætning, domæne og mail • 500 kr./t ved fremtidige ændringer</div>
           </div>
-          <button class="btn btn-emerald" onclick="selectTemplateFromModal()">
-            Brug dette eksempel som inspiration →
-          </button>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <a href="kontakt.html" class="btn btn-outline">Kontakt sælger</a>
+            <button class="btn btn-emerald" onclick="selectTemplateFromModal()">
+              Brug dette eksempel som inspiration →
+            </button>
+          </div>
         </div>
       </div>
     </div>
