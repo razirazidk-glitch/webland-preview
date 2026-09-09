@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding-skema & Designbrief | Webland.dk</title>
+  <meta name="description" content="Udfyld dit onboarding-skema til Webland.dk: Angiv aftalt domæne, vælg skabelon, specificer de 5 undersider og upload eller bestil dit nye logo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <span>Webland<span class="logo-dot">.dk</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="skabeloner.html">15 Skabeloner</a></li>
+        <li><a href="proces.html">Sådan fungerer det</a></li>
+        <li><a href="onboarding.html" class="active">Onboarding-skema</a></li>
+        <li><a href="kontakt.html">Kontakt & Sælgere</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="kontakt.html" class="btn btn-outline btn-sm">Ring mig op</a>
+        <a href="onboarding.html" class="btn btn-primary btn-sm">Udfyld Skema</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Åbn menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Subpage Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="badge badge-emerald" style="margin-bottom: 12px;">Trin 3 i processen</span>
+        <h1>Kunde-Onboarding & Designbrief</h1>
+        <p>
+          Udfyld informationerne herunder, når du og sælgeren har aftalt dit domæne. Du kan også forberede dit materiale på forhånd. Oplysningerne sendes direkte til vores designteam, så de kan starte arbejdet inden for 72 timer.
+        </p>
+      </div>
+    </section>
+
+    <!-- Onboarding Formular Sektion -->
+    <section class="onboarding-section" style="padding-top: 40px;">
+      <div class="container">
+        <div class="onboarding-wrapper">
+          <div class="onboarding-header">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h2>Dit Projekt- & Designskema</h2>
+                <p>Udfyld felterne så præcist som muligt – du kan altid supplere overfor sælgeren.</p>
+              </div>
+              <span class="badge badge-amber">Fast pris: 10.000 kr. + moms</span>
+            </div>
+          </div>
+
+          <form class="onboarding-form" id="client-onboarding-form">
+            <!-- 1. Stamdata -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">01.</span> Dine Kontaktoplysninger
+            </h3>
+
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="client-name">
+                  <span>Fulde Navn / Kontaktperson <span style="color: #ef4444;">*</span></span>
+                </label>
+                <input type="text" id="client-name" class="form-input" placeholder="F.eks. Peter Jensen" required>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="company-name">
+                  <span>Virksomhedsnavn / Privat projekt</span>
+                  <small>CVR hvis erhverv</small>
+                </label>
+                <input type="text" id="company-name" class="form-input" placeholder="F.eks. Jensen Byg ApS">
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="client-email">
+                  <span>E-mailadresse <span style="color: #ef4444;">*</span></span>
+                </label>
+                <input type="email" id="client-email" class="form-input" placeholder="kontakt@ditfirma.dk" required>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="client-phone">
+                  <span>Telefonnummer <span style="color: #ef4444;">*</span></span>
+                </label>
+                <input type="tel" id="client-phone" class="form-input" placeholder="+45 20 00 00 00" required>
+              </div>
+            </div>
+
+            <!-- 2. Domæne & Skabelonvalg -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 32px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">02.</span> Domæne & Valgt Skabelon
+            </h3>
+
+            <div class="form-group-grid">
+              <div class="form-field">
+                <label class="form-label" for="domain-name-input">
+                  <span>Aftalt eller ønsket domæne <span style="color: #ef4444;">*</span></span>
+                  <small>Webland køber dette for dig</small>
+                </label>
+                <input type="text" id="domain-name-input" class="form-input" placeholder="f.eks. jensentoemrer.dk" required>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="selected-template-input">
+                  <span>Foretrukken Skabelon (blandt de 15)</span>
+                </label>
+                <select id="selected-template-input" class="form-select">
+                  <option value="">-- Vælg en skabelon (eller beslut senere med sælger) --</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 3. De 5 Undersider -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 32px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">03.</span> De 5 Inkluderede Undersider
+            </h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
+              Vælg hvilke 5 sider du ønsker på din hjemmeside:
+            </p>
+
+            <div class="pages-checkbox-grid" style="margin-bottom: 24px;">
+              <label class="page-checkbox-label">
+                <input type="checkbox" checked disabled>
+                <span>Forside (Obligatorisk)</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox" checked>
+                <span>Om os / Profil</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox" checked>
+                <span>Ydelser / Produkter</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox" checked>
+                <span>Projekter / Galleri</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox" checked>
+                <span>Kontakt & Tilbud</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox">
+                <span>Priser / Pakker</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox">
+                <span>FAQ / Spørgsmål</span>
+              </label>
+            </div>
+
+            <!-- 4. Logo & Visuel Identitet -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 32px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">04.</span> Logo & Visuelt Materiale
+            </h3>
+
+            <div class="logo-radio-group">
+              <div class="logo-radio-card active" data-logo-type="have-logo">
+                <div class="radio-dot"></div>
+                <div class="logo-card-text">
+                  <h4>Jeg har allerede et logo</h4>
+                  <p>Upload dit eksisterende logo i PNG, SVG, JPG eller PDF-format.</p>
+                </div>
+              </div>
+
+              <div class="logo-radio-card" data-logo-type="need-logo">
+                <div class="radio-dot"></div>
+                <div class="logo-card-text">
+                  <h4>Jeg skal have lavet et nyt logo</h4>
+                  <p>Beskriv hvilken stil, farver og symbolik du forestiller dig.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upload Boks -->
+            <div id="logo-upload-container">
+              <input type="file" id="logo-file-input" style="display: none;" accept="image/*,.pdf,.svg">
+              <div class="upload-dropzone" id="logo-dropzone">
+                <div class="upload-icon">📁</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">Klik her for at vælge dit logo</div>
+                <div style="font-size: 0.82rem; color: var(--color-text-dim);">Understøtter SVG, PNG, JPG, PDF (Maks 15 MB)</div>
+              </div>
+              <div class="upload-preview-box" id="logo-preview-box">
+                <span>✓</span>
+                <span id="logo-preview-text">Fil valgt</span>
+              </div>
+            </div>
+
+            <!-- Nyt logo boks -->
+            <div id="new-logo-container" style="display: none;">
+              <div class="form-field">
+                <label class="form-label" for="new-logo-wishes">
+                  <span>Beskriv dine ønsker til nyt logo</span>
+                  <small>Farver, stilart, symboler</small>
+                </label>
+                <textarea id="new-logo-wishes" class="form-textarea" placeholder="F.eks.: 'Jeg ønsker et minimalistisk logo med marineblå og guld farver. Bogstavet J integreret med en tømrerhammer eller et stilrent hus.'"></textarea>
+              </div>
+            </div>
+
+            <!-- 5. Yderligere information & tekster -->
+            <div class="form-field full-width" style="margin-top: 24px;">
+              <label class="form-label" for="additional-notes">
+                <span>Yderligere information, tekster og særlige ønsker</span>
+                <small>Valgfrit</small>
+              </label>
+              <textarea id="additional-notes" class="form-textarea" placeholder="Skriv gerne korte stikord om dine kerneydelser, åbningstider, sociale medier eller særlige ønsker til de 5 undersider..."></textarea>
+            </div>
+
+            <!-- Indsendelse -->
+            <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+              <div style="font-size: 0.88rem; color: var(--color-text-muted);">
+                🔒 Dine informationer behandles fortroligt i henhold til GDPR.
+              </div>
+              <button type="submit" class="btn btn-emerald btn-lg" id="submit-brief-btn">
+                Indsend Onboarding-Skema →
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Card -->
+          <div class="form-success-card" id="form-success-card">
+            <div class="success-icon-wrap">✓</div>
+            <h3>Tak for dit onboarding-skema!</h3>
+            <p>
+              Vi har modtaget dine informationer og materiale. Vores salgs- og designteam gennemgår dine data, bekræfter dit domænekøb og starter 72-timers nedtællingen.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; max-width: 500px; margin: 0 auto 30px; text-align: left;">
+              <div style="font-size: 0.85rem; color: var(--color-text-dim); margin-bottom: 6px;">HVAD SKER DER NU?</div>
+              <div style="font-size: 0.92rem; color: #fff; margin-bottom: 8px;">1. En sælger kontakter dig for en hurtig godkendelse.</div>
+              <div style="font-size: 0.92rem; color: #fff; margin-bottom: 8px;">2. Webland registrerer og peger dit domæne.</div>
+              <div style="font-size: 0.92rem; color: #fff;">3. Hjemmesiden opbygges med dine 5 undersider inden 72 timer.</div>
+            </div>
+            <a href="kontakt.html" class="btn btn-primary">Har du spørgsmål? Kontakt os her</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 8px;">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <span>Webland<span class="logo-dot">.dk</span></span>
+          </a>
+          <p>
+            Professionelle, enkle hjemmesider til private og erhverv. Fast pris 10.000 kr. + moms. Leveret på maks. 72 timer.
+          </p>
+          <div style="font-size: 0.85rem; color: var(--color-text-dim);">
+            Webland Danmark ApS • CVR: 44 98 12 00<br>
+            Vestergade 42, 8000 Aarhus C
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Undersider</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Forside</a></li>
+            <li><a href="skabeloner.html">15 Skabeloner</a></li>
+            <li><a href="proces.html">Sådan fungerer det</a></li>
+            <li><a href="onboarding.html">Onboarding-skema</a></li>
+            <li><a href="kontakt.html">Kontakt & Sælgere</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Brancher</h4>
+          <ul class="footer-links">
+            <li><a href="skabeloner.html">Håndværk & Byg</a></li>
+            <li><a href="skabeloner.html">Advokat & Rådgivning</a></li>
+            <li><a href="skabeloner.html">Frisør & Klinikker</a></li>
+            <li><a href="skabeloner.html">Restauranter & Caféer</a></li>
+            <li><a href="skabeloner.html">Kreativ & Portefølje</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Direkte Kontakt</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+4570201122">📞 +45 70 20 11 22</a></li>
+            <li><a href="mailto:kontakt@webland.dk">✉️ kontakt@webland.dk</a></li>
+            <li><span style="color: var(--color-text-dim);">Mandag - Fredag: 08:30 - 17:00</span></li>
+            <li><a href="kontakt.html" style="color: #34d399;">Mød vores salgsteam →</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Webland.dk – Alle rettigheder forbeholdes.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#">Privatlivspolitik</a>
+          <a href="#">Handelsbetingelser</a>
+          <a href="#">Cookieindstillinger</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="templates-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

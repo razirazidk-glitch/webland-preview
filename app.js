@@ -1,6 +1,6 @@
 /**
  * Webland.dk – Interaktiv Applikationslogik
- * Håndterer skabelongalleri, filtrering, modaler, onboarding-skema og sælgerkontakt
+ * Håndterer multi-page navigation, skabelongalleri, filtrering, modaler, onboarding-skema og sælgerkontakt
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initCallbackForm();
   initFaqAccordion();
   initMobileNav();
+  highlightActiveNavLink();
 });
+
+// Aktiv Navigationslink baseret på URL
+function highlightActiveNavLink() {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+}
 
 // Toast Notifikation System
 function showToast(message, type = 'primary') {
@@ -38,23 +51,30 @@ function showToast(message, type = 'primary') {
   }, 4000);
 }
 
-// 1. Initialisering og Rendering af de 15 Skabeloner
+// 1. Initialisering og Rendering af Skabeloner
 function initTemplatesGrid(filter = 'all') {
   const grid = document.getElementById('templates-grid');
   if (!grid || typeof TEMPLATES_DATA === 'undefined') return;
 
+  // Tjek om der er sat et maks antal (f.eks. på forsiden teaser)
+  const maxLimitAttr = grid.getAttribute('data-limit');
+  const maxLimit = maxLimitAttr ? parseInt(maxLimitAttr, 10) : null;
+
   grid.innerHTML = '';
 
-  const filtered = filter === 'all' 
+  let filtered = filter === 'all' 
     ? TEMPLATES_DATA 
     : TEMPLATES_DATA.filter(t => t.category === filter);
+
+  if (maxLimit && maxLimit > 0) {
+    filtered = filtered.slice(0, maxLimit);
+  }
 
   filtered.forEach(template => {
     const card = document.createElement('div');
     card.className = 'template-card';
     card.setAttribute('data-id', template.id);
 
-    // Mockup visual builder
     card.innerHTML = `
       <div class="mockup-preview">
         <div class="mockup-bar">
@@ -181,8 +201,10 @@ window.openTemplateModal = function(id) {
     `).join('');
   }
 
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 };
 
 function closeModal() {
@@ -200,29 +222,27 @@ window.selectTemplateFromModal = function() {
   }
 };
 
-// 4. Vælg Skabelon Action (Knytter til Onboarding-skema)
+// 4. Vælg Skabelon Action (Knytter til Onboarding-skema på tværs af undersider)
 window.selectTemplate = function(id) {
   const template = TEMPLATES_DATA.find(t => t.id === id);
   if (!template) return;
 
-  // Opdater dropdown i skemaet
   const select = document.getElementById('selected-template-input');
-  if (select) {
-    select.value = template.id;
-  }
-
-  // Scroll glidende ned til skemaet
   const onboardingSection = document.getElementById('onboarding');
-  if (onboardingSection) {
-    onboardingSection.scrollIntoView({ behavior: 'smooth' });
-  }
 
-  showToast(`Skabelon valgt: "${template.title}". Skemaet er forudfyldt!`, 'success');
+  // Hvis vi allerede er på onboarding-siden
+  if (select && onboardingSection) {
+    select.value = template.id;
+    onboardingSection.scrollIntoView({ behavior: 'smooth' });
+    showToast(`Skabelon valgt: "${template.title}". Skemaet er forudfyldt!`, 'success');
+  } else {
+    // Hvis vi er på skabeloner.html eller forsiden, navigér til onboarding.html med parameter
+    window.location.href = `onboarding.html?skabelon=${encodeURIComponent(id)}`;
+  }
 };
 
 // 5. Onboarding Form & Logo Valg
 function initOnboardingForm() {
-  // Populate skabelon select dropdown
   const select = document.getElementById('selected-template-input');
   if (select && typeof TEMPLATES_DATA !== 'undefined') {
     select.innerHTML = '<option value="">-- Vælg en skabelon (eller beslut senere med sælger) --</option>';
@@ -232,6 +252,19 @@ function initOnboardingForm() {
       opt.textContent = `${t.title} (${t.target})`;
       select.appendChild(opt);
     });
+
+    // Tjek om der er en skabelon overført i URL-parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const preselectedId = urlParams.get('skabelon');
+    if (preselectedId) {
+      select.value = preselectedId;
+      const matched = TEMPLATES_DATA.find(t => t.id === preselectedId);
+      if (matched) {
+        setTimeout(() => {
+          showToast(`Skabelon forudvalgt: "${matched.title}"`, 'success');
+        }, 300);
+      }
+    }
   }
 
   // Logo Radio Cards Switch
@@ -341,12 +374,13 @@ function initMobileNav() {
       navLinks.style.display = isVisible ? 'none' : 'flex';
       navLinks.style.flexDirection = 'column';
       navLinks.style.position = 'absolute';
-      navLinks.style.top = '80px';
+      navLinks.style.top = '70px';
       navLinks.style.left = '0';
       navLinks.style.right = '0';
       navLinks.style.background = '#0b0f19';
       navLinks.style.padding = '24px';
       navLinks.style.borderBottom = '1px solid var(--color-border)';
+      navLinks.style.zIndex = '150';
     });
   }
 }
