@@ -22,14 +22,14 @@ const TEMPLATES_DATA = [
     badge: "Fancy Luksus & Guld",
     accentColor: "#d4af37", // Champagne Guld
     icon: "sparkles",
-    shortDesc: "Kompromisløst luksusdesign med svungen kursiv typografi, diamantkatalog og privat concierge booking.",
+    shortDesc: "Kompromisløst luksusdesign med svungen kursiv typografi, diamantkatalog og privat concierge kontaktformular.",
     fullDesc: "Skabt til eksklusive guldsmede, diamantstudier og bespoke luksusbrands. Indeholder mørk obsidian-baggrund, guldaccenter, detaljeret ædelstens-specifikation (carat, slibning, klarhed), lookbook og direkte formular til privat VIP-tidsbestilling.",
     pages: [
-      { name: "Forside", desc: "Hero med svungen kalligrafi, udvalgte diamantsmykker og VIP concierge booking" },
+      { name: "Forside", desc: "Hero med svungen kalligrafi, udvalgte diamantsmykker og VIP concierge forespørgsel" },
       { name: "Kollektioner", desc: "Håndlavede ringe, halskæder, armbånd og vielsesringe i 18k guld & platin" },
       { name: "Bespoke & Diamanter", desc: "Specialfremstilling på eget værksted, certificerede diamanter og gemmologi" },
       { name: "Om Guldsmeden", desc: "Mesterens håndværkstradition, bæredygtigt genanvendt guld og atelier" },
-      { name: "Privat Tidsbestilling", desc: "Book diskret rådgivning i salonen eller privat fremvisning" }
+      { name: "Privat Tidsbestilling", desc: "Forespørgsel på diskret rådgivning i salonen eller privat fremvisning via formular" }
     ],
     highlights: ["Svungen kursiv luksustypografi", "Privat Concierge tidsbestilling", "Diamant & Carat specifikationer", "Højopløseligt smykkegalleri"]
   },
@@ -49,7 +49,7 @@ const TEMPLATES_DATA = [
       { name: "Værelser & Suiter", desc: "Strandsuiter, badehytter og deluxe værelser med faciliteter og priser" },
       { name: "Gastronomi", desc: "Hotellets restaurant, lokale råvarer og vinkælder" },
       { name: "Spa & Wellness", desc: "Saunagus, opvarmet saltvandspool og kropsbehandlinger" },
-      { name: "Reservation & Kontakt", desc: "Direkte bookingforespørgsel, gavekort og kørselsvejledning" }
+      { name: "Reservation & Kontakt", desc: "Direkte forespørgsel via formular, gavekort og kørselsvejledning" }
     ],
     highlights: ["Direkte datovælger", "Suite- & værelseskatalog", "Spa- & menukort", "Gavekort-forespørgsel"]
   },
@@ -63,15 +63,15 @@ const TEMPLATES_DATA = [
     accentColor: "#ec4899", // Rose
     icon: "sparkles",
     shortDesc: "Harmonisk luksusdesign med svungne seriffer til frisørsaloner, neglestudier og kosmetologer.",
-    fullDesc: "Skabt til at udstråle velvære, ro og luksus. Gør det nemt for kunder at se behandlinger, priser, før/efter resultater og bestille tid direkte via integreret bookingknap.",
+    fullDesc: "Skabt til at udstråle velvære, ro og luksus. Gør det nemt for kunder at se behandlinger, priser, før/efter resultater og anmode om tid via kontaktformular (eller henvise til dit eksterne system).",
     pages: [
-      { name: "Forside", desc: "Velkomst med svungen typografi, atmosfærebilleder og online booking" },
-      { name: "Behandlinger & Priser", desc: "Overskueligt priskatalog med tidsangivelser og beskrivelser" },
-      { name: "Om Salon/Klinik", desc: "Mød frisørerne/behandlerne, filosofi og anvendte produkter" },
+      { name: "Forside", desc: "Velkomst med svungen typografi, atmosfærebilleder og kontaktformular" },
+      { name: "Behandlinger & Priser", desc: "Klip, farvning, balayage, kurbehandlinger og herreklip med faste priser" },
+      { name: "Team & Stylister", desc: "Præsentation af salonens frisører, specialeområder og erfaring" },
       { name: "Lookbook & Galleri", desc: "Galleri med hårstyles, negledesign og kunde-makeovers" },
-      { name: "Kontakt & Tidsbestilling", desc: "Adresse, åbningstider, parkering og direkte link til booking" }
+      { name: "Kontakt & Tidsbestilling", desc: "Adresse, åbningstider, parkering og formular til tidsforespørgsel" }
     ],
-    highlights: ["Direkte online booking", "Overskuelig prisliste", "Instagram lookbook feed", "Behandler-profiler"]
+    highlights: ["Formular til tidsforespørgsel", "Overskuelig prisliste", "Instagram lookbook feed", "Behandler-profiler"]
   },
   {
     id: "arkitekt-design",
@@ -109,7 +109,7 @@ const TEMPLATES_DATA = [
       { name: "Bryllup & Kærlighed", desc: "Dokumentarisk dækning af den store dag med heldagsreportager" },
       { name: "Portræt & Erhverv", desc: "C-level erhvervsportrætter, kunstnerportrætter og LinkedIn branding" },
       { name: "Priser & Pakker", desc: "Transparente pakker, tidsestimater og digitale leverancer" },
-      { name: "Booking & Forespørgsel", desc: "Dato-tjek, ledighedskalender og direkte kontakt" }
+      { name: "Forespørgsel & Kontakt", desc: "Dato-forespørgsel via formular og direkte kontaktinfo" }
     ],
     highlights: ["Lightbox billedvisning", "Pakkeoversigt", "Dato-forespørgsel", "4-paneler split layout"]
   },
@@ -147,15 +147,15 @@ const TEMPLATES_DATA = [
     accentColor: "#0284c7", // Himmelblå
     icon: "sparkles",
     shortDesc: "Frisk, hygiejnisk design med interaktiv prisberegner til privat- og erhvervsrengøring.",
-    fullDesc: "Gør det lynhurtigt for kunder at beregne en vejledende månedspris ud fra kvadratmeter og frekvens, med direkte booking af prøverengøring.",
+    fullDesc: "Gør det lynhurtigt for kunder at beregne en vejledende månedspris ud fra kvadratmeter og frekvens, med nem formular til uforpligtende tilbud.",
     pages: [
       { name: "Forside", desc: "Interaktiv 30-sekunders prisberegner, miljøgarantier og gratis prøve" },
       { name: "Erhvervsrengøring", desc: "Kontorrengøring, klinikrengøring, trappevask og håndværkerfradrag" },
       { name: "Privat Rengøring", desc: "Fast assistent, ugentlig eller 14-dages rengøring af private hjem" },
       { name: "Miljø & Svanemærke", desc: "Vores skånsomme kemikaliefrie produkter og bæredygtighedspolitik" },
-      { name: "Få et Tilbud & Kontakt", desc: "Direkte booking af uforpligtende besigtigelse eller tilbud" }
+      { name: "Få et Tilbud & Kontakt", desc: "Forespørgsel på uforpligtende besigtigelse eller tilbud via formular" }
     ],
-    highlights: ["Kvadratmeter prisberegner", "Svanemærket badge", "Fast assistent garanti", "Online besigtigelsesbooking"]
+    highlights: ["Kvadratmeter prisberegner", "Svanemærket badge", "Fast assistent garanti", "Uforpligtende tilbudsformular"]
   },
   {
     id: "auto-vaerksted",
@@ -163,19 +163,19 @@ const TEMPLATES_DATA = [
     title: "Nordic Auto & Performance",
     category: "handvaerk",
     target: "Autoværksteder, Dækcentre & Bilpleje",
-    badge: "Online Servicebooking",
+    badge: "Hurtig Serviceformular",
     accentColor: "#ef4444", // Race rød
     icon: "hammer",
-    shortDesc: "Moderne, maskulint værkstedsdesign med nummerplade-opslag og servicebooking.",
+    shortDesc: "Moderne, maskulint værkstedsdesign med nummerplade-opslag og online serviceformular.",
     fullDesc: "Bygget til uafhængige autoværksteder og dækcentre. Giver kunden overblik over timepriser, fabriksgaranti, lånebil og direkte online tidsbestilling.",
     pages: [
-      { name: "Forside", desc: "Hurtig servicebooking, nummerplade-opslag, lånebil og fabriksgaranti" },
+      { name: "Forside", desc: "Hurtig serviceformular, nummerplade-felt, lånebil og fabriksgaranti" },
       { name: "Ydelser & Syn", desc: "Stort/lille serviceeftersyn, dækskift, bremseservice, aircondition og synstjek" },
       { name: "Specialer & Tuning", desc: "Fejlfinding med avanceret tester, 4-hjulsudmåling og motoroptimering" },
       { name: "Om Værkstedet", desc: "Uddannede mekanikere, moderne værkstedsfaciliteter og godkendt garanti" },
-      { name: "Book Tid & Kontakt", desc: "Formular til tidsbestilling med dato- og lånebilsvalg" }
+      { name: "Bestil Service & Kontakt", desc: "Kontaktformular til service med dato- og lånebilsvalg" }
     ],
-    highlights: ["Nummerplade servicebooking", "Lånebils-garanti", "Fabriksgaranti bevares", "Fast pris på dækskift"]
+    highlights: ["Online serviceformular", "Lånebils-garanti", "Fabriksgaranti bevares", "Fast pris på dækskift"]
   },
   {
     id: "anlaeg-have",
@@ -195,7 +195,7 @@ const TEMPLATES_DATA = [
       { name: "Referencer & Galleri", desc: "Filtrerbare billeder af realiserede haveprojekter med før/efter slider" },
       { name: "Få Havebesøg & Tilbud", desc: "Bestil et gratis og uforpligtende konsulentbesøg i haven" }
     ],
-    highlights: ["Før/Efter billedgalleri", "Gratis havebesøg booking", "Sæsonguide", "Kvalitetsgaranti på belægning"]
+    highlights: ["Før/Efter billedgalleri", "Gratis havebesøg formular", "Sæsonguide", "Kvalitetsgaranti på belægning"]
   },
   {
     id: "el-vvs",
@@ -237,7 +237,7 @@ const TEMPLATES_DATA = [
       { name: "Menukort", desc: "Opdelt i frokost, aften, drikkevarer, vin og børnemenu" },
       { name: "Om os & Stemning", desc: "Vores historie, kokketeam, råvarer og atmosfærebilleder" },
       { name: "Selskaber & Events", desc: "Fødselsdage, bryllupper, firmafester og private dining" },
-      { name: "Bordbestilling & Find vej", desc: "Integreret bookingsystem, åbningstider, parkering og kort" }
+      { name: "Bordbestilling & Find vej", desc: "Bordforespørgsel via formular (eller knap til dit eksterne system), åbningstider og kort" }
     ],
     highlights: ["Digitalt menukort", "Bordbestilling knap", "Selskabspakker", "Gavekort & Google Anmeldelser"]
   },
@@ -270,16 +270,16 @@ const TEMPLATES_DATA = [
     badge: "Stemningsfuld Aften",
     accentColor: "#be123c", // Dyb rødvin
     icon: "wine",
-    shortDesc: "Dunkel, eksklusiv velour-stemning med cocktailkort, smagninger og VIP bordbooking.",
-    fullDesc: "Udviklet til high-end barer og lounges med dæmpet belysning, cocktail-opskrifter, vinkort og arrangementsbooking til vinsmagninger og firmafester.",
+    shortDesc: "Dunkel, eksklusiv velour-stemning med cocktailkort, smagninger og VIP bordforespørgsel.",
+    fullDesc: "Udviklet til high-end barer og lounges med dæmpet belysning, cocktail-opskrifter, vinkort og arrangementsforespørgsel til vinsmagninger og firmafester.",
     pages: [
       { name: "Forside", desc: "Stemningsfuld hero, ugens signaturcocktail, DJ-aftener og reservation" },
       { name: "Cocktails & Drinks", desc: "Håndrørte cocktails med ingredienser, mocktails og spiritussamling" },
       { name: "Vinkort & Snacks", desc: "Naturvine, klassiske cru-vine og charcuteri-brætter" },
-      { name: "Vinsmagning & Private Events", desc: "Book privat bartender, cocktailkursus eller vinsmagning" },
+      { name: "Vinsmagning & Private Events", desc: "Forespørgsel på privat bartender, cocktailkursus eller vinsmagning via formular" },
       { name: "Bordreservation & Kontakt", desc: "Reserver bord til i aften, aldersgrænse og dresscode" }
     ],
-    highlights: ["Digitalt cocktailkort", "Vinsmagningspakker", "VIP bordbestilling", "Eventkalender med DJ's"]
+    highlights: ["Digitalt cocktailkort", "Vinsmagningspakker", "VIP bordforespørgsel", "Eventkalender med DJ's"]
   },
   {
     id: "musiker-kunstner",
@@ -291,13 +291,13 @@ const TEMPLATES_DATA = [
     accentColor: "#e11d48", // Neon rød
     icon: "music",
     shortDesc: "Elektronisk natmørkt design med integreret lydbølgeform, tour-datoer og vinylbestilling.",
-    fullDesc: "Giver musikere og scenekunstnere en professionel scene på nettet til booking, pladelanceringer, pressekit (EPK) og billetsalg.",
+    fullDesc: "Giver musikere og scenekunstnere en professionel scene på nettet til koncertforespørgsler, pladelanceringer, pressekit (EPK) og koncertkalender.",
     pages: [
       { name: "Forside", desc: "Fremhævet single release med lydbølge, Spotify-link og næste koncerter" },
       { name: "Releases & Diskografi", desc: "Albumoversigt, vinylkatalog, streamingtjenester og lyrik" },
       { name: "Tour & Koncerter", desc: "Datoer, spillesteder, festivaler og direkte billetkøb med 'Udsolgt'-status" },
       { name: "Biografi & Pressemateriale", desc: "Kunstnerens historie, EPK, anmeldelser og download af pressefotos" },
-      { name: "Booking & Forespørgsel", desc: "Formular til koncerter, festivaler og kommercielle samarbejder" }
+      { name: "Koncertforespørgsel & Kontakt", desc: "Kontaktformular til koncerter, festivaler og kommercielle samarbejder" }
     ],
     highlights: ["Lydbølgeform afspiller", "Tourliste med billetknapper", "Elektronisk pressekit", "Spotify integration"]
   },
@@ -316,7 +316,7 @@ const TEMPLATES_DATA = [
       { name: "Forside", desc: "Fællesskab, næste kampe, live match widget og 'Meld dig ind'" },
       { name: "Hold & Træningstider", desc: "Fodbold, håndbold, svømmeskole og motion med trænere og lokationer" },
       { name: "Aktiviteter & Kalender", desc: "Stævner, klubfester, generalforsamling og turneringer" },
-      { name: "Klubhuset & Bestyrelse", desc: "Værdier, vedtægter, bestyrelsesmedlemmer og banebooking" },
+      { name: "Klubhuset & Bestyrelse", desc: "Værdier, vedtægter, bestyrelsesmedlemmer og baneregler" },
       { name: "Bliv Medlem & Sponsor", desc: "Indmeldelsesformular, prøvetræning og sponsoroversigt" }
     ],
     highlights: ["Næste kamp-widget", "4 sportsafdelinger", "Indmeldelsesformular", "Sponsorvæg"]
@@ -335,13 +335,13 @@ const TEMPLATES_DATA = [
     accentColor: "#059669", // Mintgrøn
     icon: "activity",
     shortDesc: "Troværdigt, klinisk design med online tidsbestilling og sygesikringstilskud.",
-    fullDesc: "Henvender sig til autoriserede sundhedsfaglige behandlere. Sætter fokus på smertelindring, evidensbaserede behandlinger, tilskud fra 'danmark' og hurtig booking.",
+    fullDesc: "Henvender sig til autoriserede sundhedsfaglige behandlere. Sætter fokus på smertelindring, evidensbaserede behandlinger, tilskud fra 'danmark' og nem formular til tidsbestilling.",
     pages: [
       { name: "Forside", desc: "Kernebehandlinger, hurtig tidsbestilling, patientanmeldelser og akut-tider" },
       { name: "Behandlinger & Ydelser", desc: "Manuel terapi, idrætsfysioterapi, chokbølge og ryghold" },
       { name: "Behandlere & Filosofi", desc: "Mød fysioterapeuterne med specialer, erfaring og uddannelse" },
       { name: "Priser & Tilskud", desc: "Overenskomst med Sygesikringen, 'danmark' takster og forsikringsdækning" },
-      { name: "Online Booking & Kontakt", desc: "Vælg behandler og tid direkte, handicapvenlig adgang og parkering" }
+      { name: "Tidsbestilling & Kontakt", desc: "Tidsbestilling via formular (eller link til journalsystem), handicapvenlig adgang og parkering" }
     ],
     highlights: ["Hurtig tidsbestillings-widget", "Sygesikring tilskuds-tags", "Behandler-specifikation", "Akuttid inden for 24 timer"]
   },
@@ -355,7 +355,7 @@ const TEMPLATES_DATA = [
     accentColor: "#0284c7", // Tandlægeblå
     icon: "activity",
     shortDesc: "Tillidsvækkende og lys klinikprofil med fokus på tandlægeskræk og akutte tider.",
-    fullDesc: "Skabt til at fjerne frygt og gøre tandlægebesøget trygt. Viser klinikteamet, transparente priser, smertefri bedøvelse og nem online booking af eftersyn.",
+    fullDesc: "Skabt til at fjerne frygt og gøre tandlægebesøget trygt. Viser klinikteamet, transparente priser, smertefri bedøvelse og nem formular til tidsbestilling af eftersyn.",
     pages: [
       { name: "Forside", desc: "Tryg atmosfære, smertefri behandling, tandlægeskræk-garanti og online tidsbestilling" },
       { name: "Behandlinger", desc: "Almindeligt eftersyn, tandrensning, implantater, tandretning og kroner" },
@@ -363,7 +363,7 @@ const TEMPLATES_DATA = [
       { name: "Priser & Sygeforsikring", desc: "Faste overenskomstpriser, studierabat og tilskud fra 'danmark'" },
       { name: "Find Klinikken & Akuttid", desc: "Adresse tæt på station, gratis parkering og akuttelefon" }
     ],
-    highlights: ["Tandlægeskræk tryghedsgaranti", "Akut smertelindring knap", "Transparent prisliste", "Online eftersynsbooking"]
+    highlights: ["Tandlægeskræk tryghedsgaranti", "Akut smertelindring knap", "Transparent prisliste", "Tidsbestilling via formular"]
   },
   {
     id: "psykolog-terapi",
@@ -415,7 +415,7 @@ const TEMPLATES_DATA = [
     accentColor: "#a855f7", // Blød lilla
     icon: "sun",
     shortDesc: "Harmonisk og jordnært design med live holdskema, introtilbud og workshops.",
-    fullDesc: "Skabt til yoga-, pilates- og bevægelsesstudier. Gør det nemt at se ugens hold, booke prøvetimer og købe 10-turs kort eller månedskort.",
+    fullDesc: "Skabt til yoga-, pilates- og bevægelsesstudier. Gør det nemt at se ugens hold, tilmelde prøvetimer via formular og se priser på klippekort.",
     pages: [
       { name: "Forside", desc: "Zen-æstetik, ugens højdepunkter, holdtilmelding og introtilbud til nye" },
       { name: "Holdplan & Klasser", desc: "Vinyasa, Yin, Reformer Pilates og Hot Yoga med sværhedsgrader" },
@@ -445,7 +445,7 @@ const TEMPLATES_DATA = [
       { name: "Specialer & Fagområder", desc: "Erhvervsret, M&A, entreprise, retssager og generationsskifte" },
       { name: "Advokaterne", desc: "Partnerprofiler med møderet, udgivelser og bestyrelsesposter" },
       { name: "Salærer & Fri Proces", desc: "Gennemskuelige prismodeller, retshjælp og indledende sagsvurdering" },
-      { name: "Kontakt & Mødebooking", desc: "Kontorer i København, Aarhus og Odense med sikker kontakt" }
+      { name: "Kontakt & Mødeforespørgsel", desc: "Kontorer i København, Aarhus og Odense med sikker kontakt" }
     ],
     highlights: ["Møderet for Højesteret segl", "Sagsvurderingsknap", "4 fagsøjler", "Højesterets-statistikker"]
   },
@@ -479,13 +479,13 @@ const TEMPLATES_DATA = [
     accentColor: "#38bdf8", // Lys Cyan
     icon: "briefcase",
     shortDesc: "Dyb marineblå rådgivningsprofil med top KPI-ticker, 3-trins model og SaaS-case.",
-    fullDesc: "Positionerer dit konsulenthus som den uundværlige vækstpartner for topledelsen. Viser dokumenterede tal, procesmodeller og bookning af 30 min. sparring.",
+    fullDesc: "Positionerer dit konsulenthus som den uundværlige vækstpartner for topledelsen. Viser dokumenterede tal, procesmodeller og formular til 30 min. sparring.",
     pages: [
       { name: "Forside", desc: "KPI-ticker (+38% EBITDA), værditilbud, 3-trins model og kundecase" },
       { name: "Kerneyldelser", desc: "Diagnostisk markedsanalyse, Go-To-Market, prissætning og eksekvering" },
       { name: "Metoden", desc: "Vores datadrevne 90-dages transformationsmodel med målbare milepæle" },
       { name: "Kundecases & ROI", desc: "Dokumenterede resultater fra nordiske tech- og produktionsvirksomheder" },
-      { name: "Book C-Level Sparring", desc: "Reserver et fortroligt 30-minutters strategimøde med en senior partner" }
+      { name: "Mødeforespørgsel & Kontakt", desc: "Anmod om et fortroligt 30-minutters strategimøde med en senior partner via formular" }
     ],
     highlights: ["KPI-ticker (+38% EBITDA)", "3-trins rådgivningsmodel", "Nordisk SaaS case", "Senior partner sparring"]
   },
@@ -525,7 +525,7 @@ const TEMPLATES_DATA = [
       { name: "Produkt & Features", desc: "Arkitektur, sikkerhed, enterprise SSO, hastighed og oppetidsgaranti" },
       { name: "API & Dokumentation", desc: "REST API, SDK'er til TypeScript/Python, webhooks og endpoints" },
       { name: "Priser & Planer", desc: "Developer, Pro og Enterprise planer med månedlig/årlig afregning" },
-      { name: "Book Demo & Kontakt", desc: "Start 14-dages prøveperiode uden kreditkort eller book salgsdemo" }
+      { name: "Demo-forespørgsel & Kontakt", desc: "Start 14-dages prøveperiode uden kreditkort eller anmod om salgsdemo via formular" }
     ],
     highlights: ["Interaktiv kode-terminal", "API documentation showcase", "99.99% oppetidsbadge", "14 dages gratis prøveperiode"]
   }
