@@ -1,6 +1,6 @@
 /**
  * Webland.dk – Interaktiv Applikationslogik
- * Håndterer multi-page navigation, skabelongalleri, filtrering, modaler, onboarding-skema og sælgerkontakt
+ * Håndterer multi-page navigation, inspirationsgalleri med 15 eksempler, filtrering, modaler, onboarding-skema og sælgerkontakt
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,7 +51,7 @@ function showToast(message, type = 'primary') {
   }, 4000);
 }
 
-// 1. Initialisering og Rendering af Skabeloner
+// 1. Initialisering og Rendering af Eksempler på hjemmesider vi kan bygge
 function initTemplatesGrid(filter = 'all') {
   const grid = document.getElementById('templates-grid');
   if (!grid || typeof TEMPLATES_DATA === 'undefined') return;
@@ -120,7 +120,7 @@ function initTemplatesGrid(filter = 'all') {
             Se detaljer
           </button>
           <button class="btn btn-primary btn-sm btn-select" onclick="selectTemplate('${template.id}')">
-            Vælg skabelon →
+            Brug som inspiration →
           </button>
         </div>
       </div>
@@ -143,7 +143,7 @@ function initFilterTabs() {
   });
 }
 
-// 3. Modal Logik for Skabelon-detaljer
+// 3. Modal Logik for Eksempler & Detaljer
 let currentModalTemplateId = null;
 
 function initModal() {
@@ -222,7 +222,7 @@ window.selectTemplateFromModal = function() {
   }
 };
 
-// 4. Vælg Skabelon Action (Knytter til Onboarding-skema på tværs af undersider)
+// 4. Vælg Eksempel Action (Knytter inspiration til Onboarding-skema)
 window.selectTemplate = function(id) {
   const template = TEMPLATES_DATA.find(t => t.id === id);
   if (!template) return;
@@ -234,10 +234,10 @@ window.selectTemplate = function(id) {
   if (select && onboardingSection) {
     select.value = template.id;
     onboardingSection.scrollIntoView({ behavior: 'smooth' });
-    showToast(`Skabelon valgt: "${template.title}". Skemaet er forudfyldt!`, 'success');
+    showToast(`Inspiration valgt: "${template.title}". Skemaet er forudfyldt!`, 'success');
   } else {
-    // Hvis vi er på skabeloner.html eller forsiden, navigér til onboarding.html med parameter
-    window.location.href = `onboarding.html?skabelon=${encodeURIComponent(id)}`;
+    // Hvis vi er på eksempler.html eller forsiden, navigér til onboarding.html med parameter
+    window.location.href = `onboarding.html?eksempel=${encodeURIComponent(id)}`;
   }
 };
 
@@ -245,7 +245,7 @@ window.selectTemplate = function(id) {
 function initOnboardingForm() {
   const select = document.getElementById('selected-template-input');
   if (select && typeof TEMPLATES_DATA !== 'undefined') {
-    select.innerHTML = '<option value="">-- Vælg en skabelon (eller beslut senere med sælger) --</option>';
+    select.innerHTML = '<option value="">-- Vælg et eksempel som inspiration (eller aftal nærmere med sælger) --</option>';
     TEMPLATES_DATA.forEach(t => {
       const opt = document.createElement('option');
       opt.value = t.id;
@@ -253,15 +253,15 @@ function initOnboardingForm() {
       select.appendChild(opt);
     });
 
-    // Tjek om der er en skabelon overført i URL-parameter
+    // Tjek om der er et eksempel overført i URL-parameter (?eksempel=)
     const urlParams = new URLSearchParams(window.location.search);
-    const preselectedId = urlParams.get('skabelon');
+    const preselectedId = urlParams.get('eksempel') || urlParams.get('skabelon');
     if (preselectedId) {
       select.value = preselectedId;
       const matched = TEMPLATES_DATA.find(t => t.id === preselectedId);
       if (matched) {
         setTimeout(() => {
-          showToast(`Skabelon forudvalgt: "${matched.title}"`, 'success');
+          showToast(`Inspiration forudvalgt: "${matched.title}"`, 'success');
         }, 300);
       }
     }

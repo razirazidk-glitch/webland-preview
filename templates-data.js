@@ -1,6 +1,6 @@
 /**
- * Webland.dk – De 15 Hjemmesideskabeloner
- * Hver skabelon er skræddersyet til enten erhverv eller private med op til 5 undersider.
+ * Webland.dk – 15 Eksempler på hjemmesider vi kan bygge
+ * Hvert eksempel kan bruges som inspiration til enten erhverv eller private med op til 5 undersider.
  */
 
 const TEMPLATES_DATA = [
@@ -13,7 +13,7 @@ const TEMPLATES_DATA = [
     accentColor: "#f59e0b", // Amber/Guld
     icon: "hammer",
     shortDesc: "Robust, tillidsskabende design til tømrere, murere, elektrikere og entreprenører.",
-    fullDesc: "Skabelonen er bygget til at konvertere besøgende til konkrete tilbudsforespørgsler. Indeholder før/efter billedsektioner, referencer, kundeanmeldelser og direkte 'Få et uforpligtende tilbud'-formular.",
+    fullDesc: "Dette eksempel er bygget til at konvertere besøgende til konkrete tilbudsforespørgsler. Indeholder før/efter billedsektioner, referencer, kundeanmeldelser og direkte 'Få et uforpligtende tilbud'-formular.",
     pages: [
       { name: "Forside", desc: "Hero-sektion, kerneydelser, referencer og direkte tilbudsknap" },
       { name: "Ydelser", desc: "Oversigt over fagområder (f.eks. tagrenovering, nybyg, service)" },
@@ -31,7 +31,7 @@ const TEMPLATES_DATA = [
     badge: "Stilren & Æstetisk",
     accentColor: "#ec4899", // Pink/Rose
     icon: "sparkles",
-    shortDesc: "Elegant og harmonisk skabelon til frisørsaloner, negleklinikker og kosmetologer.",
+    shortDesc: "Elegant og harmonisk design til frisørsaloner, negleklinikker og kosmetologer.",
     fullDesc: "Skabt til at udstråle velvære, ro og luksus. Gør det nemt for kunder at se behandlinger, priser, før/efter resultater og bestille tid direkte via integreret bookingknap.",
     pages: [
       { name: "Forside", desc: "Velkomst, atmosfærebilleder, fremhævede behandlinger og online booking" },
@@ -69,7 +69,7 @@ const TEMPLATES_DATA = [
     badge: "Premium B2B",
     accentColor: "#0f766e", // Teal/Mørk petroleum
     icon: "scale",
-    shortDesc: "Eksklusiv, autoritativ skabelon til advokater, jurister og regnskabsrådgivere.",
+    shortDesc: "Eksklusiv, autoritativ profil til advokater, jurister og regnskabsrådgivere.",
     fullDesc: "Udstråler høj faglighed, diskretion og juridisk tyngde. Struktureret med klare specialer, partnerprofiler og direkte formular til indledende sagsvurdering.",
     pages: [
       { name: "Forside", desc: "Værdigrundlag, juridiske kompetenceområder og hurtig kontakt" },
