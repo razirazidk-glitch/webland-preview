@@ -20,6 +20,7 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Eksklusive Guldsmede & Smykkedesignere",
     badge: "Fancy Luksus & Guld",
+    has3D: true,
     accentColor: "#d4af37", // Champagne Guld
     icon: "sparkles",
     shortDesc: "Kompromisløst luksusdesign med svungen kursiv typografi, diamantkatalog og privat concierge kontaktformular.",
@@ -31,7 +32,7 @@ const TEMPLATES_DATA = [
       { name: "Om Guldsmeden", desc: "Mesterens håndværkstradition, bæredygtigt genanvendt guld og atelier" },
       { name: "Privat Tidsbestilling", desc: "Forespørgsel på diskret rådgivning i salonen eller privat fremvisning via formular" }
     ],
-    highlights: ["Svungen kursiv luksustypografi", "Privat Concierge kontaktformular", "Diamant & Carat specifikationer", "Højopløseligt smykkegalleri"]
+    highlights: ["Interaktiv 3D-tilt & glitrende lysreflektion", "Svungen kursiv luksustypografi", "Privat Concierge kontaktformular", "Diamant & Carat specifikationer"]
   },
   {
     id: "boutique-hotel",
@@ -80,6 +81,7 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Arkitekter & Designstudier",
     badge: "Minimalistisk Monograf",
+    has3D: true,
     accentColor: "#94a3b8", // Sten/Krom
     icon: "pencil",
     shortDesc: "Rene linjer, store fotoflader og bygningsspecifikationer til tegnestuer og formgivere.",
@@ -91,7 +93,7 @@ const TEMPLATES_DATA = [
       { name: "Plantegninger & Proces", desc: "Fra skitsering og byggetilladelse til færdigt byggeri" },
       { name: "Kontakt", desc: "Mød tegnestuen i København og Aarhus for en indledende samtale" }
     ],
-    highlights: ["Fuldskærms fotogalleri", "Plantegningsvisning", "Mies van der Rohe awards", "Bygnings-specifikationer"]
+    highlights: ["Interaktiv 3D dybde-parallakse", "Fuldskærms fotogalleri", "Plantegningsvisning", "Mies van der Rohe awards"]
   },
   {
     id: "fotograf-portfolio",
@@ -268,6 +270,7 @@ const TEMPLATES_DATA = [
     category: "gastronomi",
     target: "Cocktailbarer, Vinbarer & Natklubber",
     badge: "Stemningsfuld Aften",
+    has3D: true,
     accentColor: "#be123c", // Dyb rødvin
     icon: "wine",
     shortDesc: "Dunkel, eksklusiv velour-stemning med cocktailkort, smagninger og VIP bordforespørgsel.",
@@ -279,7 +282,7 @@ const TEMPLATES_DATA = [
       { name: "Vinsmagning & Private Events", desc: "Forespørgsel på privat bartender, cocktailkursus eller vinsmagning via formular" },
       { name: "Bordreservation & Kontakt", desc: "Reserver bord til i aften, aldersgrænse og dresscode" }
     ],
-    highlights: ["Digitalt cocktailkort", "Vinsmagningspakker", "VIP bordforespørgsel", "Eventkalender med DJ's"]
+    highlights: ["Interaktiv 3D dybde & velour-effekt", "Digitalt cocktailkort", "Vinsmagningspakker", "VIP bordforespørgsel"]
   },
   {
     id: "musiker-kunstner",
@@ -516,6 +519,7 @@ const TEMPLATES_DATA = [
     category: "erhverv",
     target: "Tech Startups, SaaS & IT-Konsulenter",
     badge: "Dark Mode High-Tech",
+    has3D: true,
     accentColor: "#6366f1", // Indigo
     icon: "globe",
     shortDesc: "Futuristisk dark-mode interface med live terminal, API dokumentation og release notes.",
@@ -527,7 +531,7 @@ const TEMPLATES_DATA = [
       { name: "Priser & Planer", desc: "Developer, Pro og Enterprise planer med månedlig/årlig afregning" },
       { name: "Demo-forespørgsel & Kontakt", desc: "Start 14-dages prøveperiode uden kreditkort eller anmod om salgsdemo via formular" }
     ],
-    highlights: ["Interaktiv kode-terminal", "API documentation showcase", "99.99% oppetidsbadge", "14 dages gratis prøveperiode"]
+    highlights: ["Interaktiv 3D-tilt & glødende tech-dybde", "Interaktiv kode-terminal", "API documentation showcase", "99.99% oppetidsbadge"]
   }
 ];
 

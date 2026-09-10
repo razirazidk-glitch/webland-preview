@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initMobileNav();
   highlightActiveNavLink();
+  initAll3DTilts();
 });
 
 // Aktiv Navigationslink baseret på URL
@@ -23,6 +24,58 @@ function highlightActiveNavLink() {
     if (href === currentPath || (currentPath === '' && href === 'index.html')) {
       link.classList.add('active');
     }
+  });
+}
+
+// =========================================================================
+// INTERAKTIV 3D TILT & GLARE MOTOR (Fjerlet CSS/JS, 60 FPS)
+// =========================================================================
+function apply3DTilt(element, maxRotate = 10, hasGlare = true) {
+  if (!element || element.dataset.tiltActive === 'true') return;
+  element.dataset.tiltActive = 'true';
+
+  let glare = null;
+  if (hasGlare) {
+    glare = element.querySelector('.tilt-glare');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'tilt-glare';
+      element.appendChild(glare);
+    }
+  }
+
+  element.style.transformStyle = 'preserve-3d';
+  element.style.transition = 'transform 0.15s ease-out, box-shadow 0.25s ease';
+
+  function onMouseMove(e) {
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -maxRotate;
+    const rotateY = ((x - centerX) / centerX) * maxRotate;
+
+    element.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025)`;
+
+    if (glare) {
+      glare.style.opacity = '1';
+      glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0) 65%)`;
+    }
+  }
+
+  function onMouseLeave() {
+    element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    if (glare) glare.style.opacity = '0';
+  }
+
+  element.addEventListener('mousemove', onMouseMove);
+  element.addEventListener('mouseleave', onMouseLeave);
+}
+
+function initAll3DTilts() {
+  document.querySelectorAll('.has-3d-tilt').forEach(el => {
+    apply3DTilt(el, 10, true);
   });
 }
 
@@ -72,7 +125,7 @@ function initTemplatesGrid(filter = 'all') {
 
   filtered.forEach(template => {
     const card = document.createElement('div');
-    card.className = 'template-card';
+    card.className = `template-card ${template.has3D ? 'has-3d-tilt' : ''}`;
     card.setAttribute('data-id', template.id);
 
     card.innerHTML = `
@@ -89,13 +142,17 @@ function initTemplatesGrid(filter = 'all') {
           <div class="mockup-overlay-badge">
             <span>👁️ Se fuld forhåndsvisning</span>
           </div>
+          ${template.has3D ? '<div class="tilt-glare"></div>' : ''}
         </div>
       </div>
 
       <div class="template-card-body">
         <div class="template-meta-row">
           <span class="template-target">${template.target}</span>
-          <span class="badge ${template.category === 'erhverv' ? 'badge-emerald' : 'badge-amber'}">${template.badge}</span>
+          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span class="badge ${template.category === 'erhverv' ? 'badge-emerald' : 'badge-amber'}">${template.badge}</span>
+            ${template.has3D ? '<span class="badge badge-3d">✨ 3D-Effekt</span>' : ''}
+          </div>
         </div>
 
         <h3 class="template-title">${template.title}</h3>
@@ -128,6 +185,8 @@ function initTemplatesGrid(filter = 'all') {
 
     grid.appendChild(card);
   });
+
+  initAll3DTilts();
 }
 
 // 2. Filter Tabs
@@ -211,10 +270,25 @@ window.openTemplateModal = function(id) {
     `).join('');
   }
 
+  const imgWrap = document.querySelector('.modal-browser-img-wrap');
+  if (imgWrap) {
+    if (template.has3D) {
+      imgWrap.classList.add('has-3d-tilt');
+      apply3DTilt(imgWrap, 12, true);
+    } else {
+      imgWrap.classList.remove('has-3d-tilt');
+      imgWrap.style.transform = 'none';
+    }
+  }
+
   if (modalHighlights) {
-    modalHighlights.innerHTML = template.highlights.map(h => `
+    const badgesHtml = template.highlights.map(h => `
       <span class="badge badge-emerald" style="margin-right: 6px; margin-bottom: 6px;">✓ ${h}</span>
     `).join('');
+    const badge3d = template.has3D 
+      ? '<span class="badge badge-3d" style="margin-right: 6px; margin-bottom: 6px;">✨ Inkl. Interaktiv 3D Tilt & Dybdeeffekt</span>' 
+      : '';
+    modalHighlights.innerHTML = badge3d + badgesHtml;
   }
 
   if (modal) {
@@ -279,16 +353,20 @@ function initOnboardingForm() {
       pickerGrid.innerHTML = list.map(t => {
         const isSelected = t.id === selectedId;
         return `
-          <div class="visual-picker-card ${isSelected ? 'active' : ''}" data-id="${t.id}">
+          <div class="visual-picker-card ${isSelected ? 'active' : ''} ${t.has3D ? 'has-3d-tilt' : ''}" data-id="${t.id}">
             <div class="visual-picker-thumb" onclick="openTemplateModal('${t.id}')" title="Tryk på billedet for at se det i en stor popup">
               <img src="${t.image}" alt="${t.title}" loading="lazy">
               <div class="visual-picker-thumb-overlay">
                 <span>👁️ Se i stor popup</span>
               </div>
               <div class="visual-picker-check">${isSelected ? '✓' : ''}</div>
+              ${t.has3D ? '<div class="tilt-glare"></div>' : ''}
             </div>
             <div class="visual-picker-body">
-              <div class="visual-picker-badge">${t.badge}</div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px;">
+                <div class="visual-picker-badge" style="margin-bottom: 0;">${t.badge}</div>
+                ${t.has3D ? '<span class="badge badge-3d">✨ 3D</span>' : ''}
+              </div>
               <div class="visual-picker-title">${t.title}</div>
               <div class="visual-picker-desc">${t.shortDesc}</div>
               <div class="visual-picker-actions">
@@ -305,6 +383,7 @@ function initOnboardingForm() {
           </div>
         `;
       }).join('');
+      initAll3DTilts();
     }
 
     window.selectVisualTemplate = function(id) {
@@ -330,6 +409,17 @@ function initOnboardingForm() {
           if (desc) desc.textContent = matched.shortDesc || matched.fullDesc;
           if (urlMock) urlMock.textContent = `https://${matched.id}.webland-demo.dk`;
           if (modalBtn) modalBtn.onclick = () => openTemplateModal(matched.id);
+
+          const showcaseImgContainer = document.querySelector('.showcase-img-container');
+          if (showcaseImgContainer) {
+            if (matched.has3D) {
+              showcaseImgContainer.classList.add('has-3d-tilt');
+              apply3DTilt(showcaseImgContainer, 10, true);
+            } else {
+              showcaseImgContainer.classList.remove('has-3d-tilt');
+              showcaseImgContainer.style.transform = 'none';
+            }
+          }
         }
         if (typeof window.updateColorPaletteForTemplate === 'function') {
           window.updateColorPaletteForTemplate(matched);
