@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=25.2">
+  <link rel="stylesheet" href="styles.css?v=25.3">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -352,9 +352,122 @@
               </div>
             </div>
 
-            <!-- 04. De 5 Undersider -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 32px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">04.</span> De 5 Inkluderede Undersider
+            <!-- 04. Vælg Farvekombination & Farvestemning -->
+            <div class="color-palette-picker-section">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 8px; color: #fff; display: flex; align-items: center; gap: 8px;">
+                <span style="color: #3b82f6;">04.</span> Vælg Farvekombination & Farvestemning
+              </h3>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
+                Hvilke farver og hvilken stemning skal inspirere din nye hjemmeside? Vælg mellem vores 8 afstemte designer-paletter, lad os udtrække farverne fra dit logo, eller bevar eksemplets originale farver.
+              </p>
+
+              <!-- Skjult felt til form submit -->
+              <input type="hidden" id="selected-color-palette-input" name="selected_color_palette" value="Nordisk Skifer & Isblå (Primær: #1e293b, Accent: #0284c7)">
+
+              <!-- Valgt Farvestemning Live Statusbadge -->
+              <div id="selected-palette-status" class="palette-status-bar">
+                <div class="palette-status-left">
+                  <span class="palette-status-icon">🎨</span>
+                  <div>
+                    <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-dim); font-weight: 700;">Aktivt Valgt Farvestemning:</div>
+                    <div id="palette-status-title" style="font-size: 0.96rem; font-weight: 800; color: #fff;">Nordisk Skifer & Isblå</div>
+                  </div>
+                </div>
+                <div class="palette-status-dots" id="palette-status-swatches">
+                  <span class="status-swatch" style="background: #1e293b;" title="Primær: #1e293b"></span>
+                  <span class="status-swatch" style="background: #0284c7;" title="Accent: #0284c7"></span>
+                  <span class="status-swatch" style="background: #0f172a;" title="Mørk base: #0f172a"></span>
+                  <span class="status-swatch" style="background: #f8fafc;" title="Lys baggrund: #f8fafc"></span>
+                </div>
+              </div>
+
+              <!-- Fleksible Farvevalg (3 kort) -->
+              <div class="color-modes-grid">
+                <!-- Mode: Logo farver -->
+                <div class="color-mode-card" id="color-mode-logo" onclick="selectColorSpecialMode('logo')">
+                  <div class="choice-radio">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="color-mode-content">
+                    <div class="color-mode-title">
+                      <span>🏷️ Brug mit logos farver</span>
+                    </div>
+                    <p class="color-mode-desc">
+                      Webland analyserer og udtrækker automatisk primær- og accentfarver direkte fra det logo, du uploader i sektion 06.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Mode: Originale Eksempelfarver -->
+                <div class="color-mode-card" id="color-mode-template" onclick="selectColorSpecialMode('template')">
+                  <div class="choice-radio">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="color-mode-content">
+                    <div class="color-mode-title">
+                      <span>🖼️ Brug eksemplets originale farver</span>
+                    </div>
+                    <p class="color-mode-desc" id="template-color-hint">
+                      Bevar den gennemførte farvesammensætning og kontrast fra det valgte design i sektion 03.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Mode: Brugerdefineret -->
+                <div class="color-mode-card" id="color-mode-custom" onclick="selectColorSpecialMode('custom')">
+                  <div class="choice-radio">
+                    <div class="choice-radio-dot"></div>
+                  </div>
+                  <div class="color-mode-content">
+                    <div class="color-mode-title">
+                      <span>🎯 Brugerdefinerede farver</span>
+                    </div>
+                    <p class="color-mode-desc">
+                      Vælg dine egne primær- og accentfarver med farvevælgere eller angiv præcise hex-koder.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Brugerdefineret farveboks (vises ved klik på color-mode-custom) -->
+              <div id="custom-color-picker-box" class="custom-color-box" style="display: none;">
+                <div class="custom-color-row">
+                  <div class="custom-color-item">
+                    <label for="custom-primary-picker">Primær brandfarve (baggrund / overskrifter):</label>
+                    <div class="color-input-wrap">
+                      <input type="color" id="custom-primary-picker" value="#1e3a8a" class="color-picker-input">
+                      <input type="text" id="custom-primary-hex" value="#1E3A8A" class="form-input color-hex-text" maxlength="7">
+                    </div>
+                  </div>
+                  <div class="custom-color-item">
+                    <label for="custom-accent-picker">Accent / Knapfarve (Call to Action knapper):</label>
+                    <div class="color-input-wrap">
+                      <input type="color" id="custom-accent-picker" value="#f59e0b" class="color-picker-input">
+                      <input type="text" id="custom-accent-hex" value="#F59E0B" class="form-input color-hex-text" maxlength="7">
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top: 10px;">
+                  <label for="custom-color-notes" style="font-size: 0.82rem; color: #cbd5e1; display: block; margin-bottom: 5px;">Særlige farveønsker eller beskrivelse (valgfrit):</label>
+                  <input type="text" id="custom-color-notes" class="form-input" placeholder="F.eks.: 'Vi ønsker en dæmpet mørkegrøn tone med varme gyldne accenter'">
+                </div>
+              </div>
+
+              <!-- 8 Kuraterede Farvepaletter Overskrift -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin: 24px 0 14px; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 0.82rem; color: var(--color-text-dim); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Eller vælg mellem 8 afstemte erhvervs-farvekombinationer:</span>
+                <span style="font-size: 0.80rem; color: #38bdf8;">✓ Vælg den stemning der passer bedst til din virksomhed</span>
+              </div>
+
+              <!-- Paletter Gitter (8 kort) -->
+              <div class="palette-grid" id="curated-palettes-grid">
+                <!-- Renders dynamisk via app.js -->
+              </div>
+            </div>
+
+            <!-- 05. De 5 Undersider -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">05.</span> De 5 Inkluderede Undersider
             </h3>
             <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
               Vælg hvilke 5 sider du ønsker på din hjemmeside:
@@ -391,9 +504,9 @@
               </label>
             </div>
 
-            <!-- 05. Logo & Visuel Identitet -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 32px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">05.</span> Logo & Visuelt Materiale
+            <!-- 06. Logo & Visuel Identitet -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">06.</span> Logo & Visuelt Materiale
             </h3>
 
             <div class="logo-radio-group">
@@ -439,9 +552,9 @@
               </div>
             </div>
 
-            <!-- 06. Yderligere information & tekster -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 32px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">06.</span> Yderligere information, tekster & ønsker
+            <!-- 07. Yderligere information & tekster -->
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span style="color: #3b82f6;">07.</span> Yderligere information, tekster & ønsker
             </h3>
 
             <div class="form-field full-width">
@@ -616,7 +729,7 @@
   </div>
 
   <div class="toast-container" id="toast-container"></div>
-  <script src="templates-data.js?v=25.2"></script>
-  <script src="app.js?v=25.2"></script>
+  <script src="templates-data.js?v=25.3"></script>
+  <script src="app.js?v=25.3"></script>
 </body>
 </html>

@@ -331,6 +331,9 @@ function initOnboardingForm() {
           if (urlMock) urlMock.textContent = `https://${matched.id}.webland-demo.dk`;
           if (modalBtn) modalBtn.onclick = () => openTemplateModal(matched.id);
         }
+        if (typeof window.updateColorPaletteForTemplate === 'function') {
+          window.updateColorPaletteForTemplate(matched);
+        }
       }
       renderVisualPickerCards();
     };
@@ -339,6 +342,9 @@ function initOnboardingForm() {
       if (hiddenInput) hiddenInput.value = '';
       if (showcase) showcase.style.display = 'none';
       if (neutralCard) neutralCard.classList.add('active');
+      if (typeof window.updateColorPaletteForTemplate === 'function') {
+        window.updateColorPaletteForTemplate(null);
+      }
       renderVisualPickerCards();
     };
 
@@ -633,6 +639,251 @@ function initOnboardingForm() {
       }, 900);
     });
   }
+
+  // Initialiser Farvekombinationer & Paletter (Sektion 04)
+  initColorPalettePicker();
+}
+
+// 5c. Farvekombinationer & Paletter System (Sektion 04)
+function initColorPalettePicker() {
+  const curatedGrid = document.getElementById('curated-palettes-grid');
+  const paletteHiddenInput = document.getElementById('selected-color-palette-input');
+  const statusTitle = document.getElementById('palette-status-title');
+  const statusSwatches = document.getElementById('palette-status-swatches');
+  const modeCards = {
+    logo: document.getElementById('color-mode-logo'),
+    template: document.getElementById('color-mode-template'),
+    custom: document.getElementById('color-mode-custom')
+  };
+  const customBox = document.getElementById('custom-color-picker-box');
+  const customPrimaryPicker = document.getElementById('custom-primary-picker');
+  const customPrimaryHex = document.getElementById('custom-primary-hex');
+  const customAccentPicker = document.getElementById('custom-accent-picker');
+  const customAccentHex = document.getElementById('custom-accent-hex');
+  const customNotes = document.getElementById('custom-color-notes');
+  const templateColorHint = document.getElementById('template-color-hint');
+  const templateHiddenInput = document.getElementById('selected-template-input');
+
+  if (!curatedGrid || typeof PALETTES_DATA === 'undefined') return;
+
+  let activeMode = 'curated'; // 'curated' | 'logo' | 'template' | 'custom'
+  let activePaletteId = 'nordisk-skifer';
+
+  function renderCuratedCards() {
+    curatedGrid.innerHTML = PALETTES_DATA.map(p => {
+      const isSelected = activeMode === 'curated' && p.id === activePaletteId;
+      return `
+        <div class="palette-card ${isSelected ? 'active' : ''}" data-palette-id="${p.id}" onclick="selectCuratedPalette('${p.id}')">
+          <div class="palette-swatches-strip">
+            <div class="palette-swatch-bar swatch-primary" style="background: ${p.primary};" title="Primær brandfarve: ${p.primary}"></div>
+            <div class="palette-swatch-bar swatch-accent" style="background: ${p.accent};" title="Accent knapfarve: ${p.accent}"></div>
+            <div class="palette-swatch-bar swatch-dark" style="background: ${p.dark};" title="Mørk kontrastbase: ${p.dark}"></div>
+            <div class="palette-swatch-bar swatch-light" style="background: ${p.light};" title="Lys nuance: ${p.light}"></div>
+          </div>
+          <div class="palette-card-body">
+            <div class="palette-header-row">
+              <div class="palette-card-title">${p.name}</div>
+              ${isSelected ? '<span class="palette-card-badge">✓ Valgt</span>' : ''}
+            </div>
+            <div class="palette-card-vibe">${p.vibe}</div>
+            <div class="palette-card-desc">${p.previewText}</div>
+            <div class="palette-hex-legend">
+              <span class="palette-hex-tag"><span class="palette-hex-dot" style="background:${p.primary};"></span>${p.primary}</span>
+              <span class="palette-hex-tag"><span class="palette-hex-dot" style="background:${p.accent};"></span>${p.accent}</span>
+            </div>
+            <button type="button" class="btn ${isSelected ? 'btn-emerald' : 'btn-outline'} palette-select-btn">
+              ${isSelected ? '✓ Dette farvevalg er aktivt' : 'Vælg denne farvestemning'}
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function updateStatusDisplay(titleText, swatchesHtml) {
+    if (statusTitle) statusTitle.textContent = titleText;
+    if (statusSwatches) statusSwatches.innerHTML = swatchesHtml;
+  }
+
+  window.selectCuratedPalette = function(id) {
+    activeMode = 'curated';
+    activePaletteId = id;
+
+    // Fjern aktiv markering fra special-modes
+    Object.values(modeCards).forEach(card => {
+      if (card) card.classList.remove('active');
+    });
+    if (customBox) customBox.style.display = 'none';
+
+    const p = PALETTES_DATA.find(item => item.id === id);
+    if (p) {
+      if (paletteHiddenInput) {
+        paletteHiddenInput.value = `${p.name} (Primær: ${p.primary}, Accent: ${p.accent})`;
+      }
+      updateStatusDisplay(
+        p.name,
+        `
+          <span class="status-swatch" style="background: ${p.primary};" title="Primær: ${p.primary}"></span>
+          <span class="status-swatch" style="background: ${p.accent};" title="Accent: ${p.accent}"></span>
+          <span class="status-swatch" style="background: ${p.dark};" title="Mørk base: ${p.dark}"></span>
+          <span class="status-swatch" style="background: ${p.light};" title="Lys baggrund: ${p.light}"></span>
+        `
+      );
+      showToast(`Farvestemning valgt: "${p.name}"`, 'success');
+    }
+    renderCuratedCards();
+  };
+
+  window.selectColorSpecialMode = function(mode) {
+    activeMode = mode;
+
+    // Håndter radio states
+    Object.entries(modeCards).forEach(([k, card]) => {
+      if (card) {
+        if (k === mode) card.classList.add('active');
+        else card.classList.remove('active');
+      }
+    });
+
+    renderCuratedCards();
+
+    if (mode === 'logo') {
+      if (customBox) customBox.style.display = 'none';
+      if (paletteHiddenInput) {
+        paletteHiddenInput.value = 'Brug farverne fra mit logo / min profil';
+      }
+      updateStatusDisplay(
+        'Brug mit logos farver (Webland matcher automatisk)',
+        `
+          <span class="status-swatch" style="background: linear-gradient(135deg, #3b82f6, #ec4899);" title="Logo primær"></span>
+          <span class="status-swatch" style="background: linear-gradient(135deg, #10b981, #f59e0b);" title="Logo accent"></span>
+          <span class="status-swatch" style="background: #0f172a;" title="Kontrast base"></span>
+          <span class="status-swatch" style="background: #ffffff;" title="Lys baggrund"></span>
+        `
+      );
+      showToast('Farvestemning sat: Vi matcher automatisk farverne til dit logo!', 'info');
+    } else if (mode === 'template') {
+      if (customBox) customBox.style.display = 'none';
+      const currentTemplateId = templateHiddenInput ? templateHiddenInput.value : '';
+      const matched = (typeof TEMPLATES_DATA !== 'undefined' && currentTemplateId)
+        ? TEMPLATES_DATA.find(t => t.id === currentTemplateId)
+        : null;
+
+      if (matched) {
+        if (paletteHiddenInput) {
+          paletteHiddenInput.value = `Originale farver fra eksemplet "${matched.title}" (Accent: ${matched.accentColor})`;
+        }
+        updateStatusDisplay(
+          `Originale farver fra "${matched.title}"`,
+          `
+            <span class="status-swatch" style="background: ${matched.accentColor};" title="Accent: ${matched.accentColor}"></span>
+            <span class="status-swatch" style="background: #0f172a;" title="Dark base"></span>
+            <span class="status-swatch" style="background: #1e293b;" title="Card slate"></span>
+            <span class="status-swatch" style="background: #ffffff;" title="Hvid kontrast"></span>
+          `
+        );
+        showToast(`Farvestemning sat: Bevarer originale farver fra "${matched.title}"`, 'info');
+      } else {
+        if (paletteHiddenInput) {
+          paletteHiddenInput.value = 'Brug eksemplets originale farver';
+        }
+        updateStatusDisplay(
+          'Originale farver fra det valgte design (sektion 03)',
+          `
+            <span class="status-swatch" style="background: #3b82f6;" title="Original accent"></span>
+            <span class="status-swatch" style="background: #0f172a;" title="Mørk base"></span>
+            <span class="status-swatch" style="background: #ffffff;" title="Lys base"></span>
+          `
+        );
+        showToast('Farvestemning sat: Bevarer det valgte eksempels originale farver.', 'info');
+      }
+    } else if (mode === 'custom') {
+      if (customBox) customBox.style.display = 'block';
+      updateCustomColors();
+      showToast('Brugerdefinerede farver aktiveret – justér dine farver nedenfor.', 'info');
+    }
+  };
+
+  function updateCustomColors() {
+    const pColor = customPrimaryPicker ? customPrimaryPicker.value.toUpperCase() : '#1E3A8A';
+    const aColor = customAccentPicker ? customAccentPicker.value.toUpperCase() : '#F59E0B';
+    const notes = customNotes ? customNotes.value.trim() : '';
+
+    if (customPrimaryHex) customPrimaryHex.value = pColor;
+    if (customAccentHex) customAccentHex.value = aColor;
+
+    if (paletteHiddenInput) {
+      paletteHiddenInput.value = `Brugerdefineret (Primær: ${pColor}, Accent: ${aColor}${notes ? ', Noter: ' + notes : ''})`;
+    }
+
+    updateStatusDisplay(
+      `Brugerdefineret: Primær ${pColor} • Accent ${aColor}`,
+      `
+        <span class="status-swatch" style="background: ${pColor};" title="Primær: ${pColor}"></span>
+        <span class="status-swatch" style="background: ${aColor};" title="Accent: ${aColor}"></span>
+        <span class="status-swatch" style="background: #0f172a;" title="Mørk base"></span>
+        <span class="status-swatch" style="background: #ffffff;" title="Hvid kontrast"></span>
+      `
+    );
+  }
+
+  // Lyttere for custom color inputs
+  if (customPrimaryPicker) {
+    customPrimaryPicker.addEventListener('input', () => {
+      if (activeMode === 'custom') updateCustomColors();
+    });
+  }
+  if (customPrimaryHex) {
+    customPrimaryHex.addEventListener('input', (e) => {
+      let val = e.target.value.trim();
+      if (!val.startsWith('#') && val.length > 0) val = '#' + val;
+      if (/^#[0-9A-Fa-f]{6}$/.test(val) && customPrimaryPicker) {
+        customPrimaryPicker.value = val;
+        if (activeMode === 'custom') updateCustomColors();
+      }
+    });
+  }
+
+  if (customAccentPicker) {
+    customAccentPicker.addEventListener('input', () => {
+      if (activeMode === 'custom') updateCustomColors();
+    });
+  }
+  if (customAccentHex) {
+    customAccentHex.addEventListener('input', (e) => {
+      let val = e.target.value.trim();
+      if (!val.startsWith('#') && val.length > 0) val = '#' + val;
+      if (/^#[0-9A-Fa-f]{6}$/.test(val) && customAccentPicker) {
+        customAccentPicker.value = val;
+        if (activeMode === 'custom') updateCustomColors();
+      }
+    });
+  }
+
+  if (customNotes) {
+    customNotes.addEventListener('input', () => {
+      if (activeMode === 'custom') updateCustomColors();
+    });
+  }
+
+  // Hook til opdatering af template farve-hint når et template vælges i sektion 03
+  window.updateColorPaletteForTemplate = function(templateObj) {
+    if (!templateObj) {
+      if (templateColorHint) {
+        templateColorHint.textContent = 'Bevar den gennemførte farvesammensætning og kontrast fra det valgte design i sektion 03.';
+      }
+      return;
+    }
+    if (templateColorHint) {
+      templateColorHint.textContent = `Bevarer originale farver fra "${templateObj.title}" (accentfarve: ${templateObj.accentColor}).`;
+    }
+    if (activeMode === 'template') {
+      window.selectColorSpecialMode('template');
+    }
+  };
+
+  // Initial render med "nordisk-skifer" forudvalgt
+  renderCuratedCards();
 }
 
 // 6. Callback Sælger Form

@@ -531,6 +531,95 @@ const TEMPLATES_DATA = [
   }
 ];
 
+// =========================================================================
+// 8 KURATEREDE DESIGNER FARVEPALETTER TIL INSPIRATION (ONBOARDING)
+// =========================================================================
+const PALETTES_DATA = [
+  {
+    id: "nordisk-skifer",
+    name: "Nordisk Skifer & Isblå",
+    vibe: "Minimalistisk, IT, Rådgivning & Arkitektur",
+    primary: "#1e293b",
+    accent: "#0284c7",
+    dark: "#0f172a",
+    light: "#f8fafc",
+    previewText: "Moderne, kølig og tillidsvækkende elegance"
+  },
+  {
+    id: "obsidian-guld",
+    name: "Obsidian Sort & Champagne Guld",
+    vibe: "Eksklusiv Luksus, Smykker, Jura & Gourmet",
+    primary: "#18181b",
+    accent: "#d4af37",
+    dark: "#09090b",
+    light: "#faf8f5",
+    previewText: "Sofistikeret, eksklusiv og tidløs luksus"
+  },
+  {
+    id: "kongeblaa-staal",
+    name: "Kongeblå & Stålgrå",
+    vibe: "Klassisk Erhverv, Håndværk, VVS, El & Finans",
+    primary: "#1d4ed8",
+    accent: "#f59e0b",
+    dark: "#1e293b",
+    light: "#f1f5f9",
+    previewText: "Robust, professionel og pålidelig autoritet"
+  },
+  {
+    id: "skovgroen-salvie",
+    name: "Dyb Skovgrøn & Salvie",
+    vibe: "Bæredygtighed, Natur, Økologi & Velvære",
+    primary: "#14532d",
+    accent: "#10b981",
+    dark: "#052e16",
+    light: "#f0fdf4",
+    previewText: "Organisk, beroligende og bæredygtig ro"
+  },
+  {
+    id: "terracotta-havre",
+    name: "Varm Terracotta & Havre",
+    vibe: "Gastronomi, Vinbar, Café, Bageri & Kunst",
+    primary: "#c2410c",
+    accent: "#f97316",
+    dark: "#431407",
+    light: "#fffbeb",
+    previewText: "Hyggelig, indbydende og sensorisk varme"
+  },
+  {
+    id: "ocean-teal",
+    name: "Ocean Teal & Koralvand",
+    vibe: "Sundhed, Fysioterapi, Tandlæge & Rengøring",
+    primary: "#0f766e",
+    accent: "#06b6d4",
+    dark: "#134e4a",
+    light: "#f0fdfa",
+    previewText: "Klinisk ren, forfriskende og tryghedsskabende"
+  },
+  {
+    id: "pudder-blomme",
+    name: "Pudderrosa & Dyb Blomme",
+    vibe: "Skønhed, Spa, Frisør, Terapi & Mode",
+    primary: "#831843",
+    accent: "#ec4899",
+    dark: "#500724",
+    light: "#fdf2f8",
+    previewText: "Feminin, sanselig og eksklusiv velvære"
+  },
+  {
+    id: "askesort-signal",
+    name: "Askesort & Signal Orange/Gul",
+    vibe: "Høj Kontrast, Entreprenør, Auto & Fitness",
+    primary: "#27272a",
+    accent: "#ea580c",
+    dark: "#18181b",
+    light: "#f4f4f5",
+    previewText: "Hårdtslående, dynamisk og kompromisløs kraft"
+  }
+];
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = TEMPLATES_DATA;
+  module.exports.TEMPLATES_DATA = TEMPLATES_DATA;
+  module.exports.PALETTES_DATA = PALETTES_DATA;
 }
+
