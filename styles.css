@@ -874,8 +874,28 @@ button, input, select, textarea {
 }
 
 .template-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  margin-top: 14px;
+}
+
+.template-actions .btn-details {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.template-actions .btn-details:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================

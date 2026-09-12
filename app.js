@@ -117,10 +117,7 @@ function initTemplatesGrid(filter = 'all') {
 
         <div class="template-actions">
           <button class="btn btn-outline btn-sm btn-details" onclick="openTemplateModal('${template.id}')">
-            Se detaljer
-          </button>
-          <button class="btn btn-primary btn-sm btn-select" onclick="selectTemplate('${template.id}')">
-            Brug som inspiration →
+            Se forhåndsvisning & detaljer
           </button>
         </div>
       </div>
