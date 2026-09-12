@@ -1,24 +1,75 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" style="background-color: #f8fafc; color: #0f172a; color-scheme: light;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
   <title>Onboarding-skema & Designbrief | Webland.dk</title>
   <meta name="description" content="Udfyld dit onboarding-skema til Webland.dk: Angiv aftalt domæne, vælg eksempel som inspiration, specificer de 5 undersider og upload eller bestil dit nye logo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=28.0">
+  <link rel="stylesheet" href="styles.css?v=29.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <style>
+    :root {
+      color-scheme: light !important;
+      --color-bg: #f8fafc !important;
+      --color-bg-secondary: #f1f5f9 !important;
+      --color-bg-card: #ffffff !important;
+      --color-bg-card-hover: #f8fafc !important;
+      --color-border: #e2e8f0 !important;
+      --color-text: #0f172a !important;
+      --color-text-muted: #475569 !important;
+      --color-text-dim: #64748b !important;
+      --color-primary: #2563eb !important;
+      --color-accent: #059669 !important;
+    }
+    html, body {
+      background-color: #f8fafc !important;
+      background-image: none !important;
+      color: #0f172a !important;
+      color-scheme: light !important;
+    }
+    .site-header {
+      background: rgba(255, 255, 255, 0.96) !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .brand-logo, .brand-logo span {
+      color: #0f172a !important;
+    }
+    .nav-links a {
+      color: #475569 !important;
+    }
+    .nav-links a.active, .nav-links a:hover {
+      color: #2563eb !important;
+    }
+    .page-hero {
+      background: #f8fafc !important;
+      color: #0f172a !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .page-hero h1 {
+      color: #0f172a !important;
+    }
+    .page-hero p {
+      color: #475569 !important;
+    }
+    .site-footer {
+      background-color: #ffffff !important;
+      border-top: 1px solid #e2e8f0 !important;
+      color: #0f172a !important;
+    }
+  </style>
 </head>
-<body>
+<body style="background-color: #f8fafc !important; color: #0f172a !important;">
 
   <!-- Header -->
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html" class="brand-logo">
+      <a href="index.html?v=29.0" class="brand-logo">
         <div class="logo-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -30,15 +81,15 @@
       </a>
 
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html">Forside</a></li>
-        <li><a href="eksempler.html">Eksempler på hjemmesider</a></li>
-        <li><a href="proces.html">Sådan fungerer det</a></li>
-        <li><a href="kontakt.html">Kontakt & Sælgere</a></li>
+        <li><a href="index.html?v=29.0">Forside</a></li>
+        <li><a href="eksempler.html?v=29.0">Eksempler på hjemmesider</a></li>
+        <li><a href="proces.html?v=29.0">Sådan fungerer det</a></li>
+        <li><a href="kontakt.html?v=29.0">Kontakt & Sælgere</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="kontakt.html" class="btn btn-outline btn-sm">Ring mig op</a>
-        <a href="onboarding.html" class="btn btn-primary btn-sm">Udfyld Skema</a>
+        <a href="kontakt.html?v=29.0" class="btn btn-outline btn-sm">Ring mig op</a>
+        <a href="onboarding.html?v=29.0" class="btn btn-primary btn-sm">Udfyld Skema</a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Åbn menu">☰</button>
       </div>
     </div>
@@ -140,7 +191,7 @@
                 <strong style="color: #2563eb; font-size: 0.95rem;">Domænet skal være aftalt med sælger på forhånd:</strong><br>
                 Du og din Webland-sælger finder et ledigt domænenavn sammen, inden skemaet her udfyldes. Sælgeren verificerer navnet i domæneregistret, så vi er 100% sikre på, at det er ledigt og klar til registrering.<br>
                 <span style="color: var(--color-text-dim); font-size: 0.82rem; margin-top: 6px; display: inline-block;">
-                  Har du ikke talt med en sælger endnu? <a href="kontakt.html" style="color: #2563eb; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
+                  Har du ikke talt med en sælger endnu? <a href="kontakt.html?v=29.0" style="color: #2563eb; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
                 </span>
               </div>
             </div>
@@ -240,10 +291,10 @@
               <!-- Live status boks for aktivt valg -->
               <div id="emails-summary-container" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 10px; padding: 14px 16px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
-                  <div style="font-size: 0.86rem; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 6px;">
+                  <div style="font-size: 0.86rem; font-weight: 700; color: #059669; display: flex; align-items: center; gap: 6px;">
                     <span>📋</span> Dit aktive valg til Simply.com:
                   </div>
-                  <span id="emails-count-badge" class="badge" style="font-size: 0.72rem; background: rgba(255,255,255,0.06); color: #94a3b8;">0 valgt</span>
+                  <span id="emails-count-badge" class="badge" style="font-size: 0.72rem; background: #e2e8f0; color: #334155;">0 valgt</span>
                 </div>
                 <div id="emails-summary-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
                   <!-- Vises dynamisk -->
@@ -589,7 +640,7 @@
               <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">2. Webland opretter webhotel hos Simply.com, registrerer dit domæne og opsætter din e-mail.</div>
               <div style="font-size: 0.92rem; color: var(--color-text);">3. Hjemmesiden opbygges med dine 5 undersider inden 72 timer.</div>
             </div>
-            <a href="kontakt.html" class="btn btn-primary">Har du spørgsmål? Kontakt os her</a>
+            <a href="kontakt.html?v=29.0" class="btn btn-primary">Har du spørgsmål? Kontakt os her</a>
           </div>
         </div>
       </div>
@@ -601,7 +652,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="brand-logo" style="margin-bottom: 8px;">
+          <a href="index.html?v=29.0" class="brand-logo" style="margin-bottom: 8px;">
             <div class="logo-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -623,21 +674,21 @@
         <div class="footer-col">
           <h4>Undersider</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Forside</a></li>
-            <li><a href="eksempler.html">Eksempler på hjemmesider</a></li>
-            <li><a href="proces.html">Sådan fungerer det</a></li>
-            <li><a href="kontakt.html">Kontakt & Sælgere</a></li>
+            <li><a href="index.html?v=29.0">Forside</a></li>
+            <li><a href="eksempler.html?v=29.0">Eksempler på hjemmesider</a></li>
+            <li><a href="proces.html?v=29.0">Sådan fungerer det</a></li>
+            <li><a href="kontakt.html?v=29.0">Kontakt & Sælgere</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Brancher & Eksempler</h4>
           <ul class="footer-links">
-            <li><a href="eksempler.html?kategori=luksus">Luksus, Livsstil & Fancy</a></li>
-            <li><a href="eksempler.html?kategori=handvaerk">Håndværk & Service</a></li>
-            <li><a href="eksempler.html?kategori=gastronomi">Gastronomi & Oplevelser</a></li>
-            <li><a href="eksempler.html?kategori=sundhed">Sundhed & Velvære</a></li>
-            <li><a href="eksempler.html?kategori=erhverv">Erhverv, Finans & B2B</a></li>
+            <li><a href="eksempler.html?v=29.0&kategori=luksus">Luksus, Livsstil & Fancy</a></li>
+            <li><a href="eksempler.html?v=29.0&kategori=handvaerk">Håndværk & Service</a></li>
+            <li><a href="eksempler.html?v=29.0&kategori=gastronomi">Gastronomi & Oplevelser</a></li>
+            <li><a href="eksempler.html?v=29.0&kategori=sundhed">Sundhed & Velvære</a></li>
+            <li><a href="eksempler.html?v=29.0&kategori=erhverv">Erhverv, Finans & B2B</a></li>
           </ul>
         </div>
 
@@ -647,7 +698,7 @@
             <li><a href="tel:+4570201122">📞 +45 70 20 11 22</a></li>
             <li><a href="mailto:kontakt@webland.dk">✉️ kontakt@webland.dk</a></li>
             <li><span style="color: var(--color-text-dim);">Mandag - Fredag: 08:30 - 17:00</span></li>
-            <li><a href="kontakt.html" style="color: #34d399;">Mød vores salgsteam →</a></li>
+            <li><a href="kontakt.html?v=29.0" style="color: #059669; font-weight: 600;">Mød vores salgsteam →</a></li>
           </ul>
         </div>
       </div>
@@ -718,7 +769,7 @@
             <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Inkluderer Simply.com opsætning, domæne og mail • 500 kr./t ved fremtidige ændringer</div>
           </div>
           <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-            <a href="kontakt.html" class="btn btn-outline">Kontakt sælger</a>
+            <a href="kontakt.html?v=29.0" class="btn btn-outline">Kontakt sælger</a>
             <button class="btn btn-emerald" onclick="selectTemplateFromModal()">
               Vælg dette eksempel som inspiration →
             </button>
@@ -729,7 +780,7 @@
   </div>
 
   <div class="toast-container" id="toast-container"></div>
-  <script src="templates-data.js?v=28.0"></script>
-  <script src="app.js?v=28.0"></script>
+  <script src="templates-data.js?v=29.0"></script>
+  <script src="app.js?v=29.0"></script>
 </body>
 </html>
