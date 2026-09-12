@@ -104,14 +104,14 @@ function initTemplatesGrid(filter = 'all') {
         <div class="template-pages-tag">
           <div class="pages-tag-title">
             <span>5 Undersider inkluderet:</span>
-            <strong>9.995 kr. <span style="font-size: 0.72rem; font-weight: 500; color: #94a3b8;">excl. moms</span></strong>
+            <strong>9.995 kr. <span style="font-size: 0.72rem; font-weight: 500; color: #64748b;">excl. moms</span></strong>
           </div>
           <div class="pages-chip-list">
             ${template.pages.map(p => `<span class="page-chip">${p.name}</span>`).join('')}
           </div>
         </div>
 
-        <div style="font-size: 0.76rem; color: #94a3b8; display: flex; align-items: center; gap: 5px; margin-bottom: 12px;">
+        <div style="font-size: 0.76rem; color: #64748b; display: flex; align-items: center; gap: 5px; margin-bottom: 12px;">
           <span style="color: #38bdf8;">✨</span> <span>Kan tilpasses til <strong>enhver branche</strong></span>
         </div>
 
@@ -424,14 +424,14 @@ function initOnboardingForm() {
 
     if (allEmails.length === 0) {
       emailsSummaryChips.innerHTML = `
-        <div style="font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 8px; padding: 4px 0;">
+        <div style="font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 8px; padding: 4px 0;">
           <span>👆</span> <span><strong>Ingen e-mails valgt endnu.</strong> Tag et aktivt valg ovenfor: Klik på de adresser du ønsker oprettet (eller brug hurtigknappen <em>"👉 Jeg ønsker kun kontakt@"</em>).</span>
         </div>
       `;
       if (emailsCountBadge) {
         emailsCountBadge.textContent = '0 valgt (Aktivt valg)';
-        emailsCountBadge.style.background = 'rgba(255, 255, 255, 0.06)';
-        emailsCountBadge.style.color = '#94a3b8';
+        emailsCountBadge.style.background = 'var(--color-bg-secondary)';
+        emailsCountBadge.style.color = 'var(--color-text-dim)';
       }
       if (selectedEmailsHidden) selectedEmailsHidden.value = 'Ingen e-mails (bruger ekstern mail)';
       return;
@@ -445,8 +445,8 @@ function initOnboardingForm() {
 
     if (emailsCountBadge) {
       emailsCountBadge.textContent = `${allEmails.length} ${allEmails.length === 1 ? 'e-mail valgt' : 'e-mails valgte'}`;
-      emailsCountBadge.style.background = 'rgba(16, 185, 129, 0.15)';
-      emailsCountBadge.style.color = '#34d399';
+      emailsCountBadge.style.background = 'rgba(5, 150, 105, 0.12)';
+      emailsCountBadge.style.color = '#059669';
     }
 
     if (selectedEmailsHidden) {
@@ -932,9 +932,10 @@ function initMobileNav() {
       navLinks.style.top = '70px';
       navLinks.style.left = '0';
       navLinks.style.right = '0';
-      navLinks.style.background = '#0b0f19';
+      navLinks.style.background = '#ffffff';
       navLinks.style.padding = '24px';
       navLinks.style.borderBottom = '1px solid var(--color-border)';
+      navLinks.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.08)';
       navLinks.style.zIndex = '150';
     });
   }

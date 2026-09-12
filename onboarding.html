@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=27.0">
+  <link rel="stylesheet" href="styles.css?v=28.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -72,8 +72,8 @@
 
           <form class="onboarding-form" id="client-onboarding-form">
             <!-- 1. Stamdata -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">01.</span> Dine Kontaktoplysninger
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2563eb;">01.</span> Dine Kontaktoplysninger
             </h3>
 
             <div class="form-group-grid">
@@ -114,7 +114,7 @@
                   <small>Den mail du bestiller fra</small>
                 </label>
                 <input type="email" id="client-email" class="form-input" placeholder="F.eks. din-private@gmail.com / firma@privatmail.dk" required>
-                <div style="font-size: 0.78rem; color: #f59e0b; margin-top: 4px; display: flex; align-items: center; gap: 4px;">
+                <div style="font-size: 0.78rem; color: #d97706; margin-top: 4px; display: flex; align-items: center; gap: 4px;">
                   <span>⚠️</span> <span>Indtast din eksisterende e-mail, så vi kan sende kvittering og Simply.com login til dig (ikke din nye domænemail).</span>
                 </div>
               </div>
@@ -129,18 +129,18 @@
             </div>
 
             <!-- 2. Aftalt Domæne, Simply.com Webhotel & E-mail -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">02.</span> Aftalt Domæne & Simply.com E-mailadresser
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2563eb;">02.</span> Aftalt Domæne & Simply.com E-mailadresser
             </h3>
 
             <!-- Vigtigt infobanner: Domænet skal være aftalt med sælger -->
-            <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px;">
+            <div style="background: rgba(37, 99, 235, 0.06); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px;">
               <span style="font-size: 1.5rem; line-height: 1;">🤝</span>
-              <div style="font-size: 0.88rem; color: #d1d5db; line-height: 1.55;">
-                <strong style="color: #60a5fa; font-size: 0.95rem;">Domænet skal være aftalt med sælger på forhånd:</strong><br>
+              <div style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.55;">
+                <strong style="color: #2563eb; font-size: 0.95rem;">Domænet skal være aftalt med sælger på forhånd:</strong><br>
                 Du og din Webland-sælger finder et ledigt domænenavn sammen, inden skemaet her udfyldes. Sælgeren verificerer navnet i domæneregistret, så vi er 100% sikre på, at det er ledigt og klar til registrering.<br>
-                <span style="color: #94a3b8; font-size: 0.82rem; margin-top: 6px; display: inline-block;">
-                  Har du ikke talt med en sælger endnu? <a href="kontakt.html" style="color: #38bdf8; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
+                <span style="color: var(--color-text-dim); font-size: 0.82rem; margin-top: 6px; display: inline-block;">
+                  Har du ikke talt med en sælger endnu? <a href="kontakt.html" style="color: #2563eb; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
                 </span>
               </div>
             </div>
@@ -155,9 +155,9 @@
             </div>
 
             <!-- E-mailvalg Boks (Aktivt valg) -->
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px;">
+            <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px;">
               <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
-                <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin: 0; display: flex; align-items: center; gap: 8px;">
                   <span>📬</span> Vælg hvilke e-mailadresser du ønsker oprettet (Aktivt valg)
                 </h4>
                 <span class="badge badge-emerald" style="font-size: 0.72rem;">Inkluderet i fast pris</span>
@@ -253,28 +253,28 @@
             </div>
 
             <!-- Simply.com Webhotel & Mail Info Box -->
-            <div style="background: rgba(59, 130, 246, 0.06); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; padding: 14px 18px; margin-top: 14px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
+            <div style="background: rgba(37, 99, 235, 0.06); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 12px; padding: 14px 18px; margin-top: 14px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
               <span style="font-size: 1.3rem; line-height: 1;">🚀</span>
-              <div style="font-size: 0.86rem; color: #d1d5db; line-height: 1.5;">
-                <strong style="color: #60a5fa;">Simply.com Webhotel & E-mail inkluderet:</strong><br>
+              <div style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5;">
+                <strong style="color: #2563eb;">Simply.com Webhotel & E-mail inkluderet:</strong><br>
                 Vi opretter dit webhotel hos Danmarks førende Simply.com med lynhurtig NVMe SSD-lagring og gratis SSL. Samtidig opretter og konfigurerer vi dine aktive e-mailvalg, så du kan sende og modtage mails direkte på dit nye domæne fra dag ét. Du modtager webmail-adgang og nemme guides til opsætning på mobil og computer.
               </div>
             </div>
 
             <!-- 03. Vælg Visuel Inspiration (25 eksempler) -->
             <div class="visual-template-picker-section">
-              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 8px; color: #fff; display: flex; align-items: center; gap: 8px;">
-                <span style="color: #3b82f6;">03.</span> Vælg Visuel Inspiration (25 eksempler)
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 8px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+                <span style="color: #2563eb;">03.</span> Vælg Visuel Inspiration (25 eksempler)
               </h3>
               <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 14px;">
                 Klik direkte på det visuelle design, du bedst kan lide. Det danner inspirationsgrundlag for din nye hjemmesides layout, farver og stemning.
               </p>
 
               <!-- Frit valg uanset branche banner -->
-              <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+              <div style="background: rgba(37, 99, 235, 0.06); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
                 <span style="font-size: 1.35rem; line-height: 1;">🎨</span>
-                <div style="font-size: 0.88rem; color: #d1d5db; line-height: 1.5;">
-                  <strong style="color: #60a5fa;">Vælg frit uanset din branche:</strong><br>
+                <div style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5;">
+                  <strong style="color: #2563eb;">Vælg frit uanset din branche:</strong><br>
                   Eksemplet behøver overhovedet ikke matche din branche! Kan du lide stilen eller layoutet fra en smykkebutik, en restaurant eller et advokatkontor, vælger du bare dét. Vi overfører strukturen og tilpasser alle farver, logo, billeder og tekster 100% til din virksomhed.
                 </div>
               </div>
@@ -295,13 +295,13 @@
                   <div class="showcase-details">
                     <div class="showcase-status-badge">
                       <span class="badge badge-emerald">✓ Dit valgte inspirationsdesign</span>
-                      <span class="badge" id="showcase-badge" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--color-border);">Kategori</span>
+                      <span class="badge" id="showcase-badge" style="background: var(--color-bg-secondary); color: var(--color-text); border: 1px solid var(--color-border);">Kategori</span>
                     </div>
-                    <h4 id="showcase-title" style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 8px 0 4px;">Design Titel</h4>
-                    <p id="showcase-target" style="font-size: 0.88rem; color: #38bdf8; font-weight: 600; margin-bottom: 8px;">Målgruppe</p>
+                    <h4 id="showcase-title" style="font-size: 1.3rem; font-weight: 800; color: var(--color-text); margin: 8px 0 4px;">Design Titel</h4>
+                    <p id="showcase-target" style="font-size: 0.88rem; color: #2563eb; font-weight: 600; margin-bottom: 8px;">Målgruppe</p>
                     <p id="showcase-desc" style="font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 12px;">Beskrivelse</p>
                     
-                    <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.84rem; color: #a7f3d0; line-height: 1.45;">
+                    <div style="background: rgba(5, 150, 105, 0.08); border: 1px solid rgba(5, 150, 105, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.84rem; color: #065f46; line-height: 1.45;">
                       ✨ <strong>Webland tilpasser til din branche:</strong> Vi tager udgangspunkt i dette designs layout og æstetik – og udskifter logo, tekster, ydelser og billeder, så det passer 100% til din virksomhed.
                     </div>
 
@@ -323,7 +323,7 @@
                   <div class="choice-radio-dot"></div>
                 </div>
                 <div>
-                  <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">Jeg vil gerne aftale design og stilart direkte med sælgeren</div>
+                  <div style="font-weight: 700; color: var(--color-text); font-size: 0.95rem;">Jeg vil gerne aftale design og stilart direkte med sælgeren</div>
                   <div style="font-size: 0.83rem; color: var(--color-text-muted); margin-top: 2px;">
                     Du behøver ikke vælge et eksempel nu. Vores sælger hjælper dig med at finde den perfekte stil til din branche under opstartssamtalen.
                   </div>
@@ -334,7 +334,7 @@
               <div class="visual-filter-tabs" style="margin: 24px 0 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
                   <span style="font-size: 0.82rem; color: var(--color-text-dim); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Vælg frit blandt alle 25 eksempler (vises direkte på siden):</span>
-                  <span style="font-size: 0.80rem; color: #38bdf8;">👁️ Tryk på billedet for stor popup • 🔘 Tryk på den brede knap for at vælge</span>
+                  <span style="font-size: 0.80rem; color: #2563eb;">👁️ Tryk på billedet for stor popup • 🔘 Tryk på den brede knap for at vælge</span>
                 </div>
                 <div class="picker-tabs-wrap">
                   <button type="button" class="picker-tab-btn active" data-picker-filter="all">Alle eksempler (25)</button>
@@ -354,8 +354,8 @@
 
             <!-- 04. Vælg Farvekombination & Farvestemning -->
             <div class="color-palette-picker-section">
-              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 8px; color: #fff; display: flex; align-items: center; gap: 8px;">
-                <span style="color: #3b82f6;">04.</span> Vælg Farvekombination & Farvestemning
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 8px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+                <span style="color: #2563eb;">04.</span> Vælg Farvekombination & Farvestemning
               </h3>
               <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
                 Hvilke farver og hvilken stemning skal inspirere din nye hjemmeside? Vælg mellem vores 8 afstemte designer-paletter, lad os udtrække farverne fra dit logo, eller bevar eksemplets originale farver.
@@ -370,7 +370,7 @@
                   <span class="palette-status-icon">🎨</span>
                   <div>
                     <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-dim); font-weight: 700;">Aktivt Valgt Farvestemning:</div>
-                    <div id="palette-status-title" style="font-size: 0.96rem; font-weight: 800; color: #fff;">Nordisk Skifer & Isblå</div>
+                    <div id="palette-status-title" style="font-size: 0.96rem; font-weight: 800; color: var(--color-text);">Nordisk Skifer & Isblå</div>
                   </div>
                 </div>
                 <div class="palette-status-dots" id="palette-status-swatches">
@@ -448,7 +448,7 @@
                   </div>
                 </div>
                 <div style="margin-top: 10px;">
-                  <label for="custom-color-notes" style="font-size: 0.82rem; color: #cbd5e1; display: block; margin-bottom: 5px;">Særlige farveønsker eller beskrivelse (valgfrit):</label>
+                  <label for="custom-color-notes" style="font-size: 0.82rem; color: var(--color-text-dim); display: block; margin-bottom: 5px;">Særlige farveønsker eller beskrivelse (valgfrit):</label>
                   <input type="text" id="custom-color-notes" class="form-input" placeholder="F.eks.: 'Vi ønsker en dæmpet mørkegrøn tone med varme gyldne accenter'">
                 </div>
               </div>
@@ -456,7 +456,7 @@
               <!-- 8 Kuraterede Farvepaletter Overskrift -->
               <div style="display: flex; justify-content: space-between; align-items: center; margin: 24px 0 14px; flex-wrap: wrap; gap: 8px;">
                 <span style="font-size: 0.82rem; color: var(--color-text-dim); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Eller vælg mellem 8 afstemte erhvervs-farvekombinationer:</span>
-                <span style="font-size: 0.80rem; color: #38bdf8;">✓ Vælg den stemning der passer bedst til din virksomhed</span>
+                <span style="font-size: 0.80rem; color: #2563eb;">✓ Vælg den stemning der passer bedst til din virksomhed</span>
               </div>
 
               <!-- Paletter Gitter (8 kort) -->
@@ -466,8 +466,8 @@
             </div>
 
             <!-- 05. De 5 Undersider -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">05.</span> De 5 Inkluderede Undersider
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2563eb;">05.</span> De 5 Inkluderede Undersider
             </h3>
             <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
               Vælg hvilke 5 sider du ønsker på din hjemmeside:
@@ -505,8 +505,8 @@
             </div>
 
             <!-- 06. Logo & Visuel Identitet -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">06.</span> Logo & Visuelt Materiale
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2563eb;">06.</span> Logo & Visuelt Materiale
             </h3>
 
             <div class="logo-radio-group">
@@ -553,8 +553,8 @@
             </div>
 
             <!-- 07. Yderligere information & tekster -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: #fff; display: flex; align-items: center; gap: 8px;">
-              <span style="color: #3b82f6;">07.</span> Yderligere information, tekster & ønsker
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2563eb;">07.</span> Yderligere information, tekster & ønsker
             </h3>
 
             <div class="form-field full-width">
@@ -583,11 +583,11 @@
             <p>
               Vi har modtaget dine informationer og materiale. Vores salgs- og designteam gennemgår dine data, bekræfter dit domænekøb og starter 72-timers nedtællingen.
             </p>
-            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; max-width: 500px; margin: 0 auto 30px; text-align: left;">
+            <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; max-width: 500px; margin: 0 auto 30px; text-align: left;">
               <div style="font-size: 0.85rem; color: var(--color-text-dim); margin-bottom: 6px;">HVAD SKER DER NU?</div>
-              <div style="font-size: 0.92rem; color: #fff; margin-bottom: 8px;">1. En sælger kontakter dig for en hurtig godkendelse.</div>
-              <div style="font-size: 0.92rem; color: #fff; margin-bottom: 8px;">2. Webland opretter webhotel hos Simply.com, registrerer dit domæne og opsætter din e-mail.</div>
-              <div style="font-size: 0.92rem; color: #fff;">3. Hjemmesiden opbygges med dine 5 undersider inden 72 timer.</div>
+              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">1. En sælger kontakter dig for en hurtig godkendelse.</div>
+              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">2. Webland opretter webhotel hos Simply.com, registrerer dit domæne og opsætter din e-mail.</div>
+              <div style="font-size: 0.92rem; color: var(--color-text);">3. Hjemmesiden opbygges med dine 5 undersider inden 72 timer.</div>
             </div>
             <a href="kontakt.html" class="btn btn-primary">Har du spørgsmål? Kontakt os her</a>
           </div>
@@ -671,9 +671,9 @@
       <div class="modal-header-banner" id="modal-banner">
         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;">
           <span class="badge badge-emerald" id="modal-target">Branche</span>
-          <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">✓ Frit valg uanset din branche</span>
+          <span class="badge" style="background: rgba(37, 99, 235, 0.08); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.2);">✓ Frit valg uanset din branche</span>
         </div>
-        <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 6px;" id="modal-title">Eksempel Navn</h3>
+        <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--color-text); margin-bottom: 6px;" id="modal-title">Eksempel Navn</h3>
         <p style="color: var(--color-text-muted); font-size: 0.95rem; margin: 0; max-width: 800px;" id="modal-desc">
           Beskrivelse af eksemplet...
         </p>
@@ -699,14 +699,14 @@
         </div>
         <div class="modal-img-caption">
           <span>💡 <strong>Frit valg af stilart:</strong> Du kan vælge dette design uanset branche. Vi tilpasser layout, farver, logo og tekster 100% til din virksomhed!</span>
-          <span style="color: #34d399; font-weight: 600;">Klar på maks. 72 timer</span>
+          <span style="color: #059669; font-weight: 600;">Klar på maks. 72 timer</span>
         </div>
       </div>
 
       <div class="modal-body" style="padding-top: 0;">
         <div style="margin-bottom: 20px;" id="modal-highlights"></div>
 
-        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; color: #fff;">
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; color: var(--color-text);">
           De 5 undersider i dette eksempel:
         </h4>
         <div class="modal-pages-list" id="modal-pages-list"></div>
@@ -714,7 +714,7 @@
         <div class="modal-footer-cta">
           <div>
             <div style="font-size: 0.75rem; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">FAST PRIS FOR DETTE DESIGN</div>
-            <div style="font-size: 1.35rem; font-weight: 800; color: #fff;">9.995 kr. excl. moms <span style="font-size: 0.85rem; font-weight: 500; color: #34d399;">• Ingen månedlige gebyrer</span></div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--color-text);">9.995 kr. excl. moms <span style="font-size: 0.85rem; font-weight: 500; color: #059669;">• Ingen månedlige gebyrer</span></div>
             <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Inkluderer Simply.com opsætning, domæne og mail • 500 kr./t ved fremtidige ændringer</div>
           </div>
           <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -729,7 +729,7 @@
   </div>
 
   <div class="toast-container" id="toast-container"></div>
-  <script src="templates-data.js?v=27.0"></script>
-  <script src="app.js?v=27.0"></script>
+  <script src="templates-data.js?v=28.0"></script>
+  <script src="app.js?v=28.0"></script>
 </body>
 </html>
