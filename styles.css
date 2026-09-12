@@ -706,6 +706,14 @@ button, input, select, textarea {
   }
 }
 
+@media (max-width: 600px) {
+  .freedom-guarantee-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
 /* ==========================================================================
    Templates Section (15 Eksempler på hjemmesider vi kan bygge)
    ========================================================================== */
