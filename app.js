@@ -104,7 +104,7 @@ function initTemplatesGrid(filter = 'all') {
         <div class="template-pages-tag">
           <div class="pages-tag-title">
             <span>5 Undersider inkluderet:</span>
-            <strong>10.000 kr.</strong>
+            <strong>9.995 kr. <span style="font-size: 0.72rem; font-weight: 500; color: #94a3b8;">excl. moms</span></strong>
           </div>
           <div class="pages-chip-list">
             ${template.pages.map(p => `<span class="page-chip">${p.name}</span>`).join('')}
