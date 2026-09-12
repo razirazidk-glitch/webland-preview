@@ -2733,3 +2733,105 @@ button, input, select, textarea {
     align-items: stretch;
   }
 }
+
+/* ==========================================================================
+   DIVERSE LAYOUT ARCHITECTURES & BADGES
+   ========================================================================== */
+.badge-layout {
+  background: rgba(79, 70, 229, 0.08) !important;
+  color: #4f46e5 !important;
+  border: 1px solid rgba(79, 70, 229, 0.22) !important;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.template-layout-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 8px;
+  flex-wrap: wrap;
+}
+
+.layout-filter-wrapper {
+  margin-top: 14px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-layout-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 4px;
+}
+
+.filter-layout-btn {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-layout-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.filter-layout-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.modal-layout-badge-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(37, 99, 235, 0.04);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 10px 0 16px;
+}
+
+@media (max-width: 768px) {
+  .layout-filter-wrapper {
+    border-radius: 16px;
+    padding: 12px 14px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .filter-layout-label {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}
+
+

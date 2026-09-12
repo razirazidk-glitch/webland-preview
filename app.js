@@ -52,22 +52,37 @@ function showToast(message, type = 'primary') {
 }
 
 // 1. Initialisering og Rendering af Eksempler på hjemmesider vi kan bygge
-function initTemplatesGrid(filter = 'all') {
+let currentCategoryFilter = 'all';
+let currentLayoutFilter = 'all';
+
+function renderTemplatesGrid() {
   const grid = document.getElementById('templates-grid');
   if (!grid || typeof TEMPLATES_DATA === 'undefined') return;
 
-  // Tjek om der er sat et maks antal (f.eks. på forsiden teaser)
   const maxLimitAttr = grid.getAttribute('data-limit');
   const maxLimit = maxLimitAttr ? parseInt(maxLimitAttr, 10) : null;
 
   grid.innerHTML = '';
 
-  let filtered = filter === 'all' 
-    ? TEMPLATES_DATA 
-    : TEMPLATES_DATA.filter(t => t.category === filter);
+  let filtered = TEMPLATES_DATA.filter(t => {
+    const matchCategory = currentCategoryFilter === 'all' || t.category === currentCategoryFilter;
+    const matchLayout = currentLayoutFilter === 'all' || t.layoutType === currentLayoutFilter;
+    return matchCategory && matchLayout;
+  });
 
   if (maxLimit && maxLimit > 0) {
     filtered = filtered.slice(0, maxLimit);
+  }
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 12px; margin: 20px 0;">
+        <p style="font-size: 1.1rem; font-weight: 700; color: #334155; margin-bottom: 6px;">Ingen eksempler matcher denne kombination</p>
+        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 16px;">Prøv at vælge en anden kategori eller layout-stil.</p>
+        <button class="btn btn-primary btn-sm" onclick="resetAllFilters()">Nulstil alle filtre (vis alle 25)</button>
+      </div>
+    `;
+    return;
   }
 
   filtered.forEach(template => {
@@ -96,6 +111,10 @@ function initTemplatesGrid(filter = 'all') {
         <div class="template-meta-row">
           <span class="template-target">${template.target}</span>
           <span class="badge ${template.category === 'erhverv' ? 'badge-emerald' : 'badge-amber'}">${template.badge}</span>
+        </div>
+
+        <div class="template-layout-row">
+          <span class="badge badge-layout">${template.layoutBadge || '🏛️ Unikt Layout'}</span>
         </div>
 
         <h3 class="template-title">${template.title}</h3>
@@ -128,18 +147,43 @@ function initTemplatesGrid(filter = 'all') {
   });
 }
 
-// 2. Filter Tabs
+function initTemplatesGrid(filter = 'all') {
+  currentCategoryFilter = filter;
+  renderTemplatesGrid();
+}
+
+// 2. Filter Tabs (Brancher & Layout-Arkitektur)
 function initFilterTabs() {
-  const buttons = document.querySelectorAll('.filter-btn');
-  buttons.forEach(btn => {
+  const catButtons = document.querySelectorAll('.filter-btn');
+  catButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
+      catButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const category = btn.getAttribute('data-filter');
-      initTemplatesGrid(category);
+      currentCategoryFilter = category;
+      renderTemplatesGrid();
+    });
+  });
+
+  const layoutButtons = document.querySelectorAll('.filter-layout-btn');
+  layoutButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      layoutButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const layout = btn.getAttribute('data-layout');
+      currentLayoutFilter = layout;
+      renderTemplatesGrid();
     });
   });
 }
+
+window.resetAllFilters = function() {
+  currentCategoryFilter = 'all';
+  currentLayoutFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
+  document.querySelectorAll('.filter-layout-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-layout') === 'all'));
+  renderTemplatesGrid();
+};
 
 // 3. Modal Logik for Eksempler & Detaljer
 let currentModalTemplateId = null;
@@ -168,6 +212,8 @@ window.openTemplateModal = function(id) {
   const modal = document.getElementById('template-modal');
   const modalTitle = document.getElementById('modal-title');
   const modalTarget = document.getElementById('modal-target');
+  const modalLayoutBadge = document.getElementById('modal-layout-badge');
+  const modalLayoutBox = document.getElementById('modal-layout-box');
   const modalDesc = document.getElementById('modal-desc');
   const modalPagesList = document.getElementById('modal-pages-list');
   const modalHighlights = document.getElementById('modal-highlights');
@@ -178,6 +224,15 @@ window.openTemplateModal = function(id) {
 
   if (modalTitle) modalTitle.textContent = template.title;
   if (modalTarget) modalTarget.textContent = `${template.target} • ${template.badge}`;
+  if (modalLayoutBadge) modalLayoutBadge.textContent = template.layoutBadge || '🏛️ Unikt Layout';
+  if (modalLayoutBox) {
+    modalLayoutBox.innerHTML = `
+      <div class="modal-layout-badge-box">
+        <span class="badge badge-layout">${template.layoutBadge || '🏛️ Unikt Layout'}</span>
+        <span style="font-size: 0.88rem; color: #475569; line-height: 1.4;">${template.layoutDesc || ''}</span>
+      </div>
+    `;
+  }
   if (modalDesc) modalDesc.textContent = template.fullDesc;
 
   if (modalImage) {

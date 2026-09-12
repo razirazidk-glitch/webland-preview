@@ -20,6 +20,9 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Eksklusive Guldsmede & Smykkedesignere",
     badge: "Fancy Luksus & Guld",
+    layoutType: "centreret",
+    layoutBadge: "🏛️ Centreret Luksus",
+    layoutDesc: "Centreret guld-våbenskjold og logo med symmetrisk menu og eksklusiv ro.",
     accentColor: "#d4af37", // Champagne Guld
     icon: "sparkles",
     shortDesc: "Kompromisløst luksusdesign med svungen kursiv typografi, diamantkatalog og privat concierge kontaktformular.",
@@ -40,6 +43,9 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Boutique Hoteller, B&B & Badehoteller",
     badge: "Eksklusiv Atmosfære",
+    layoutType: "centreret",
+    layoutBadge: "🏛️ Centreret Luksus",
+    layoutDesc: "Centreret maritimt luksusbrand med centreret menulinje og direkte værelsesbooking.",
     accentColor: "#0ea5e9", // Kystblå
     icon: "compass",
     shortDesc: "Skandinavisk ro, havblik, værelsesoversigt og online bord- og opholdsbooking.",
@@ -60,6 +66,9 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Klinikker, Frisørsaloner & Spa",
     badge: "Stilren & Æstetisk",
+    layoutType: "split",
+    layoutBadge: "⚡ 50/50 Split-Screen",
+    layoutDesc: "50/50 lodret skærmdeling med direkte bookingmodul i venstre panel og fuldhøjde lookbook i højre.",
     accentColor: "#ec4899", // Rose
     icon: "sparkles",
     shortDesc: "Harmonisk luksusdesign med svungne seriffer til frisørsaloner, neglestudier og kosmetologer.",
@@ -80,6 +89,9 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Arkitekter & Designstudier",
     badge: "Minimalistisk Monograf",
+    layoutType: "sidebar",
+    layoutBadge: "📐 Vertikal Sidebar",
+    layoutDesc: "Fast lodret navigationskolonne i venstre side med fuldskærms monograf-galleri.",
     accentColor: "#94a3b8", // Sten/Krom
     icon: "pencil",
     shortDesc: "Rene linjer, store fotoflader og bygningsspecifikationer til tegnestuer og formgivere.",
@@ -100,6 +112,9 @@ const TEMPLATES_DATA = [
     category: "luksus",
     target: "Fotografer & Videografer",
     badge: "Visuelt Mesterværk",
+    layoutType: "sidebar",
+    layoutBadge: "📐 Vertikal Sidebar",
+    layoutDesc: "Minimalistisk lodret venstre-sidebar med porteføljekategorier og ekspansivt billedgrid.",
     accentColor: "#e2e8f0", // Platin
     icon: "camera",
     shortDesc: "Cinematisk 4-paneler galleri til bryllups-, mode- og portrætfotografer.",
@@ -124,6 +139,9 @@ const TEMPLATES_DATA = [
     category: "handvaerk",
     target: "Erhverv & Håndværkere",
     badge: "Populær til erhverv",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags professionel håndværkerheader med akut døgntelefon, Byg Garanti stempel og tilbudsberegner.",
     accentColor: "#f59e0b", // Amber/Guld
     icon: "hammer",
     shortDesc: "Robust, tillidsskabende design til tømrere, murere, elektrikere og entreprenører.",
@@ -144,6 +162,9 @@ const TEMPLATES_DATA = [
     category: "handvaerk",
     target: "Rengøringsselskaber & Ejendomsservice",
     badge: "Hurtig Prisberegner",
+    layoutType: "split",
+    layoutBadge: "⚡ 50/50 Split-Screen",
+    layoutDesc: "50/50 lodret skærmdeling med interaktiv m² prisberegner i venstre panel og tryghedscertifikater.",
     accentColor: "#0284c7", // Himmelblå
     icon: "sparkles",
     shortDesc: "Frisk, hygiejnisk design med interaktiv prisberegner til privat- og erhvervsrengøring.",
@@ -164,6 +185,9 @@ const TEMPLATES_DATA = [
     category: "handvaerk",
     target: "Autoværksteder, Dækcentre & Bilpleje",
     badge: "Hurtig Serviceformular",
+    layoutType: "pill",
+    layoutBadge: "💊 Flydende Pill-Nav",
+    layoutDesc: "Svævende mørk pillemenu over værkstedsbillede med direkte online tidsbestilling.",
     accentColor: "#ef4444", // Race rød
     icon: "hammer",
     shortDesc: "Moderne, maskulint værkstedsdesign med nummerplade-opslag og online serviceformular.",
@@ -184,6 +208,9 @@ const TEMPLATES_DATA = [
     category: "handvaerk",
     target: "Anlægsgartnere, Brolæggere & Havearkitekter",
     badge: "Flot Før/Efter Galleri",
+    layoutType: "pill",
+    layoutBadge: "💊 Flydende Pill-Nav",
+    layoutDesc: "Svævende frosted-glass pillemenu over frodig havearkitektur med nem tilbudsforespørgsel.",
     accentColor: "#10b981", // Skovgrøn
     icon: "leaf",
     shortDesc: "Naturstærkt design med fokus på billeder af nyanlagte haver, flisebelægninger og terrasser.",
@@ -204,6 +231,9 @@ const TEMPLATES_DATA = [
     category: "handvaerk",
     target: "Autoriserede El-installatører & VVS",
     badge: "Døgnvagt & Sikkerhed",
+    layoutType: "pill",
+    layoutBadge: "💊 Flydende Pill-Nav",
+    layoutDesc: "Flydende teknisk pillemenu med grønt døgnvagts-statuslys og direkte akuttelefon.",
     accentColor: "#06b6d4", // Cyan
     icon: "zap",
     shortDesc: "Højteknologisk og tillidsvækkende design med døgnvagts-badge, varmepumper og el-ladere.",
@@ -228,6 +258,9 @@ const TEMPLATES_DATA = [
     category: "gastronomi",
     target: "Restauranter, Caféer & Vinbarer",
     badge: "Høj Konvertering",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags gastronomisk header med åbningstider og adresse i topbjælken samt direkte online bordbestilling.",
     accentColor: "#ef4444", // Terracotta
     icon: "utensils",
     shortDesc: "Appetitvækkende design med svungne seriffer, digitalt menukort og bordreservation.",
@@ -248,6 +281,9 @@ const TEMPLATES_DATA = [
     category: "gastronomi",
     target: "Bagerier, Kaffebarer & Konditorier",
     badge: "Lunt Håndværk",
+    layoutType: "centreret",
+    layoutBadge: "🏛️ Centreret Luksus",
+    layoutDesc: "Centreret håndværksbageri-bomærke med centreret menulinje og dagens bageplan.",
     accentColor: "#d97706", // Bagt gylden
     icon: "coffee",
     shortDesc: "Varmt, duftende surdejsdesign med dagens brød-tavle, kaffekort og kagebestilling.",
@@ -268,6 +304,9 @@ const TEMPLATES_DATA = [
     category: "gastronomi",
     target: "Cocktailbarer, Vinbarer & Natklubber",
     badge: "Stemningsfuld Aften",
+    layoutType: "centreret",
+    layoutBadge: "🏛️ Centreret Luksus",
+    layoutDesc: "Centreret stemningsfuld natklub/lounge-header med cocktailkort og bordreservation.",
     accentColor: "#be123c", // Dyb rødvin
     icon: "wine",
     shortDesc: "Dunkel, eksklusiv velour-stemning med cocktailkort, smagninger og VIP bordforespørgsel.",
@@ -288,6 +327,9 @@ const TEMPLATES_DATA = [
     category: "gastronomi",
     target: "Musikere, Bands & Scenekunstnere",
     badge: "Lydbølge & Tourliste",
+    layoutType: "centreret",
+    layoutBadge: "🏛️ Centreret Luksus",
+    layoutDesc: "Centreret artist-signatur med minimalistisk navigationslinje og turné-oversigt.",
     accentColor: "#e11d48", // Neon rød
     icon: "music",
     shortDesc: "Elektronisk natmørkt design med integreret lydbølgeform, tour-datoer og vinylbestilling.",
@@ -308,6 +350,9 @@ const TEMPLATES_DATA = [
     category: "gastronomi",
     target: "Foreninger, Sportsklubber & Netværk",
     badge: "Fællesskabsfokus",
+    layoutType: "pill",
+    layoutBadge: "💊 Flydende Pill-Nav",
+    layoutDesc: "Sporty svævende pillemenu over marina og vandaktiviteter med medlemsoptagelse.",
     accentColor: "#1d4ed8", // Sportsblå
     icon: "users",
     shortDesc: "Energisk idrætsportal med kamp-banner, holdtræning, svømmeskole og sponsorvæg.",
@@ -332,6 +377,9 @@ const TEMPLATES_DATA = [
     category: "sundhed",
     target: "Fysioterapeuter, Kiropraktorer & Osteopater",
     badge: "Klinisk Tidsbestilling",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags sundhedsheader med Sygeforsikring 'danmark' integration og online tidsbestilling.",
     accentColor: "#059669", // Mintgrøn
     icon: "activity",
     shortDesc: "Troværdigt, klinisk design med online tidsbestilling og sygesikringstilskud.",
@@ -352,6 +400,9 @@ const TEMPLATES_DATA = [
     category: "sundhed",
     target: "Tandlæger & Specialtandpleje",
     badge: "Tryg Behandling",
+    layoutType: "pill",
+    layoutBadge: "💊 Flydende Pill-Nav",
+    layoutDesc: "Klinisk ren, svævende cyan pillemenu over praksis med direkte patientbooking.",
     accentColor: "#0284c7", // Tandlægeblå
     icon: "activity",
     shortDesc: "Tillidsvækkende og lys klinikprofil med fokus på tandlægeskræk og akutte tider.",
@@ -372,6 +423,9 @@ const TEMPLATES_DATA = [
     category: "sundhed",
     target: "Autoriserede Psykologer & Terapeuter",
     badge: "Fortroligt & Roligt",
+    layoutType: "split",
+    layoutBadge: "⚡ 50/50 Split-Screen",
+    layoutDesc: "50/50 tryghedspanel med ledige tider og specialeoversigt ved siden af rolige klinikbilleder.",
     accentColor: "#0d9488", // Salvie / Petrol
     icon: "heart",
     shortDesc: "Diskret, beroligende design i bløde naturtoner med uforpligtende forsamtale.",
@@ -392,6 +446,9 @@ const TEMPLATES_DATA = [
     category: "sundhed",
     target: "Personlige Trænere, Bootcamps & Coaches",
     badge: "Høj Energi & Brutalisme",
+    layoutType: "split",
+    layoutBadge: "⚡ 50/50 Split-Screen",
+    layoutDesc: "50/50 mørk kontrastskærm med ansøgningsformular til 12-ugers forløb og dokumenteret vægttab.",
     accentColor: "#ccff00", // Neon Acid Yellow
     icon: "activity",
     shortDesc: "Aggressivt, højtydende design med sort baggrund, neonaccenter og vægttabstal.",
@@ -412,6 +469,9 @@ const TEMPLATES_DATA = [
     category: "sundhed",
     target: "Yogastudier, Pilates & Mindfulness",
     badge: "Harmoni & Skema",
+    layoutType: "split",
+    layoutBadge: "⚡ 50/50 Split-Screen",
+    layoutDesc: "50/50 roligt nordisk panel med dagens holdplan og 99 kr. prøvetidsbooking ved siden af sanseligt yogafoto.",
     accentColor: "#a855f7", // Blød lilla
     icon: "sun",
     shortDesc: "Harmonisk og jordnært design med live holdskema, introtilbud og workshops.",
@@ -436,6 +496,9 @@ const TEMPLATES_DATA = [
     category: "erhverv",
     target: "Advokater, Jurister & Mæglere",
     badge: "Juridisk Autoritet",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags autoritativ erhvervsheader med CVR, døgntelefon, Advokatsamfundets godkendelse og sagsforespørgsel.",
     accentColor: "#d97706", // Guld/Rav
     icon: "briefcase",
     shortDesc: "Klassisk elfenbensfarvet autoritetsdesign med Højesterets-segl og sagsvurdering.",
@@ -456,6 +519,9 @@ const TEMPLATES_DATA = [
     category: "erhverv",
     target: "Revisorer, Bogholdere & Finansrådgivere",
     badge: "3-Tier Prisoversigt",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags revisorheader med FSR-godkendelse, revisor-login og fast prisberegning.",
     accentColor: "#2563eb", // Kongeblå
     icon: "briefcase",
     shortDesc: "Moderne FinTech-inspireret design med 3-søjlet prismodel og softwareintegrationer.",
@@ -476,6 +542,9 @@ const TEMPLATES_DATA = [
     category: "erhverv",
     target: "B2B Konsulenthuse, C-Level & Strategi",
     badge: "C-Level Strategisk",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags nordisk konsulentheader med strategiske nøgletal, klientportal og booking af strategisk sparring.",
     accentColor: "#38bdf8", // Lys Cyan
     icon: "briefcase",
     shortDesc: "Dyb marineblå rådgivningsprofil med top KPI-ticker, 3-trins model og SaaS-case.",
@@ -496,6 +565,9 @@ const TEMPLATES_DATA = [
     category: "erhverv",
     target: "Ejendomsmæglere, Udlejere & Boligselskaber",
     badge: "Skovgrøn Liebhaver",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "2-lags mæglerheader med gratis salgsvurdering, DE-medlemskab og søgbart køberkartotek.",
     accentColor: "#10b981", // Liebhavergrøn
     icon: "home",
     shortDesc: "Eksklusiv skovgrøn liebhaver-æstetik med integreret boligsøger og energimærker.",
@@ -516,6 +588,9 @@ const TEMPLATES_DATA = [
     category: "erhverv",
     target: "Tech Startups, SaaS & IT-Konsulenter",
     badge: "Dark Mode High-Tech",
+    layoutType: "b2b",
+    layoutBadge: "🏢 B2B Utility-bar",
+    layoutDesc: "Moderne tech SaaS-header med systemoppetid i realtid (99.99%), 'Log ind' og 14-dages prøveperiode.",
     accentColor: "#6366f1", // Indigo
     icon: "globe",
     shortDesc: "Futuristisk dark-mode interface med live terminal, API dokumentation og release notes.",
