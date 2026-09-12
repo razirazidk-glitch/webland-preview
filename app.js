@@ -111,8 +111,9 @@ function initTemplatesGrid(filter = 'all') {
           </div>
         </div>
 
-        <div style="font-size: 0.76rem; color: #64748b; display: flex; align-items: center; gap: 5px; margin-bottom: 12px;">
-          <span style="color: #38bdf8;">✨</span> <span>Kan tilpasses til <strong>enhver branche</strong></span>
+        <div style="font-size: 0.76rem; color: #64748b; display: flex; align-items: center; justify-content: space-between; gap: 5px; margin-bottom: 12px; flex-wrap: wrap;">
+          <span><span style="color: #38bdf8;">✨</span> Kan tilpasses <strong>alle brancher</strong></span>
+          <span style="color: #059669; font-weight: 700;">🛡️ 0 kr./md. • Nul binding</span>
         </div>
 
         <div class="template-actions">
