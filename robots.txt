@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://razirazidk-glitch.github.io/webland-preview/sitemap.xml

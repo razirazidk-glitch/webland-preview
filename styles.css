@@ -313,10 +313,20 @@ button, input, select, textarea {
 .mobile-menu-btn {
   display: none;
   background: none;
-  border: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   color: var(--color-text);
   font-size: 1.5rem;
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--color-bg-secondary);
 }
 
 /* ==========================================================================
@@ -2308,6 +2318,10 @@ button, input, select, textarea {
 }
 
 .faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
   padding: 22px 28px;
   font-size: 1.05rem;
   font-weight: 600;
@@ -2676,7 +2690,7 @@ button, input, select, textarea {
     display: none;
   }
   .mobile-menu-btn {
-    display: block;
+    display: inline-flex;
   }
   .process-steps-grid {
     grid-template-columns: 1fr;
@@ -2831,7 +2845,57 @@ button, input, select, textarea {
   .filter-layout-label {
     width: 100%;
     margin-bottom: 4px;
-  }
 }
 
+/* ==========================================================================
+   Accessibility (a11y) & Performance Enhancements
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.mockup-preview:focus-visible,
+.filter-btn:focus-visible,
+.filter-layout-btn:focus-visible,
+.email-checkbox-card:focus-visible,
+.color-mode-card:focus-visible,
+.neutral-choice-card:focus-visible,
+.logo-radio-card:focus-visible,
+.upload-dropzone:focus-visible,
+.faq-question:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Ensure smooth image layout without CLS */
+.mockup-card-img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+/* Content visibility optimization for heavy lists */
+.templates-grid {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
+.faq-list {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
+}

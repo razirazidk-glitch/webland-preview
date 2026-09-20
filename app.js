@@ -85,13 +85,16 @@ function renderTemplatesGrid() {
     return;
   }
 
-  filtered.forEach(template => {
+  filtered.forEach((template, index) => {
     const card = document.createElement('div');
     card.className = 'template-card';
     card.setAttribute('data-id', template.id);
 
+    const isAboveFold = index < 3;
+    const isLcpCandidate = index === 0;
+
     card.innerHTML = `
-      <div class="mockup-preview" onclick="openTemplateModal('${template.id}')" title="Klik for at se visuelt eksempel på designet">
+      <div class="mockup-preview" tabindex="0" role="button" aria-label="Se forhåndsvisning af ${template.title}" onclick="openTemplateModal('${template.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTemplateModal('${template.id}');}" title="Klik for at se visuelt eksempel på designet">
         <div class="mockup-bar">
           <div class="mockup-dot"></div>
           <div class="mockup-dot"></div>
@@ -100,7 +103,7 @@ function renderTemplatesGrid() {
           <span class="mockup-preview-hint">👁️ Se design</span>
         </div>
         <div class="mockup-img-container">
-          <img src="${template.image}" alt="${template.title}" class="mockup-card-img" loading="lazy">
+          <img src="${template.image}" alt="Webdesign eksempel for ${template.title}" class="mockup-card-img" width="600" height="375" decoding="async" loading="${isAboveFold ? 'eager' : 'lazy'}" ${isLcpCandidate ? 'fetchpriority="high"' : ''}>
           <div class="mockup-overlay-badge">
             <span>👁️ Se fuld forhåndsvisning</span>
           </div>
@@ -156,9 +159,14 @@ function initTemplatesGrid(filter = 'all') {
 function initFilterTabs() {
   const catButtons = document.querySelectorAll('.filter-btn');
   catButtons.forEach(btn => {
+    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
     btn.addEventListener('click', () => {
-      catButtons.forEach(b => b.classList.remove('active'));
+      catButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       const category = btn.getAttribute('data-filter');
       currentCategoryFilter = category;
       renderTemplatesGrid();
@@ -167,9 +175,14 @@ function initFilterTabs() {
 
   const layoutButtons = document.querySelectorAll('.filter-layout-btn');
   layoutButtons.forEach(btn => {
+    btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
     btn.addEventListener('click', () => {
-      layoutButtons.forEach(b => b.classList.remove('active'));
+      layoutButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       const layout = btn.getAttribute('data-layout');
       currentLayoutFilter = layout;
       renderTemplatesGrid();
@@ -187,6 +200,7 @@ window.resetAllFilters = function() {
 
 // 3. Modal Logik for Eksempler & Detaljer
 let currentModalTemplateId = null;
+let lastFocusedElementBeforeModal = null;
 
 function initModal() {
   const modal = document.getElementById('template-modal');
@@ -200,7 +214,29 @@ function initModal() {
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('.modal-overlay.active');
+      if (activeModal) closeModal();
+    }
+
+    // Focus trapping inside active modal
+    if (e.key === 'Tab') {
+      const activeModal = document.querySelector('.modal-overlay.active');
+      if (activeModal) {
+        const focusables = activeModal.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        if (focusables.length > 0) {
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
   });
 }
 
@@ -238,6 +274,9 @@ window.openTemplateModal = function(id) {
   if (modalImage) {
     modalImage.src = template.image;
     modalImage.alt = `Visuelt forhåndsvisningsbillede: ${template.title}`;
+    modalImage.width = 1200;
+    modalImage.height = 750;
+    modalImage.decoding = 'async';
   }
 
   if (modalUrl) {
@@ -272,8 +311,12 @@ window.openTemplateModal = function(id) {
   }
 
   if (modal) {
+    lastFocusedElementBeforeModal = document.activeElement;
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    const closeBtn = document.getElementById('modal-close-btn');
+    if (closeBtn) closeBtn.focus();
   }
 };
 
@@ -281,7 +324,11 @@ function closeModal() {
   const modal = document.getElementById('template-modal');
   if (modal) {
     modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (lastFocusedElementBeforeModal && typeof lastFocusedElementBeforeModal.focus === 'function') {
+      lastFocusedElementBeforeModal.focus();
+    }
   }
 }
 
@@ -534,11 +581,13 @@ function initOnboardingForm() {
     if (selectedStandardEmails.has(prefix)) {
       selectedStandardEmails.delete(prefix);
       card.classList.remove('active');
+      card.setAttribute('aria-checked', 'false');
       const box = card.querySelector('.email-checkbox-box');
       if (box) box.textContent = '';
     } else {
       selectedStandardEmails.add(prefix);
       card.classList.add('active');
+      card.setAttribute('aria-checked', 'true');
       const box = card.querySelector('.email-checkbox-box');
       if (box) box.textContent = '✓';
     }
@@ -556,9 +605,11 @@ function initOnboardingForm() {
       const box = card.querySelector('.email-checkbox-box');
       if (p === 'kontakt') {
         card.classList.add('active');
+        card.setAttribute('aria-checked', 'true');
         if (box) box.textContent = '✓';
       } else {
         card.classList.remove('active');
+        card.setAttribute('aria-checked', 'false');
         if (box) box.textContent = '';
       }
     });
@@ -574,6 +625,7 @@ function initOnboardingForm() {
       const card = document.getElementById(`email-opt-${p}`);
       if (!card) return;
       card.classList.remove('active');
+      card.setAttribute('aria-checked', 'false');
       const box = card.querySelector('.email-checkbox-box');
       if (box) box.textContent = '';
     });
@@ -581,6 +633,34 @@ function initOnboardingForm() {
     renderEmailsSummary();
     showToast('Alle Simply.com e-mails fravalgt (du bruger ekstern mail som f.eks. Google Workspace eller Microsoft 365).', 'info');
   };
+
+  // Keyboard navigation for email checkboxes
+  document.querySelectorAll('.email-checkbox-card').forEach(card => {
+    card.setAttribute('role', 'checkbox');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-checked', card.classList.contains('active') ? 'true' : 'false');
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const prefix = card.getAttribute('data-email-prefix');
+        if (prefix && typeof window.toggleEmailOption === 'function') {
+          window.toggleEmailOption(prefix);
+        }
+      }
+    });
+  });
+
+  if (neutralCard) {
+    neutralCard.setAttribute('role', 'radio');
+    neutralCard.setAttribute('tabindex', '0');
+    neutralCard.setAttribute('aria-checked', neutralCard.classList.contains('active') ? 'true' : 'false');
+    neutralCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (typeof window.selectNoTemplate === 'function') window.selectNoTemplate();
+      }
+    });
+  }
 
   window.addCustomEmail = function() {
     if (!customEmailInput) return;
@@ -639,9 +719,17 @@ function initOnboardingForm() {
   const newLogoContainer = document.getElementById('new-logo-container');
 
   logoCards.forEach(card => {
-    card.addEventListener('click', () => {
-      logoCards.forEach(c => c.classList.remove('active'));
+    card.setAttribute('role', 'radio');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-checked', card.classList.contains('active') ? 'true' : 'false');
+
+    const selectLogoCard = () => {
+      logoCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-checked', 'false');
+      });
       card.classList.add('active');
+      card.setAttribute('aria-checked', 'true');
       const val = card.getAttribute('data-logo-type');
 
       if (val === 'have-logo') {
@@ -650,6 +738,14 @@ function initOnboardingForm() {
       } else {
         if (uploadContainer) uploadContainer.style.display = 'none';
         if (newLogoContainer) newLogoContainer.style.display = 'block';
+      }
+    };
+
+    card.addEventListener('click', selectLogoCard);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectLogoCard();
       }
     });
   });
@@ -661,7 +757,16 @@ function initOnboardingForm() {
   const previewText = document.getElementById('logo-preview-text');
 
   if (dropzone && fileInput) {
+    dropzone.setAttribute('role', 'button');
+    dropzone.setAttribute('tabindex', '0');
+    dropzone.setAttribute('aria-label', 'Vælg logo fil til upload');
     dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
 
     fileInput.addEventListener('change', (e) => {
       if (e.target.files && e.target.files[0]) {
@@ -960,14 +1065,39 @@ function initCallbackForm() {
 // 7. FAQ Akkordeon
 function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
+  faqItems.forEach((item, idx) => {
     const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
     if (question) {
-      question.addEventListener('click', () => {
+      if (!question.id) question.id = `faq-q-${idx + 1}`;
+      if (answer && !answer.id) answer.id = `faq-ans-${idx + 1}`;
+      question.setAttribute('role', 'button');
+      question.setAttribute('tabindex', '0');
+      question.setAttribute('aria-expanded', 'false');
+      if (answer) {
+        question.setAttribute('aria-controls', answer.id);
+        answer.setAttribute('role', 'region');
+        answer.setAttribute('aria-labelledby', question.id);
+      }
+
+      const toggle = () => {
         const isActive = item.classList.contains('active');
-        faqItems.forEach(i => i.classList.remove('active'));
+        faqItems.forEach(i => {
+          i.classList.remove('active');
+          const q = i.querySelector('.faq-question');
+          if (q) q.setAttribute('aria-expanded', 'false');
+        });
         if (!isActive) {
           item.classList.add('active');
+          question.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      question.addEventListener('click', toggle);
+      question.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
         }
       });
     }
@@ -980,19 +1110,47 @@ function initMobileNav() {
   const navLinks = document.getElementById('nav-links');
 
   if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      const isVisible = navLinks.style.display === 'flex';
-      navLinks.style.display = isVisible ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '70px';
-      navLinks.style.left = '0';
-      navLinks.style.right = '0';
-      navLinks.style.background = '#ffffff';
-      navLinks.style.padding = '24px';
-      navLinks.style.borderBottom = '1px solid var(--color-border)';
-      navLinks.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.08)';
-      navLinks.style.zIndex = '150';
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-controls', 'nav-links');
+
+    const toggleMenu = () => {
+      const isVisible = navLinks.classList.contains('mobile-open');
+      if (isVisible) {
+        navLinks.classList.remove('mobile-open');
+        navLinks.style.display = 'none';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Åbn menu');
+      } else {
+        navLinks.classList.add('mobile-open');
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '70px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = '#ffffff';
+        navLinks.style.padding = '24px';
+        navLinks.style.borderBottom = '1px solid var(--color-border)';
+        navLinks.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.08)';
+        navLinks.style.zIndex = '150';
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Luk menu');
+      }
+    };
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+        toggleMenu();
+        menuBtn.focus();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('mobile-open') && !menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+        toggleMenu();
+      }
     });
   }
 }
