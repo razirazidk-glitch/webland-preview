@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=32.0">
+  <link rel="stylesheet" href="styles.css?v=33.0">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,7 +96,7 @@
   <!-- Header -->
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html?v=32.0" class="brand-logo">
+      <a href="index.html?v=33.0" class="brand-logo">
         <div class="logo-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -108,15 +108,15 @@
       </a>
 
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html?v=32.0">Forside</a></li>
-        <li><a href="eksempler.html?v=32.0">Eksempler på hjemmesider</a></li>
-        <li><a href="proces.html?v=32.0">Sådan fungerer det</a></li>
-        <li><a href="kontakt.html?v=32.0">Kontakt & Sælgere</a></li>
+        <li><a href="index.html?v=33.0">Forside</a></li>
+        <li><a href="eksempler.html?v=33.0">Eksempler på hjemmesider</a></li>
+        <li><a href="proces.html?v=33.0">Sådan fungerer det</a></li>
+        <li><a href="kontakt.html?v=33.0">Kontakt & Sælgere</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="kontakt.html?v=32.0" class="btn btn-outline btn-sm">Ring mig op</a>
-        <a href="onboarding.html?v=32.0" class="btn btn-primary btn-sm">Udfyld Skema</a>
+        <a href="kontakt.html?v=33.0" class="btn btn-outline btn-sm">Ring mig op</a>
+        <a href="onboarding.html?v=33.0" class="btn btn-primary btn-sm">Udfyld Skema</a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Åbn menu" aria-expanded="false" aria-controls="nav-links">☰</button>
       </div>
     </div>
@@ -151,7 +151,7 @@
           <form class="onboarding-form" id="client-onboarding-form">
             <!-- 1. Stamdata -->
             <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
-              <span style="color: #2563eb;">01.</span> Dine Kontaktoplysninger
+              <span style="color: #2563eb;">01.</span> Dine Kontaktoplysninger & Virksomhed
             </h3>
 
             <div class="form-group-grid">
@@ -176,6 +176,35 @@
                   <small>8 cifre (hvis erhverv)</small>
                 </label>
                 <input type="text" id="client-cvr" class="form-input" placeholder="F.eks. 12 34 56 78" maxlength="12">
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="sales-rep">
+                  <span>Hvem er din Webland-rådgiver / sælger?</span>
+                  <small>Hvem har du talt med?</small>
+                </label>
+                <select id="sales-rep" class="form-input" style="font-weight: 500;">
+                  <option value="Mikkel Hansen (Salgsansvarlig)">Mikkel Hansen (Salgsansvarlig & B2B)</option>
+                  <option value="Sarah Lind (Kundekoordinator)">Sarah Lind (Kundekoordinator & Private)</option>
+                  <option value="Anden sælger">Anden sælger / rådgiver</option>
+                  <option value="Har ikke talt med en sælger endnu">Har ikke talt med en sælger endnu</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="client-address">
+                  <span>Fysisk Adresse (Gade & husnummer)</span>
+                  <small>Vises på hjemmesiden & kontakt</small>
+                </label>
+                <input type="text" id="client-address" class="form-input" placeholder="F.eks. Vestergade 42, 2. sal">
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="client-city">
+                  <span>Postnummer & By</span>
+                  <small>Til lokal SEO og kontaktside</small>
+                </label>
+                <input type="text" id="client-city" class="form-input" placeholder="F.eks. 8000 Aarhus C">
               </div>
 
               <div class="form-field">
@@ -218,7 +247,7 @@
                 <strong style="color: #2563eb; font-size: 0.95rem;">Domænet skal være aftalt med sælger på forhånd:</strong><br>
                 Du og din Webland-sælger finder et ledigt domænenavn sammen, inden skemaet her udfyldes. Sælgeren verificerer navnet i domæneregistret, så vi er 100% sikre på, at det er ledigt og klar til registrering.<br>
                 <span style="color: var(--color-text-dim); font-size: 0.82rem; margin-top: 6px; display: inline-block;">
-                  Har du ikke talt med en sælger endnu? <a href="kontakt.html?v=32.0" style="color: #2563eb; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
+                  Har du ikke talt med en sælger endnu? <a href="kontakt.html?v=33.0" style="color: #2563eb; text-decoration: underline;">Tag direkte kontakt til vores salgsteam her</a> eller ring på 70 20 11 22.
                 </span>
               </div>
             </div>
@@ -544,51 +573,84 @@
             </div>
 
             <!-- 05. De 5 Undersider -->
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
-              <span style="color: #2563eb;">05.</span> De 5 Inkluderede Undersider
-            </h3>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin: 36px 0 10px;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
+                <span style="color: #2563eb;">05.</span> De 5 Inkluderede Undersider
+              </h3>
+              <span id="pages-counter-badge" class="badge badge-emerald" style="font-weight: 700; font-size: 0.8rem; padding: 5px 14px; border-radius: 9999px;">
+                5 af 5 sider valgt (Maks 5)
+              </span>
+            </div>
             <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 16px;">
-              Vælg hvilke 5 sider du ønsker på din hjemmeside:
+              Vælg de op til 5 sider, der skal opbygges til din hjemmeside (inkluderet i fast pris 9.995 kr. excl. moms). Forsiden er obligatorisk. Vælg fra standardlisten eller tilføj dine egne skræddersyede sider (f.eks. Menukort, Behandlinger eller Referencer):
             </p>
 
-            <div class="pages-checkbox-grid" style="margin-bottom: 24px;">
-              <label class="page-checkbox-label">
-                <input type="checkbox" checked disabled>
-                <span>Forside (Obligatorisk)</span>
+            <div class="pages-checkbox-grid" id="pages-checkbox-grid" style="margin-bottom: 18px;">
+              <label class="page-checkbox-label selected-page">
+                <input type="checkbox" name="site_pages[]" value="Forside" checked disabled>
+                <span><strong>Forside</strong> (Obligatorisk)</span>
               </label>
-              <label class="page-checkbox-label">
-                <input type="checkbox" checked>
+              <label class="page-checkbox-label selected-page">
+                <input type="checkbox" name="site_pages[]" value="Om os / Profil" checked onchange="updatePagesCount()">
                 <span>Om os / Profil</span>
               </label>
-              <label class="page-checkbox-label">
-                <input type="checkbox" checked>
+              <label class="page-checkbox-label selected-page">
+                <input type="checkbox" name="site_pages[]" value="Ydelser / Produkter" checked onchange="updatePagesCount()">
                 <span>Ydelser / Produkter</span>
               </label>
-              <label class="page-checkbox-label">
-                <input type="checkbox" checked>
+              <label class="page-checkbox-label selected-page">
+                <input type="checkbox" name="site_pages[]" value="Projekter / Galleri" checked onchange="updatePagesCount()">
                 <span>Projekter / Galleri</span>
               </label>
-              <label class="page-checkbox-label">
-                <input type="checkbox" checked>
+              <label class="page-checkbox-label selected-page">
+                <input type="checkbox" name="site_pages[]" value="Kontakt & Tilbud" checked onchange="updatePagesCount()">
                 <span>Kontakt & Tilbud</span>
               </label>
               <label class="page-checkbox-label">
-                <input type="checkbox">
+                <input type="checkbox" name="site_pages[]" value="Priser / Pakker" onchange="updatePagesCount()">
                 <span>Priser / Pakker</span>
               </label>
               <label class="page-checkbox-label">
-                <input type="checkbox">
+                <input type="checkbox" name="site_pages[]" value="FAQ / Ofte stillede spørgsmål" onchange="updatePagesCount()">
                 <span>FAQ / Spørgsmål</span>
               </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox" name="site_pages[]" value="Menukort / Vinkort" onchange="updatePagesCount()">
+                <span>Menukort / Vinkort</span>
+              </label>
+              <label class="page-checkbox-label">
+                <input type="checkbox" name="site_pages[]" value="Booking & Tidsbestilling" onchange="updatePagesCount()">
+                <span>Booking & Tidsbestilling</span>
+              </label>
+            </div>
+
+            <!-- Tilføj egen underside -->
+            <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);">
+              <label class="form-label" for="custom-page-input" style="margin-bottom: 8px;">
+                <span>Ønsker du en speciel underside til din branche? (f.eks. 'Køreskole-pakker', 'Værksted' eller 'Udlejning')</span>
+                <small>Valgfrit</small>
+              </label>
+              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="custom-page-input" class="form-input" placeholder="Skriv sidens navn her..." style="flex: 1; min-width: 220px;">
+                <button type="button" class="btn btn-primary btn-sm" id="add-custom-page-btn" onclick="addCustomPage()" style="padding: 10px 18px; white-space: nowrap;">
+                  + Tilføj underside
+                </button>
+              </div>
+              <div id="custom-pages-chips" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;"></div>
+              <input type="hidden" id="selected-pages-input" name="selected_pages" value="Forside, Om os / Profil, Ydelser / Produkter, Projekter / Galleri, Kontakt & Tilbud">
             </div>
 
             <!-- 06. Logo & Visuel Identitet -->
             <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
-              <span style="color: #2563eb;">06.</span> Logo & Visuelt Materiale
+              <span style="color: #2563eb;">06.</span> Logo & Billedmateriale
             </h3>
 
+            <!-- Del A: Logo -->
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-text); margin-bottom: 12px;">
+              Del A: Virksomhedens Logo
+            </h4>
             <div class="logo-radio-group">
-              <div class="logo-radio-card active" data-logo-type="have-logo">
+              <div class="logo-radio-card active" data-logo-type="have-logo" id="logo-card-have">
                 <div class="radio-dot"></div>
                 <div class="logo-card-text">
                   <h4>Jeg har allerede et logo</h4>
@@ -596,7 +658,7 @@
                 </div>
               </div>
 
-              <div class="logo-radio-card" data-logo-type="need-logo">
+              <div class="logo-radio-card" data-logo-type="need-logo" id="logo-card-need">
                 <div class="radio-dot"></div>
                 <div class="logo-card-text">
                   <h4>Jeg skal have lavet et nyt logo</h4>
@@ -608,7 +670,7 @@
             <!-- Upload Boks -->
             <div id="logo-upload-container">
               <input type="file" id="logo-file-input" style="display: none;" accept="image/*,.pdf,.svg" aria-label="Vælg logofil til upload (SVG, PNG, JPG, PDF)">
-              <div class="upload-dropzone" id="logo-dropzone">
+              <div class="upload-dropzone" id="logo-dropzone" role="button" tabindex="0" aria-label="Upload logo felt">
                 <div class="upload-icon">📁</div>
                 <div style="font-weight: 600; margin-bottom: 4px;">Klik her for at vælge dit logo</div>
                 <div style="font-size: 0.82rem; color: var(--color-text-dim);">Understøtter SVG, PNG, JPG, PDF (Maks 15 MB)</div>
@@ -630,54 +692,207 @@
               </div>
             </div>
 
-            <!-- 07. Yderligere information & tekster -->
+            <!-- Del B: Billeder til hjemmesiden -->
+            <div style="margin-top: 28px; padding-top: 24px; border-top: 1px dashed var(--color-border);">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px;">
+                Del B: Fotos & Billeder til selve hjemmesiden
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 14px;">
+                Har du egne billeder (f.eks. af dit arbejde, lokaler, mad, team eller biler), eller skal Webland finde professionelle billeder for dig?
+              </p>
+
+              <div class="image-source-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 16px;">
+                <div class="image-source-card active" id="img-source-stock" onclick="selectImageSource('stock')" style="border: 1.5px solid #2563eb; background: #ffffff; border-radius: var(--radius-md); padding: 16px; cursor: pointer; display: flex; gap: 12px; align-items: flex-start;">
+                  <input type="radio" name="image_source_radio" value="stock" checked style="margin-top: 3px; accent-color: #2563eb;">
+                  <div>
+                    <strong style="color: var(--color-text); font-size: 0.92rem;">Webland finder professionelle billeder</strong>
+                    <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">
+                      Vi udvælger knivskarpe, licenserede stockfotos i høj opløsning, der passer perfekt til din branche (Inkluderet i fast pris).
+                    </div>
+                  </div>
+                </div>
+
+                <div class="image-source-card" id="img-source-custom" onclick="selectImageSource('custom')" style="border: 1px solid var(--color-border); background: #f8fafc; border-radius: var(--radius-md); padding: 16px; cursor: pointer; display: flex; gap: 12px; align-items: flex-start;">
+                  <input type="radio" name="image_source_radio" value="custom" style="margin-top: 3px; accent-color: #2563eb;">
+                  <div>
+                    <strong style="color: var(--color-text); font-size: 0.92rem;">Jeg har mine egne billeder</strong>
+                    <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">
+                      Indsæt link til Google Drev, Dropbox, OneDrive, iCloud eller WeTransfer herunder, eller send dem til os på mail bagefter.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input til billedlink -->
+              <div id="custom-images-link-container" style="display: none; background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);">
+                <div class="form-field" style="margin-bottom: 12px;">
+                  <label class="form-label" for="images-cloud-link">
+                    <span>Link til dine billeder (Google Drev / Dropbox / OneDrive / WeTransfer)</span>
+                    <small>Valgfrit</small>
+                  </label>
+                  <input type="url" id="images-cloud-link" class="form-input" placeholder="https://drive.google.com/... eller https://dropbox.com/...">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="images-notes">
+                    <span>Kort note om billederne</span>
+                    <small>F.eks. hvilke billeder der skal på forsiden</small>
+                  </label>
+                  <input type="text" id="images-notes" class="form-input" placeholder="F.eks.: 'Mappe 1 er til galleriet, billede 3 er mit profilbillede'">
+                </div>
+              </div>
+            </div>
+
+            <!-- 07. Hjemmesidens Mål, Sociale Medier & Ønsker -->
             <h3 style="font-size: 1.15rem; font-weight: 700; margin: 36px 0 18px; color: var(--color-text); display: flex; align-items: center; gap: 8px;">
-              <span style="color: #2563eb;">07.</span> Yderligere information, tekster & ønsker
+              <span style="color: #2563eb;">07.</span> Hjemmesidens Mål, Sociale Medier & Særlige Ønsker
             </h3>
 
-            <div class="form-field full-width">
+            <!-- Primær Call to action -->
+            <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 24px;">
+              <label class="form-label" style="margin-bottom: 10px;">
+                <span style="font-size: 0.95rem; font-weight: 700; color: var(--color-text);">Hvad er hjemmesidens primære mål for dine besøgende?</span>
+                <small>Hvilken handling skal være mest fremtrædende på knapperne?</small>
+              </label>
+              <div class="cta-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                <label class="cta-radio-pill active" id="cta-pill-phone" style="display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1.5px solid #2563eb; border-radius: 8px; padding: 10px 14px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--color-text);">
+                  <input type="radio" name="primary_goal" value="Ring mig op direkte" checked style="accent-color: #2563eb;">
+                  <span>📞 Ring mig op direkte</span>
+                </label>
+                <label class="cta-radio-pill" id="cta-pill-quote" style="display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; padding: 10px 14px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--color-text);">
+                  <input type="radio" name="primary_goal" value="Indhent uforpligtende tilbud" style="accent-color: #2563eb;">
+                  <span>📝 Indhent tilbud</span>
+                </label>
+                <label class="cta-radio-pill" id="cta-pill-book" style="display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; padding: 10px 14px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--color-text);">
+                  <input type="radio" name="primary_goal" value="Book tid / reservation" style="accent-color: #2563eb;">
+                  <span>📅 Book tid / reservation</span>
+                </label>
+                <label class="cta-radio-pill" id="cta-pill-visit" style="display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; padding: 10px 14px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--color-text);">
+                  <input type="radio" name="primary_goal" value="Finde fysisk butik / adresse" style="accent-color: #2563eb;">
+                  <span>📍 Finde butik / adresse</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Sociale Medier Grid -->
+            <div style="margin-bottom: 24px;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px;">
+                Sociale Medier & Links (Valgfrit)
+              </h4>
+              <p style="font-size: 0.84rem; color: var(--color-text-muted); margin-bottom: 12px;">
+                Indsæt links til dine profiler, så vi kan tilknytte ikoner i footeren og på kontaktsiden:
+              </p>
+              <div class="form-group-grid" style="margin-bottom: 0;">
+                <div class="form-field">
+                  <label class="form-label" for="social-facebook">
+                    <span>Facebook Side</span>
+                    <small>F.eks. facebook.com/ditfirma</small>
+                  </label>
+                  <input type="text" id="social-facebook" class="form-input" placeholder="https://facebook.com/...">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="social-instagram">
+                    <span>Instagram Profil</span>
+                    <small>F.eks. instagram.com/ditfirma</small>
+                  </label>
+                  <input type="text" id="social-instagram" class="form-input" placeholder="https://instagram.com/...">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="social-linkedin">
+                    <span>LinkedIn / Virksomhedsside</span>
+                    <small>F.eks. linkedin.com/company/...</small>
+                  </label>
+                  <input type="text" id="social-linkedin" class="form-input" placeholder="https://linkedin.com/...">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="social-reviews">
+                    <span>Google Anmeldelser / Trustpilot</span>
+                    <small>Link til anmeldelser</small>
+                  </label>
+                  <input type="text" id="social-reviews" class="form-input" placeholder="https://...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Yderligere information & særlige ønsker -->
+            <div class="form-field full-width" style="margin-bottom: 24px;">
               <label class="form-label" for="additional-notes">
                 <span>Yderligere information, tekster og særlige ønsker</span>
                 <small>Valgfrit</small>
               </label>
-              <textarea id="additional-notes" class="form-textarea" placeholder="Skriv gerne korte stikord om dine kerneydelser, sociale medier, specifikke farveønsker eller særlige idéer til de 5 undersider..."></textarea>
+              <textarea id="additional-notes" class="form-textarea" placeholder="Skriv gerne korte stikord om dine kerneydelser, specifikke ønsker til tekster, særlige åbningstider eller idéer til indhold..."></textarea>
             </div>
 
-            <!-- Tryghedsboks før indsendelse -->
-            <div style="margin-top: 28px; padding: 18px 22px; background: rgba(16, 185, 129, 0.08); border: 1.5px solid #10b981; border-radius: var(--radius-md); display: flex; align-items: center; gap: 14px;">
-              <span style="font-size: 1.8rem; line-height: 1;">🛡️</span>
-              <div style="font-size: 0.9rem; color: var(--color-text); line-height: 1.5;">
-                <strong>Vores Frihedsgaranti: Når vi siger ingen binding, mener vi det!</strong><br>
-                Fast pris 9.995 kr. excl. moms. Ingen månedlige gebyrer til Webland (0 kr./md.). Du ejer dit domæne og Simply.com-konto 100% juridisk fra dag ét.
+            <!-- Tryghedsboks & Juridisk Bekræftelse -->
+            <div style="margin-top: 28px; padding: 20px 22px; background: rgba(16, 185, 129, 0.08); border: 1.5px solid #10b981; border-radius: var(--radius-md);">
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+                <span style="font-size: 1.8rem; line-height: 1;">🛡️</span>
+                <div style="font-size: 0.9rem; color: var(--color-text); line-height: 1.5;">
+                  <strong>Vores Frihedsgaranti: Når vi siger ingen binding, mener vi det!</strong><br>
+                  Fast pris 9.995 kr. excl. moms. Ingen månedlige gebyrer til Webland (0 kr./md.). Du ejer dit domæne og Simply.com-konto 100% juridisk fra dag ét.
+                </div>
+              </div>
+
+              <div style="padding-top: 14px; border-top: 1px dashed rgba(16, 185, 129, 0.4);">
+                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-size: 0.90rem; color: var(--color-text); line-height: 1.5;">
+                  <input type="checkbox" id="accept-terms-checkbox" required style="width: 20px; height: 20px; margin-top: 2px; accent-color: #059669;">
+                  <span>
+                    <strong>Jeg bekræfter bestilling af Webland-hjemmesidepakken til fast pris 9.995 kr. excl. moms</strong> (0 kr./md., 100% uden binding). Jeg accepterer <a href="#" style="color: #2563eb; text-decoration: underline;">handelsbetingelserne</a> og bekræfter, at de indtastede oplysninger danner grundlag for oprettelse af Simply.com webhotel og design af mine 5 undersider. <span style="color: #ef4444;">*</span>
+                  </span>
+                </label>
               </div>
             </div>
 
             <!-- Indsendelse -->
-            <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
               <div style="font-size: 0.88rem; color: var(--color-text-muted);">
                 🔒 Dine informationer behandles fortroligt i henhold til GDPR.
               </div>
               <button type="submit" class="btn btn-emerald btn-lg" id="submit-brief-btn">
-                Indsend Onboarding-Skema →
+                Indsend Onboarding-Skema (9.995 kr. excl. moms) →
               </button>
             </div>
           </form>
 
-          <!-- Success Card -->
-          <div class="form-success-card" id="form-success-card">
+          <!-- Success Card med fuldt ordreresumé -->
+          <div class="form-success-card" id="form-success-card" style="display: none;">
             <div class="success-icon-wrap">✓</div>
             <h3>Tak for dit onboarding-skema!</h3>
             <p>
               Vi har modtaget dine informationer og materiale. Vores salgs- og designteam gennemgår dine data, bekræfter dit domænekøb og starter 72-timers nedtællingen.
             </p>
-            <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; max-width: 500px; margin: 0 auto 30px; text-align: left;">
-              <div style="font-size: 0.85rem; color: var(--color-text-dim); margin-bottom: 6px;">HVAD SKER DER NU?</div>
-              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">1. En sælger kontakter dig for en hurtig godkendelse.</div>
-              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">2. Webland opretter webhotel hos Simply.com, registrerer dit domæne og opsætter din e-mail.</div>
-              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">3. Hjemmesiden opbygges med dine 5 undersider inden 72 timer.</div>
+
+            <!-- Dynamisk Ordreresumé Boks -->
+            <div id="order-summary-box" style="background: var(--color-bg-secondary); border: 1.5px solid var(--color-border); border-radius: var(--radius-md); padding: 22px; max-width: 640px; margin: 24px auto; text-align: left;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                <div style="font-size: 0.85rem; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.05em;">
+                  📋 Dit Samlede Ordreresumé
+                </div>
+                <span class="badge badge-emerald" style="font-size: 0.72rem;">Fast pris: 9.995 kr. excl. moms • 0 kr./md.</span>
+              </div>
+              <div id="order-summary-content" style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text);">
+                <!-- Udfyldes dynamisk i app.js -->
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-outline btn-sm" id="copy-summary-btn" onclick="copyOrderSummary()" style="font-size: 0.82rem;">
+                  📋 Kopiér ordresammenfatning
+                </button>
+                <a id="email-summary-link" href="#" class="btn btn-outline btn-sm" style="font-size: 0.82rem;">
+                  ✉️ Send kopi til din egen mail
+                </a>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; max-width: 640px; margin: 0 auto 30px; text-align: left;">
+              <div style="font-size: 0.85rem; color: var(--color-text-dim); margin-bottom: 6px; font-weight: 700;">HVAD SKER DER NU?</div>
+              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">1. Din rådgiver (<span id="summary-sales-rep-name">vores salgsteam</span>) verificerer det aftalte domæne i registret.</div>
+              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">2. Webland opretter webhotel hos Simply.com, registrerer dit domæne og opsætter dine e-mails.</div>
+              <div style="font-size: 0.92rem; color: var(--color-text); margin-bottom: 8px;">3. Hjemmesiden opbygges med dine 5 undersider inden for maks. 72 timer.</div>
               <div style="font-size: 0.92rem; color: #059669; font-weight: 600; padding-top: 6px; border-top: 1px dashed var(--color-border);">4. Du overtager 100% ejerskab – 0 kr./md. for altid og absolut ingen binding.</div>
             </div>
-            <a href="kontakt.html?v=32.0" class="btn btn-primary">Har du spørgsmål? Kontakt os her</a>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <a href="kontakt.html?v=33.0" class="btn btn-primary">Har du spørgsmål? Kontakt os her</a>
+              <a href="index.html?v=33.0" class="btn btn-outline">Tilbage til forsiden</a>
+            </div>
           </div>
         </div>
       </div>
@@ -689,7 +904,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html?v=32.0" class="brand-logo" style="margin-bottom: 8px;">
+          <a href="index.html?v=33.0" class="brand-logo" style="margin-bottom: 8px;">
             <div class="logo-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -711,21 +926,21 @@
         <div class="footer-col">
           <h4>Undersider</h4>
           <ul class="footer-links">
-            <li><a href="index.html?v=32.0">Forside</a></li>
-            <li><a href="eksempler.html?v=32.0">Eksempler på hjemmesider</a></li>
-            <li><a href="proces.html?v=32.0">Sådan fungerer det</a></li>
-            <li><a href="kontakt.html?v=32.0">Kontakt & Sælgere</a></li>
+            <li><a href="index.html?v=33.0">Forside</a></li>
+            <li><a href="eksempler.html?v=33.0">Eksempler på hjemmesider</a></li>
+            <li><a href="proces.html?v=33.0">Sådan fungerer det</a></li>
+            <li><a href="kontakt.html?v=33.0">Kontakt & Sælgere</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Brancher & Eksempler</h4>
           <ul class="footer-links">
-            <li><a href="eksempler.html?v=32.0&kategori=luksus">Luksus, Livsstil & Fancy</a></li>
-            <li><a href="eksempler.html?v=32.0&kategori=handvaerk">Håndværk & Service</a></li>
-            <li><a href="eksempler.html?v=32.0&kategori=gastronomi">Gastronomi & Oplevelser</a></li>
-            <li><a href="eksempler.html?v=32.0&kategori=sundhed">Sundhed & Velvære</a></li>
-            <li><a href="eksempler.html?v=32.0&kategori=erhverv">Erhverv, Finans & B2B</a></li>
+            <li><a href="eksempler.html?v=33.0&kategori=luksus">Luksus, Livsstil & Fancy</a></li>
+            <li><a href="eksempler.html?v=33.0&kategori=handvaerk">Håndværk & Service</a></li>
+            <li><a href="eksempler.html?v=33.0&kategori=gastronomi">Gastronomi & Oplevelser</a></li>
+            <li><a href="eksempler.html?v=33.0&kategori=sundhed">Sundhed & Velvære</a></li>
+            <li><a href="eksempler.html?v=33.0&kategori=erhverv">Erhverv, Finans & B2B</a></li>
           </ul>
         </div>
 
@@ -735,7 +950,7 @@
             <li><a href="tel:+4570201122">📞 +45 70 20 11 22</a></li>
             <li><a href="mailto:kontakt@webland.dk">✉️ kontakt@webland.dk</a></li>
             <li><span style="color: var(--color-text-dim);">Mandag - Fredag: 08:30 - 17:00</span></li>
-            <li><a href="kontakt.html?v=32.0" style="color: #059669; font-weight: 600;">Mød vores salgsteam →</a></li>
+            <li><a href="kontakt.html?v=33.0" style="color: #059669; font-weight: 600;">Mød vores salgsteam →</a></li>
           </ul>
         </div>
       </div>
@@ -806,7 +1021,7 @@
             <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Du ejer 100% koden, Simply.com-kontoen og domænet • 0 kr. i abonnement</div>
           </div>
           <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-            <a href="kontakt.html?v=32.0" class="btn btn-outline">Kontakt sælger</a>
+            <a href="kontakt.html?v=33.0" class="btn btn-outline">Kontakt sælger</a>
             <button class="btn btn-emerald" onclick="selectTemplateFromModal()">
               Vælg dette eksempel som inspiration →
             </button>
@@ -817,7 +1032,7 @@
   </div>
 
   <div class="toast-container" id="toast-container"></div>
-  <script src="templates-data.js?v=32.0"></script>
-  <script src="app.js?v=32.0"></script>
+  <script src="templates-data.js?v=33.0"></script>
+  <script src="app.js?v=33.0"></script>
 </body>
 </html>

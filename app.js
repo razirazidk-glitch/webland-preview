@@ -750,6 +750,137 @@ function initOnboardingForm() {
     });
   });
 
+  // 5b. Undersider Håndtering & Tæller (Sektion 05)
+  let customPagesList = [];
+
+  window.updatePagesCount = function() {
+    const grid = document.getElementById('pages-checkbox-grid');
+    const badge = document.getElementById('pages-counter-badge');
+    const hiddenPagesInput = document.getElementById('selected-pages-input');
+    if (!grid || !badge) return;
+
+    const checkedBoxes = Array.from(grid.querySelectorAll('input[type="checkbox"]:checked'));
+    const standardPages = checkedBoxes.map(cb => cb.value);
+    const allSelectedPages = [...standardPages, ...customPagesList];
+    const totalCount = allSelectedPages.length;
+
+    // Opdater styling på standard labels
+    grid.querySelectorAll('.page-checkbox-label').forEach(label => {
+      const cb = label.querySelector('input[type="checkbox"]');
+      if (cb && cb.checked) {
+        label.classList.add('selected-page');
+      } else {
+        label.classList.remove('selected-page');
+      }
+    });
+
+    if (hiddenPagesInput) {
+      hiddenPagesInput.value = allSelectedPages.join(', ');
+    }
+
+    if (totalCount === 5) {
+      badge.className = 'badge badge-emerald';
+      badge.style.background = '#059669';
+      badge.style.color = '#ffffff';
+      badge.textContent = '5 af 5 sider valgt (Maksimal kvote nået ✓)';
+    } else if (totalCount < 5) {
+      badge.className = 'badge';
+      badge.style.background = '#2563eb';
+      badge.style.color = '#ffffff';
+      badge.textContent = `${totalCount} af 5 sider valgt (${5 - totalCount} tilbage)`;
+    } else {
+      badge.className = 'badge';
+      badge.style.background = '#dc2626';
+      badge.style.color = '#ffffff';
+      badge.textContent = `⚠️ ${totalCount} af 5 sider valgt (Fravælg ${totalCount - 5})`;
+    }
+  };
+
+  window.addCustomPage = function() {
+    const input = document.getElementById('custom-page-input');
+    const chipsContainer = document.getElementById('custom-pages-chips');
+    if (!input || !chipsContainer) return;
+
+    const pageTitle = input.value.trim();
+    if (!pageTitle) {
+      showToast('Indtast venligst et navn på undersiden', 'info');
+      return;
+    }
+
+    const grid = document.getElementById('pages-checkbox-grid');
+    const checkedCount = grid ? grid.querySelectorAll('input[type="checkbox"]:checked').length : 0;
+    const currentTotal = checkedCount + customPagesList.length;
+
+    if (currentTotal >= 5) {
+      showToast('Du har allerede valgt 5 undersider. Fravælg en side først for at tilføje din egen.', 'info');
+      return;
+    }
+
+    if (customPagesList.includes(pageTitle)) {
+      showToast('Denne underside er allerede tilføjet', 'info');
+      return;
+    }
+
+    customPagesList.push(pageTitle);
+    input.value = '';
+    renderCustomPageChips();
+    window.updatePagesCount();
+    showToast(`Undersiden "${pageTitle}" er tilføjet!`, 'success');
+  };
+
+  window.removeCustomPage = function(index) {
+    if (index >= 0 && index < customPagesList.length) {
+      const removed = customPagesList.splice(index, 1);
+      renderCustomPageChips();
+      window.updatePagesCount();
+      showToast(`Undersiden "${removed[0]}" er fjernet`, 'info');
+    }
+  };
+
+  function renderCustomPageChips() {
+    const chipsContainer = document.getElementById('custom-pages-chips');
+    if (!chipsContainer) return;
+
+    chipsContainer.innerHTML = customPagesList.map((p, idx) => `
+      <span class="custom-page-chip">
+        <span>📄 ${p}</span>
+        <button type="button" class="remove-chip-btn" onclick="removeCustomPage(${idx})" aria-label="Fjern underside ${p}">×</button>
+      </span>
+    `).join('');
+  }
+
+  // 5c. Billedmateriale Vælger (Sektion 06 Del B)
+  window.selectImageSource = function(type) {
+    const stockCard = document.getElementById('img-source-stock');
+    const customCard = document.getElementById('img-source-custom');
+    const linkContainer = document.getElementById('custom-images-link-container');
+    const stockRadio = document.querySelector('input[name="image_source_radio"][value="stock"]');
+    const customRadio = document.querySelector('input[name="image_source_radio"][value="custom"]');
+
+    if (type === 'custom') {
+      if (stockCard) stockCard.classList.remove('active');
+      if (customCard) customCard.classList.add('active');
+      if (customRadio) customRadio.checked = true;
+      if (linkContainer) linkContainer.style.display = 'block';
+    } else {
+      if (customCard) customCard.classList.remove('active');
+      if (stockCard) stockCard.classList.add('active');
+      if (stockRadio) stockRadio.checked = true;
+      if (linkContainer) linkContainer.style.display = 'none';
+    }
+  };
+
+  // 5d. CTA Radio Pill Interactive Selection (Sektion 07)
+  const ctaPills = document.querySelectorAll('.cta-radio-pill');
+  ctaPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      ctaPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const radio = pill.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+    });
+  });
+
   // Mock File Upload
   const fileInput = document.getElementById('logo-file-input');
   const dropzone = document.getElementById('logo-dropzone');
@@ -778,18 +909,139 @@ function initOnboardingForm() {
     });
   }
 
-  // Form submission
+  // Form submission & Comprehensive Order Summary
   const form = document.getElementById('client-onboarding-form');
   const successCard = document.getElementById('form-success-card');
   const submitBtn = document.getElementById('submit-brief-btn');
+
+  let submittedOrderData = null;
 
   if (form && successCard) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      // Validering af undersider kvote
+      const grid = document.getElementById('pages-checkbox-grid');
+      const checkedCount = grid ? grid.querySelectorAll('input[type="checkbox"]:checked').length : 0;
+      const totalPages = checkedCount + customPagesList.length;
+
+      if (totalPages > 5) {
+        showToast(`Du har valgt ${totalPages} undersider. Webland standardpakken inkluderer op til 5 undersider. Fravælg venligst ${totalPages - 5} side(r).`, 'info');
+        const badge = document.getElementById('pages-counter-badge');
+        if (badge) badge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Validering af handelsbetingelser
+      const termsCheck = document.getElementById('accept-terms-checkbox');
+      if (termsCheck && !termsCheck.checked) {
+        showToast('Venligst bekræft handelsbetingelserne for at fuldføre.', 'info');
+        termsCheck.focus();
+        return;
+      }
+
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sender skema...';
+        submitBtn.innerHTML = 'Sender skema & verificerer data...';
+      }
+
+      // Opsaml alle felter i struktureret format
+      const clientName = document.getElementById('client-name')?.value || '';
+      const companyName = document.getElementById('company-name')?.value || '';
+      const cvr = document.getElementById('client-cvr')?.value || 'Privat / Ikke oplyst';
+      const salesRep = document.getElementById('sales-rep')?.value || 'Webland salgsteam';
+      const address = document.getElementById('client-address')?.value || '';
+      const city = document.getElementById('client-city')?.value || '';
+      const hours = document.getElementById('client-hours')?.value || 'Standard';
+      const email = document.getElementById('client-email')?.value || '';
+      const phone = document.getElementById('client-phone')?.value || '';
+      const domain = document.getElementById('domain-name-input')?.value || '';
+      const emails = document.getElementById('selected-emails-input')?.value || 'Ingen e-mails';
+      const template = document.getElementById('selected-template-input')?.value || 'Aftales med sælger';
+      const palette = document.getElementById('selected-color-palette-input')?.value || 'Nordisk Skifer & Isblå';
+      const pages = document.getElementById('selected-pages-input')?.value || 'Forside, Om os, Ydelser, Galleri, Kontakt';
+      const logoType = document.querySelector('.logo-radio-card.active')?.dataset.logoType === 'need-logo' 
+        ? `Nyt logo ønskes (${document.getElementById('new-logo-wishes')?.value || 'Specifikation aftales'})`
+        : (fileInput?.files?.[0]?.name ? `Eget logo uploadet: ${fileInput.files[0].name}` : 'Eget logo haves (eftersendes)');
+      const imageType = document.querySelector('input[name="image_source_radio"]:checked')?.value === 'custom'
+        ? `Egne billeder (Link: ${document.getElementById('images-cloud-link')?.value || 'Eftersendes'})`
+        : 'Webland finder professionelle stockfotos';
+      const primaryGoal = document.querySelector('input[name="primary_goal"]:checked')?.value || 'Ring mig op direkte';
+      const notes = document.getElementById('additional-notes')?.value || 'Ingen særlige noter';
+
+      submittedOrderData = {
+        clientName, companyName, cvr, salesRep, address, city, hours,
+        email, phone, domain, emails, template, palette, pages,
+        logoType, imageType, primaryGoal, notes,
+        timestamp: new Date().toLocaleString('da-DK')
+      };
+
+      try {
+        localStorage.setItem('webland_last_order', JSON.stringify(submittedOrderData));
+      } catch (err) {
+        console.warn('Could not save to localStorage', err);
+      }
+
+      // Renders struktureret ordreresumé i successCard
+      const summaryContent = document.getElementById('order-summary-content');
+      if (summaryContent) {
+        summaryContent.innerHTML = `
+          <div class="order-summary-item">
+            <span class="order-summary-label">Aftalt Domæne:</span>
+            <span class="order-summary-value" style="color: #2563eb; font-weight: 700;">${domain || 'Aftales med sælger'}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Din Salgsrådgiver:</span>
+            <span class="order-summary-value">${salesRep}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Kunde & Firma:</span>
+            <span class="order-summary-value">${clientName} ${companyName ? '• ' + companyName : ''} ${cvr !== 'Privat / Ikke oplyst' ? '(CVR: ' + cvr + ')' : ''}</span>
+          </div>
+          ${address || city ? `
+          <div class="order-summary-item">
+            <span class="order-summary-label">Fysisk Adresse:</span>
+            <span class="order-summary-value">${address ? address + ', ' : ''}${city}</span>
+          </div>` : ''}
+          <div class="order-summary-item">
+            <span class="order-summary-label">Kontakt:</span>
+            <span class="order-summary-value">${phone} • ${email}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">De 5 Undersider:</span>
+            <span class="order-summary-value" style="color: #059669;">${pages}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Simply.com E-mails:</span>
+            <span class="order-summary-value">${emails}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Visuel Inspiration:</span>
+            <span class="order-summary-value">${template}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Farvepalet:</span>
+            <span class="order-summary-value">${palette}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Logo & Billeder:</span>
+            <span class="order-summary-value">${logoType} • ${imageType}</span>
+          </div>
+          <div class="order-summary-item">
+            <span class="order-summary-label">Primært Mål:</span>
+            <span class="order-summary-value">${primaryGoal}</span>
+          </div>
+        `;
+      }
+
+      const salesSpan = document.getElementById('summary-sales-rep-name');
+      if (salesSpan) salesSpan.textContent = salesRep;
+
+      // Klargør e-mail link til kunden
+      const emailLink = document.getElementById('email-summary-link');
+      if (emailLink) {
+        const mailBody = `Hej ${clientName},\n\nHer er en kopi af dit udfyldte onboarding-skema til Webland.dk:\n\nAftalt Domæne: ${domain}\nSalgsrådgiver: ${salesRep}\nFirma: ${companyName} (CVR: ${cvr})\nAdresse: ${address}, ${city}\nTelefon: ${phone}\nDe 5 Undersider: ${pages}\nSimply.com E-mails: ${emails}\nDesign & Farver: ${template} / ${palette}\nLogo: ${logoType}\nBilleder: ${imageType}\nPrimært Mål: ${primaryGoal}\n\nFast pris: 9.995 kr. excl. moms (0 kr./md., 100% uden binding).\nLeveringstid: Maks. 72 timer.\n\nMed venlig hilsen,\nWebland.dk`;
+        emailLink.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Webland.dk Ordrebekræftelse: ' + (domain || companyName))}&body=${encodeURIComponent(mailBody)}`;
       }
 
       setTimeout(() => {
@@ -797,8 +1049,38 @@ function initOnboardingForm() {
         successCard.style.display = 'block';
         successCard.scrollIntoView({ behavior: 'smooth' });
         showToast('Onboarding-skema modtaget! Sælgeren kobler det med domænet nu.', 'success');
-      }, 900);
+      }, 700);
     });
+  }
+
+  // Hjælpefunktion til at kopiere ordreresumé
+  window.copyOrderSummary = function() {
+    if (!submittedOrderData) {
+      showToast('Ingen ordredata at kopiere endnu', 'info');
+      return;
+    }
+    const d = submittedOrderData;
+    const text = `--- WEBLAND.DK ONBOARDING ORDRESAMMENFATNING ---\nAftalt Domæne: ${d.domain}\nSalgsrådgiver: ${d.salesRep}\nKunde: ${d.clientName} (${d.companyName} - CVR: ${d.cvr})\nAdresse: ${d.address}, ${d.city}\nKontakt: ${d.phone} | ${d.email}\nDe 5 Undersider: ${d.pages}\nSimply.com E-mails: ${d.emails}\nDesign Inspiration: ${d.template}\nFarvepalet: ${d.palette}\nLogo: ${d.logoType}\nBilleder: ${d.imageType}\nPrimært Mål: ${d.primaryGoal}\nNoter: ${d.notes}\nFast pris: 9.995 kr. excl. moms (0 kr./md., ingen binding)\nUdfyldt: ${d.timestamp}`;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Ordresammenfatning kopieret til udklipsholderen!', 'success');
+      }).catch(() => {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  };
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Ordresammenfatning kopieret til udklipsholderen!', 'success');
   }
 
   // Initialiser Farvekombinationer & Paletter (Sektion 04)

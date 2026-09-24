@@ -2899,3 +2899,93 @@ button, input, select, textarea {
   content-visibility: auto;
   contain-intrinsic-size: 600px;
 }
+
+/* ==========================================================================
+   Onboarding Enhancement Styles (v33.0)
+   ========================================================================== */
+.page-checkbox-label.selected-page {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.custom-page-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.custom-page-chip .remove-chip-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.cta-radio-pill {
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.cta-radio-pill:hover {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.cta-radio-pill.active {
+  background: #eff6ff !important;
+  border-color: #2563eb !important;
+  color: #1e40af !important;
+}
+
+.image-source-card {
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.image-source-card:hover {
+  border-color: #94a3b8 !important;
+}
+
+.image-source-card.active {
+  border-color: #2563eb !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+
+.order-summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  font-size: 0.88rem;
+}
+
+.order-summary-item:last-child {
+  border-bottom: none;
+}
+
+.order-summary-label {
+  color: var(--color-text-dim);
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.order-summary-value {
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
+}
+
