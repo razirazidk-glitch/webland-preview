@@ -1045,20 +1045,199 @@ function initOnboardingForm() {
       const salesSpan = document.getElementById('summary-sales-rep-name');
       if (salesSpan) salesSpan.textContent = salesRep;
 
-      // Klargør e-mail link til kunden
+      // 1. Generér komplet Google Antigravity Super Prompt
+      const superPrompt = generateAntigravitySuperPrompt(submittedOrderData);
+
+      const promptTextarea = document.getElementById('antigravity-prompt-text');
+      if (promptTextarea) {
+        promptTextarea.value = superPrompt;
+      }
+
+      // 2. Klargør direkte e-mail link med Super Prompt til razirazidk@gmail.com
+      const promptEmailLink = document.getElementById('email-antigravity-link');
+      if (promptEmailLink) {
+        const mailSubject = `⚡ Google Antigravity Super Prompt: ${domain || companyName || 'Nyt Skema'}`;
+        promptEmailLink.href = `mailto:razirazidk@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(superPrompt)}`;
+      }
+
+      // 3. Send automatisk e-mail i baggrunden til razirazidk@gmail.com via FormSubmit AJAX
+      try {
+        fetch('https://formsubmit.co/ajax/razirazidk@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `⚡ Google Antigravity Super Prompt: ${domain || companyName || 'Nyt Skema'}`,
+            _template: 'table',
+            Kunde: clientName,
+            Firma: companyName,
+            CVR: cvr,
+            Telefon: phone,
+            Email: email,
+            Domaene: domain,
+            Saelger: salesRep,
+            Undersider: pages,
+            SuperPrompt: superPrompt
+          })
+        }).then(r => r.json()).then(res => {
+          console.log('FormSubmit AJAX notification sent:', res);
+        }).catch(e => {
+          console.log('FormSubmit AJAX background catch:', e);
+        });
+      } catch (err) {
+        console.warn('FormSubmit execution error:', err);
+      }
+
+      // 4. Klargør e-mail link til kunden
       const emailLink = document.getElementById('email-summary-link');
       if (emailLink) {
         const mailBody = `Hej ${clientName},\n\nHer er en kopi af dit udfyldte onboarding-skema til Webland.dk:\n\nAftalt Domæne: ${domain}\nSalgsrådgiver: ${salesRep}\nFirma: ${companyName} (CVR: ${cvr})\nAdresse: ${address}, ${city}\nTelefon: ${phone}\nDe 5 Undersider: ${pages}\nSimply.com E-mails: ${emails}\nDesign & Farver: ${template} / ${palette}\nLogo: ${logoType}\nBilleder: ${imageType}\nPrimært Mål: ${primaryGoal}\n\nBetalingsvilkår: 0 kr. i forudbetaling – du betaler først ved godkendelse af websiden (fast pris: 9.500 kr. + moms).\nDomæne: Overdrages 100% til dig efter godkendelse og betaling.\nLeveringstid: Maks. 72 timer.\n\nMed venlig hilsen,\nWebland.dk`;
         emailLink.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Webland.dk Ordrebekræftelse: ' + (domain || companyName))}&body=${encodeURIComponent(mailBody)}`;
       }
 
+      // 5. Automatisk kopiering af Super Prompt til udklipsholder ved indsendelse
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(superPrompt).catch(() => {});
+      }
+
       setTimeout(() => {
         form.style.display = 'none';
         successCard.style.display = 'block';
         successCard.scrollIntoView({ behavior: 'smooth' });
-        showToast('Onboarding-skema modtaget! Sælgeren kobler det med domænet nu.', 'success');
+        showToast('Onboarding-skema modtaget! Antigravity Super Prompt er klar & kopieret.', 'success');
       }, 700);
     });
+  }
+
+  // Hjælpefunktion til at kopiere Antigravity Super Prompt
+  window.copyAntigravityPrompt = function() {
+    const promptTextarea = document.getElementById('antigravity-prompt-text');
+    let text = promptTextarea ? promptTextarea.value : '';
+    if (!text && submittedOrderData) {
+      text = generateAntigravitySuperPrompt(submittedOrderData);
+    }
+    if (!text) {
+      showToast('Ingen prompt-data fundet endnu', 'info');
+      return;
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('⚡ Antigravity Super Prompt kopieret! Sæt direkte ind i Google Antigravity.', 'success');
+      }).catch(() => {
+        fallbackCopyPrompt(text);
+      });
+    } else {
+      fallbackCopyPrompt(text);
+    }
+  };
+
+  function fallbackCopyPrompt(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast('⚡ Antigravity Super Prompt kopieret! Sæt direkte ind i Google Antigravity.', 'success');
+    } catch (e) {
+      showToast('Markér og kopiér teksten fra feltet', 'info');
+    }
+    document.body.removeChild(ta);
+  }
+
+  // Hjælpefunktion til at generere den komplette Google Antigravity Super Prompt
+  function generateAntigravitySuperPrompt(d) {
+    const pagesList = d.pages ? d.pages.split(',').map(p => p.trim()).filter(Boolean) : ['Forside', 'Om os', 'Ydelser', 'Galleri', 'Kontakt'];
+    const pagesFormatted = pagesList.map((p, idx) => `  ${idx + 1}. ${p}`).join('\n');
+
+    return `### SYSTEM & ROLE:
+Du er Antigravity – Senior Enterprise Web Arkitekt og Full-Stack Developer.
+Din mission er at generere og bygge en komplet, produktionsklar, lynende hurtig dansk virksomhedshjemmeside i absolut topklasse ud fra specifikationen herunder.
+Hjemmesiden skal udvikles i ren, semantisk HTML5, modulær CSS3 (med veldefinerede CSS variabler) og Vanilla JavaScript uden tunge frameworks, 100% optimeret til direkte udrulning på Simply.com webhotel.
+
+============================================================
+1. KUNDE & VIRKSOMHEDSPROFIL
+============================================================
+- Firmanavn: ${d.companyName || 'Ikke angivet'}
+- Kontaktperson: ${d.clientName || 'Ikke angivet'}
+- CVR-nummer: ${d.cvr || 'Privat / Ikke oplyst'}
+- Fysisk Adresse: ${d.address ? d.address + ', ' : ''}${d.city || 'Danmark'}
+- Telefon: ${d.phone || 'Ikke angivet'}
+- E-mail: ${d.email || 'Ikke angivet'}
+- Åbningstider: ${d.hours || 'Mandag-Fredag: 08:00 - 16:00, Weekend: Lukket'}
+- Ansvarlig Salgsrådgiver: ${d.salesRep || 'Webland.dk'}
+- Aftalt Domæne: ${d.domain || 'eksempel.dk'}
+- Simply.com E-mailadresser: ${d.emails || 'Ingen e-mails'}
+- Kommercielle vilkår: Fast pris 9.500 kr. + moms. 0 kr. forudbetaling – kunden betaler først ved fuld godkendelse af websiden. Domænet overdrages derefter 100% juridisk til kundens navn/CVR. 0 kr./md. for altid (nul binding).
+
+============================================================
+2. DE OP TIL 5 UNDERSIDER DER SKAL BYGGES (KOMPLETTE)
+============================================================
+Følgende undersider skal bygges med 100% færdigt, velskrevet dansk kvalitetsindhold:
+${pagesFormatted}
+
+Detaljerede sektionskrav til siderne:
+• FORSIDE (index.html):
+  - Hero-sektion med fængende, branchespecifik overskrift, slagkraftig værdiproposition, trust-badges (CVR, hurtig respons, lokalt forankret) og primær CTA-knap ("${d.primaryGoal}").
+  - Tillidsbjælke med nøglefordele og kvalitetsgarantier.
+  - Fremhævet oversigt over ydelser/produkter med interne links til de respektive undersider.
+  - "Om os" teaser med fokus på faglig stolthed og erfaring i ${d.city || 'lokalområdet'}.
+  - Kundeanbefalinger / Social Proof / Udtalelser.
+  - Kontakt-teaser sektion med direkte klikbar telefon (${d.phone}), e-mail (${d.email}) og åbningstider (${d.hours}).
+  - Komplet footer med CVR (${d.cvr}), navigation, åbningstider og ophavsret.
+
+• UNDERSIDE 2 (f.eks. Om os / Profil):
+  - Virksomhedens historie, mission og værdigrundlag tilpasset ${d.companyName || d.clientName}.
+  - Ejerskab/teampræsentation med fokus på ${d.clientName}.
+  - Hvorfor kunderne vælger os (faglighed, kvalitet, pålidelighed).
+
+• UNDERSIDE 3 (f.eks. Ydelser / Behandlinger / Menukort):
+  - Komplette overskuelige ydelseskort med klare beskrivelser, fordele og gennemskuelige prisindikationer.
+  - Individuelle handlingsknapper på hver ydelse med direkte konvertering til: "${d.primaryGoal}".
+
+• UNDERSIDE 4 (f.eks. Galleri / Referencer / Projekter):
+  - Stilrent billed- og case-grid med filterknapper eller strukturerede kategorier.
+  - Billedopsætning afstemt efter: ${d.imageType}.
+
+• UNDERSIDE 5 (f.eks. Kontakt / Tidsbestilling):
+  - Fuldt fungerende interaktiv kontaktformular med felter for Navn, E-mail, Telefon, Emne og Besked, klientside-validering og elegant succes-visning.
+  - Alle kontaktoplysninger: Telefon (${d.phone}), E-mail (${d.email}), Fysisk adresse (${d.address}, ${d.city}).
+  - Åbningstider (${d.hours}).
+  - Interaktiv Google Maps sektion / iframe eller stiliseret kort-placeholder med rutevejledning.
+
+============================================================
+3. DESIGN, ÆSTETIK & DESIGNTOKENS
+============================================================
+- Designinspiration / Eksempel: ${d.template}
+- Farvepalet: ${d.palette}
+- Logo-status: ${d.logoType}
+  * Hvis der ønskes nyt logo: Design et minimalistisk, professionelt inline SVG logo med firmanavnet "${d.companyName || d.clientName}".
+- Billedstil: ${d.imageType}
+  * Indsæt kuraterede, virkelighedstro billeder fra Unsplash/Pexels i høj opløsning, der matcher ${d.companyName || 'branchen'} 100%.
+- Typografi: Moderne Google Fonts (f.eks. 'Inter' eller 'Plus Jakarta Sans') med klart typografisk hierarki.
+
+============================================================
+4. PRIMÆRT KONVERTERINGSMÅL & SPECIELLE NOTER
+============================================================
+- Primært Mål for siden: ${d.primaryGoal}
+- Kundens særlige ønsker & noter:
+${d.notes || 'Ingen særlige noter – byg den mest professionelle og konverterende løsning for branchen.'}
+
+============================================================
+5. KVALITETSKRAV & VERIFIKATION (ANTIGRAVITY INVARIANTS)
+============================================================
+1. INGEN PLACEHOLDERS: Ingen "lorem ipsum", ingen tomme arrays, ingen ufuldstændige TODOs. Al tekst skal være skrevet på flydende, overbevisende dansk tilpasset målgruppen.
+2. 100% RESPONSIVT: Testet og fejlfri på mobil (320px+), tablet og desktop. Inklusiv mobilvenlig menu med glidende animation.
+3. SCHEMA.ORG & SEO: Inkludér fuld Schema.org LocalBusiness JSON-LD på forsiden og kontaktsiden med firmanavn, CVR, adresse, telefon og åbningstider. OpenGraph meta tags på alle sider.
+4. WCAG TILGÆNGELIGHED: Minimum 4.5:1 kontrastforhold, semantisk H1-H4 struktur, aria-labels på knapper/ikoner.
+5. SIMPLY.COM KLAR: Generér alle filer struktureret, så de kan uploades direkte via FTP/File Manager til Simply.com.
+
+Byg nu den komplette løsning med alle sider og filer i ét samlet træk!`;
   }
 
   // Hjælpefunktion til at kopiere ordreresumé
