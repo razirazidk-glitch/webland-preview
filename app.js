@@ -126,7 +126,7 @@ function renderTemplatesGrid() {
         <div class="template-pages-tag">
           <div class="pages-tag-title">
             <span>5 Undersider inkluderet:</span>
-            <strong>9.995 kr. <span style="font-size: 0.72rem; font-weight: 500; color: #64748b;">excl. moms</span></strong>
+            <strong>9.500 kr. <span style="font-size: 0.72rem; font-weight: 500; color: #64748b;">+ moms</span></strong>
           </div>
           <div class="pages-chip-list">
             ${template.pages.map(p => `<span class="page-chip">${p.name}</span>`).join('')}
@@ -1033,7 +1033,7 @@ function initOnboardingForm() {
           </div>
           <div class="order-summary-item">
             <span class="order-summary-label">Betalingsvilkår:</span>
-            <span class="order-summary-value" style="color: #059669; font-weight: 700;">0 kr. forud • Betales først ved godkendelse (9.995 kr. excl. moms)</span>
+            <span class="order-summary-value" style="color: #059669; font-weight: 700;">0 kr. forud • Betales først ved godkendelse (9.500 kr. + moms)</span>
           </div>
           <div class="order-summary-item">
             <span class="order-summary-label">Domæneoverførsel:</span>
@@ -1048,7 +1048,7 @@ function initOnboardingForm() {
       // Klargør e-mail link til kunden
       const emailLink = document.getElementById('email-summary-link');
       if (emailLink) {
-        const mailBody = `Hej ${clientName},\n\nHer er en kopi af dit udfyldte onboarding-skema til Webland.dk:\n\nAftalt Domæne: ${domain}\nSalgsrådgiver: ${salesRep}\nFirma: ${companyName} (CVR: ${cvr})\nAdresse: ${address}, ${city}\nTelefon: ${phone}\nDe 5 Undersider: ${pages}\nSimply.com E-mails: ${emails}\nDesign & Farver: ${template} / ${palette}\nLogo: ${logoType}\nBilleder: ${imageType}\nPrimært Mål: ${primaryGoal}\n\nBetalingsvilkår: 0 kr. i forudbetaling – du betaler først ved godkendelse af websiden (fast pris: 9.995 kr. excl. moms).\nDomæne: Overdrages 100% til dig efter godkendelse og betaling.\nLeveringstid: Maks. 72 timer.\n\nMed venlig hilsen,\nWebland.dk`;
+        const mailBody = `Hej ${clientName},\n\nHer er en kopi af dit udfyldte onboarding-skema til Webland.dk:\n\nAftalt Domæne: ${domain}\nSalgsrådgiver: ${salesRep}\nFirma: ${companyName} (CVR: ${cvr})\nAdresse: ${address}, ${city}\nTelefon: ${phone}\nDe 5 Undersider: ${pages}\nSimply.com E-mails: ${emails}\nDesign & Farver: ${template} / ${palette}\nLogo: ${logoType}\nBilleder: ${imageType}\nPrimært Mål: ${primaryGoal}\n\nBetalingsvilkår: 0 kr. i forudbetaling – du betaler først ved godkendelse af websiden (fast pris: 9.500 kr. + moms).\nDomæne: Overdrages 100% til dig efter godkendelse og betaling.\nLeveringstid: Maks. 72 timer.\n\nMed venlig hilsen,\nWebland.dk`;
         emailLink.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Webland.dk Ordrebekræftelse: ' + (domain || companyName))}&body=${encodeURIComponent(mailBody)}`;
       }
 
@@ -1068,7 +1068,7 @@ function initOnboardingForm() {
       return;
     }
     const d = submittedOrderData;
-    const text = `--- WEBLAND.DK ONBOARDING ORDRESAMMENFATNING ---\nAftalt Domæne: ${d.domain}\nSalgsrådgiver: ${d.salesRep}\nKunde: ${d.clientName} (${d.companyName} - CVR: ${d.cvr})\nAdresse: ${d.address}, ${d.city}\nKontakt: ${d.phone} | ${d.email}\nDe 5 Undersider: ${d.pages}\nSimply.com E-mails: ${d.emails}\nDesign Inspiration: ${d.template}\nFarvepalet: ${d.palette}\nLogo: ${d.logoType}\nBilleder: ${d.imageType}\nPrimært Mål: ${d.primaryGoal}\nBetalingsvilkår: 0 kr. forudbetaling – betales først ved godkendelse (9.995 kr. excl. moms)\nDomæneoverdragelse: Overdrages 100% efter godkendelse og betaling\nNoter: ${d.notes}\nUdfyldt: ${d.timestamp}`;
+    const text = `--- WEBLAND.DK ONBOARDING ORDRESAMMENFATNING ---\nAftalt Domæne: ${d.domain}\nSalgsrådgiver: ${d.salesRep}\nKunde: ${d.clientName} (${d.companyName} - CVR: ${d.cvr})\nAdresse: ${d.address}, ${d.city}\nKontakt: ${d.phone} | ${d.email}\nDe 5 Undersider: ${d.pages}\nSimply.com E-mails: ${d.emails}\nDesign Inspiration: ${d.template}\nFarvepalet: ${d.palette}\nLogo: ${d.logoType}\nBilleder: ${d.imageType}\nPrimært Mål: ${d.primaryGoal}\nBetalingsvilkår: 0 kr. forudbetaling – betales først ved godkendelse (9.500 kr. + moms)\nDomæneoverdragelse: Overdrages 100% efter godkendelse og betaling\nNoter: ${d.notes}\nUdfyldt: ${d.timestamp}`;
     
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(() => {
