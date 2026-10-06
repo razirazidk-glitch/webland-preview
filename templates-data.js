@@ -15,7 +15,7 @@ const TEMPLATES_DATA = [
   // =========================================================================
   {
     id: "smykkebutik-guld",
-    image: "images/examples/smykkebutik-guld.jpg",
+    image: "images/examples/smykkebutik-guld.webp",
     title: "Aurum Fine Jewelry & Diamanter",
     category: "luksus",
     target: "Eksklusive Guldsmede & Smykkedesignere",
@@ -38,7 +38,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "boutique-hotel",
-    image: "images/examples/boutique-hotel.jpg",
+    image: "images/examples/boutique-hotel.webp",
     title: "Maison Kyst & Badehotel",
     category: "luksus",
     target: "Boutique Hoteller, B&B & Badehoteller",
@@ -61,7 +61,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "frisor-skoenhed",
-    image: "images/examples/frisor-skoenhed.jpg",
+    image: "images/examples/frisor-skoenhed.webp",
     title: "Aura Frisør & Luksus Spa",
     category: "luksus",
     target: "Klinikker, Frisørsaloner & Spa",
@@ -84,7 +84,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "arkitekt-design",
-    image: "images/examples/arkitekt-design.jpg",
+    image: "images/examples/arkitekt-design.webp",
     title: "Atelier Nord Arkitekter",
     category: "luksus",
     target: "Arkitekter & Designstudier",
@@ -107,7 +107,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "fotograf-portfolio",
-    image: "images/examples/fotograf-portfolio.jpg",
+    image: "images/examples/fotograf-portfolio.webp",
     title: "Lumière Foto & Studio",
     category: "luksus",
     target: "Fotografer & Videografer",
@@ -134,7 +134,7 @@ const TEMPLATES_DATA = [
   // =========================================================================
   {
     id: "handvaerk-byg",
-    image: "images/examples/handvaerk-byg.jpg",
+    image: "images/examples/handvaerk-byg.webp",
     title: "MesterByg & Tømrer",
     category: "handvaerk",
     target: "Erhverv & Håndværkere",
@@ -157,7 +157,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "rengoering-service",
-    image: "images/examples/rengoering-service.jpg",
+    image: "images/examples/rengoering-service.webp",
     title: "Klar & Rent Ejendomsservice",
     category: "handvaerk",
     target: "Rengøringsselskaber & Ejendomsservice",
@@ -180,7 +180,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "auto-vaerksted",
-    image: "images/examples/auto-vaerksted.jpg",
+    image: "images/examples/auto-vaerksted.webp",
     title: "Nordic Auto & Performance",
     category: "handvaerk",
     target: "Autoværksteder, Dækcentre & Bilpleje",
@@ -203,7 +203,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "anlaeg-have",
-    image: "images/examples/anlaeg-have.jpg",
+    image: "images/examples/anlaeg-have.webp",
     title: "Grønne Linjer Have & Brolægning",
     category: "handvaerk",
     target: "Anlægsgartnere, Brolæggere & Havearkitekter",
@@ -226,7 +226,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "el-vvs",
-    image: "images/examples/el-vvs.jpg",
+    image: "images/examples/el-vvs.webp",
     title: "Volt & Strøm Aut. Installatør",
     category: "handvaerk",
     target: "Autoriserede El-installatører & VVS",
@@ -253,7 +253,7 @@ const TEMPLATES_DATA = [
   // =========================================================================
   {
     id: "restaurant-cafe",
-    image: "images/examples/restaurant-cafe.jpg",
+    image: "images/examples/restaurant-cafe.webp",
     title: "Bistro & Gourmet Spisehus",
     category: "gastronomi",
     target: "Restauranter, Caféer & Vinbarer",
@@ -276,7 +276,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "bageri-kaffebar",
-    image: "images/examples/bageri-kaffebar.jpg",
+    image: "images/examples/bageri-kaffebar.webp",
     title: "Korn & Krumme Håndværksbageri",
     category: "gastronomi",
     target: "Bagerier, Kaffebarer & Konditorier",
@@ -299,7 +299,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "cocktail-vinbar",
-    image: "images/examples/cocktail-vinbar.jpg",
+    image: "images/examples/cocktail-vinbar.webp",
     title: "Velvet & Vine Cocktail Lounge",
     category: "gastronomi",
     target: "Cocktailbarer, Vinbarer & Natklubber",
@@ -322,7 +322,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "musiker-kunstner",
-    image: "images/examples/musiker-kunstner.jpg",
+    image: "images/examples/musiker-kunstner.webp",
     title: "Elias Vang // Lydkunst & Koncert",
     category: "gastronomi",
     target: "Musikere, Bands & Scenekunstnere",
@@ -345,7 +345,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "forening-klub",
-    image: "images/examples/forening-klub.jpg",
+    image: "images/examples/forening-klub.webp",
     title: "Fjordbyens Idrætsforening",
     category: "gastronomi",
     target: "Foreninger, Sportsklubber & Netværk",
@@ -372,7 +372,7 @@ const TEMPLATES_DATA = [
   // =========================================================================
   {
     id: "fysioterapi-sundhed",
-    image: "images/examples/fysioterapi-sundhed.jpg",
+    image: "images/examples/fysioterapi-sundhed.webp",
     title: "Klinik Sundhed & Fysio",
     category: "sundhed",
     target: "Fysioterapeuter, Kiropraktorer & Osteopater",
@@ -395,7 +395,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "tandlaege-klinik",
-    image: "images/examples/tandlaege-klinik.jpg",
+    image: "images/examples/tandlaege-klinik.webp",
     title: "Tandlægehuset Smil & Implantater",
     category: "sundhed",
     target: "Tandlæger & Specialtandpleje",
@@ -418,7 +418,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "psykolog-terapi",
-    image: "images/examples/psykolog-terapi.jpg",
+    image: "images/examples/psykolog-terapi.webp",
     title: "Psykologhuset Ro & Indsigt",
     category: "sundhed",
     target: "Autoriserede Psykologer & Terapeuter",
@@ -441,7 +441,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "fitness-coach",
-    image: "images/examples/fitness-coach.jpg",
+    image: "images/examples/fitness-coach.webp",
     title: "IronFit & Performance Coach",
     category: "sundhed",
     target: "Personlige Trænere, Bootcamps & Coaches",
@@ -464,7 +464,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "yoga-pilates",
-    image: "images/examples/yoga-pilates.jpg",
+    image: "images/examples/yoga-pilates.webp",
     title: "Zenith Yoga & Pilates Studio",
     category: "sundhed",
     target: "Yogastudier, Pilates & Mindfulness",
@@ -491,7 +491,7 @@ const TEMPLATES_DATA = [
   // =========================================================================
   {
     id: "advokat-juridisk",
-    image: "images/examples/advokat-juridisk.jpg",
+    image: "images/examples/advokat-juridisk.webp",
     title: "Lind & Partnere Advokatfirma",
     category: "erhverv",
     target: "Advokater, Jurister & Mæglere",
@@ -514,7 +514,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "revisor-bogholderi",
-    image: "images/examples/revisor-bogholderi.jpg",
+    image: "images/examples/revisor-bogholderi.webp",
     title: "Tal & Regnskab Statsaut. Revisor",
     category: "erhverv",
     target: "Revisorer, Bogholdere & Finansrådgivere",
@@ -537,7 +537,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "b2b-konsulent",
-    image: "images/examples/b2b-konsulent.jpg",
+    image: "images/examples/b2b-konsulent.webp",
     title: "Vanguard Management Consulting",
     category: "erhverv",
     target: "B2B Konsulenthuse, C-Level & Strategi",
@@ -560,7 +560,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "ejendomsmaegler",
-    image: "images/examples/ejendomsmaegler.jpg",
+    image: "images/examples/ejendomsmaegler.webp",
     title: "Dansk Bolig & Liebhaveri",
     category: "erhverv",
     target: "Ejendomsmæglere, Udlejere & Boligselskaber",
@@ -583,7 +583,7 @@ const TEMPLATES_DATA = [
   },
   {
     id: "tech-saas",
-    image: "images/examples/tech-saas.jpg",
+    image: "images/examples/tech-saas.webp",
     title: "NovaTech Cloud & Software",
     category: "erhverv",
     target: "Tech Startups, SaaS & IT-Konsulenter",

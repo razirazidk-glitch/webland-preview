@@ -6,9 +6,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   initTemplatesGrid();
   initFilterTabs();
+  initSearch();
   initModal();
   initOnboardingForm();
   initCallbackForm();
+  initCallbackModal();
+  initLiveDomainChecker();
   initFaqAccordion();
   initMobileNav();
   highlightActiveNavLink();
@@ -54,6 +57,7 @@ function showToast(message, type = 'primary') {
 // 1. Initialisering og Rendering af Eksempler på hjemmesider vi kan bygge
 let currentCategoryFilter = 'all';
 let currentLayoutFilter = 'all';
+let currentSearchQuery = '';
 
 function renderTemplatesGrid() {
   const grid = document.getElementById('templates-grid');
@@ -61,14 +65,35 @@ function renderTemplatesGrid() {
 
   const maxLimitAttr = grid.getAttribute('data-limit');
   const maxLimit = maxLimitAttr ? parseInt(maxLimitAttr, 10) : null;
+  const q = currentSearchQuery.trim().toLowerCase();
 
   grid.innerHTML = '';
 
   let filtered = TEMPLATES_DATA.filter(t => {
     const matchCategory = currentCategoryFilter === 'all' || t.category === currentCategoryFilter;
     const matchLayout = currentLayoutFilter === 'all' || t.layoutType === currentLayoutFilter;
-    return matchCategory && matchLayout;
+    let matchSearch = true;
+    if (q) {
+      const searchBlob = `${t.title} ${t.target} ${t.shortDesc} ${t.fullDesc} ${t.badge || ''} ${t.layoutDesc || ''} ${(t.pages || []).map(p => p.name + ' ' + (p.desc || '')).join(' ')}`.toLowerCase();
+      matchSearch = searchBlob.includes(q);
+    }
+    return matchCategory && matchLayout && matchSearch;
   });
+
+  // Opdater live søgefeedback
+  const feedback = document.getElementById('search-feedback');
+  const clearBtn = document.getElementById('clear-search-btn');
+  if (clearBtn) {
+    clearBtn.style.display = q ? 'flex' : 'none';
+  }
+  if (feedback) {
+    if (q) {
+      feedback.style.display = 'block';
+      feedback.innerHTML = `Viser <strong>${filtered.length}</strong> af ${TEMPLATES_DATA.length} eksempler for <em>"${q}"</em>`;
+    } else {
+      feedback.style.display = 'none';
+    }
+  }
 
   if (maxLimit && maxLimit > 0) {
     filtered = filtered.slice(0, maxLimit);
@@ -77,9 +102,9 @@ function renderTemplatesGrid() {
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 12px; margin: 20px 0;">
-        <p style="font-size: 1.1rem; font-weight: 700; color: #334155; margin-bottom: 6px;">Ingen eksempler matcher denne kombination</p>
-        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 16px;">Prøv at vælge en anden kategori eller layout-stil.</p>
-        <button class="btn btn-primary btn-sm" onclick="resetAllFilters()">Nulstil alle filtre (vis alle 25)</button>
+        <p style="font-size: 1.1rem; font-weight: 700; color: #334155; margin-bottom: 6px;">Ingen eksempler matchede "${q}"</p>
+        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 16px;">Husk, at vi kan bygge og tilpasse alle 25 layouts til enhver tænkelig branche!</p>
+        <button class="btn btn-primary btn-sm" onclick="resetAllFilters()">Nulstil søgning og filtre</button>
       </div>
     `;
     return;
@@ -190,9 +215,35 @@ function initFilterTabs() {
   });
 }
 
+function initSearch() {
+  const searchInput = document.getElementById('template-search-input');
+  const clearBtn = document.getElementById('clear-search-btn');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearchQuery = e.target.value;
+      renderTemplatesGrid();
+    });
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      currentSearchQuery = '';
+      renderTemplatesGrid();
+      if (searchInput) searchInput.focus();
+    });
+  }
+}
+
 window.resetAllFilters = function() {
   currentCategoryFilter = 'all';
   currentLayoutFilter = 'all';
+  currentSearchQuery = '';
+  const searchInput = document.getElementById('template-search-input');
+  if (searchInput) searchInput.value = '';
+  const clearBtn = document.getElementById('clear-search-btn');
+  if (clearBtn) clearBtn.style.display = 'none';
+  const feedback = document.getElementById('search-feedback');
+  if (feedback) feedback.style.display = 'none';
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === 'all'));
   document.querySelectorAll('.filter-layout-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-layout') === 'all'));
   renderTemplatesGrid();
@@ -1529,6 +1580,180 @@ function initCallbackForm() {
       callbackForm.reset();
     });
   }
+}
+
+// 6b. 15-Minutters Call-back Popover Modal (Global tilgængelig på alle sider)
+function initCallbackModal() {
+  let modal = document.getElementById('callback-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'callback-modal';
+    modal.className = 'callback-modal-overlay';
+    modal.style.display = 'none';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'callback-title');
+    modal.innerHTML = `
+      <div class="callback-modal-card">
+        <button type="button" class="callback-modal-close" id="callback-modal-close" aria-label="Luk vindue">✕</button>
+        <span class="callback-badge">⚡ HURTIG RESPONS • ÅBENT 08:00 - 18:00</span>
+        <h3 id="callback-title">Bliv ringet op inden for 15 minutter</h3>
+        <p class="callback-desc">
+          Indtast dit telefonnummer – så ringer en af vores erfarne rådgivere dig direkte op til en uforpligtende snak om dit domæne og ønsker.
+        </p>
+        <form id="quick-callback-form" class="callback-form">
+          <div class="callback-input-group">
+            <span class="callback-input-prefix">🇩🇰 +45</span>
+            <input type="tel" id="callback-phone-input" required placeholder="F.eks. 20 30 40 50" pattern="[0-9 \\+]{8,15}" aria-label="Dit telefonnummer">
+          </div>
+          <button type="submit" class="btn btn-primary" id="callback-submit-btn" style="width: 100%; padding: 14px; font-weight: 700;">
+            📞 Ring mig op nu →
+          </button>
+        </form>
+        <div id="callback-feedback" style="display: none; padding: 14px; background: rgba(16, 185, 129, 0.1); border: 1.5px solid #10b981; border-radius: 8px; color: #065f46; font-size: 0.90rem; font-weight: 600; margin-top: 12px;"></div>
+        <div class="callback-privacy-note">
+          🔒 100% uforpligtende. 0 kr. forudbetaling, betaling først ved godkendelse og nul binding.
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  const closeBtn = document.getElementById('callback-modal-close');
+  const phoneInput = document.getElementById('callback-phone-input');
+  const callbackForm = document.getElementById('quick-callback-form');
+  const feedbackBox = document.getElementById('callback-feedback');
+
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.style.display = 'flex';
+    if (feedbackBox) feedbackBox.style.display = 'none';
+    if (callbackForm) callbackForm.style.display = 'flex';
+    setTimeout(() => { if (phoneInput) phoneInput.focus(); }, 80);
+  };
+
+  const closeModal = () => {
+    modal.style.display = 'none';
+  };
+
+  document.querySelectorAll('.callback-modal-trigger').forEach(el => {
+    el.addEventListener('click', openModal);
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display !== 'none') {
+      closeModal();
+    }
+  });
+
+  if (callbackForm) {
+    callbackForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      if (!phone) return;
+
+      const submitBtn = document.getElementById('callback-submit-btn');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sender opkaldsanmodning...';
+      }
+
+      // Send opkaldsanmodning til razirazidk@gmail.com via FormSubmit AJAX
+      try {
+        fetch('https://formsubmit.co/ajax/razirazidk@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: `📞 Hurtig Call-back anmodning (15 min): ${phone}`,
+            Telefonnummer: phone,
+            Side: window.location.href,
+            Tidspunkt: new Date().toLocaleString('da-DK')
+          })
+        }).catch(err => console.log('Callback dispatch note:', err));
+      } catch (err) {
+        console.warn('Callback error:', err);
+      }
+
+      callbackForm.style.display = 'none';
+      if (feedbackBox) {
+        feedbackBox.style.display = 'block';
+        feedbackBox.innerHTML = `✓ Tak! Vi har modtaget dit nummer <strong>${phone}</strong> og ringer dig op om et øjeblik.`;
+      }
+      showToast(`Tak! Vi ringer dig op på ${phone} inden for 15 minutter.`, 'success');
+
+      setTimeout(() => {
+        closeModal();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '📞 Ring mig op nu →';
+        }
+      }, 2500);
+    });
+  }
+}
+
+// 6c. Live DNS-over-HTTPS Domænetjekker (onboarding.html)
+function initLiveDomainChecker() {
+  const domainInput = document.getElementById('domain-name-input');
+  const statusBox = document.getElementById('domain-status-indicator');
+  const spinner = document.getElementById('domain-check-spinner');
+  if (!domainInput || !statusBox) return;
+
+  let debounceTimer = null;
+
+  domainInput.addEventListener('input', (e) => {
+    let raw = e.target.value.trim().toLowerCase();
+    clearTimeout(debounceTimer);
+
+    if (!raw) {
+      statusBox.style.display = 'none';
+      if (spinner) spinner.style.display = 'none';
+      return;
+    }
+
+    // Normalisér domæne
+    let clean = raw.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '').replace(/[^a-z0-9\.\-æøå]/g, '');
+    if (clean && !clean.includes('.')) {
+      clean += '.dk';
+    }
+
+    if (spinner) spinner.style.display = 'inline-block';
+
+    debounceTimer = setTimeout(async () => {
+      try {
+        // Slå op via Google DNS-over-HTTPS (DoH) for NS-records
+        const res = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(clean)}&type=NS`, {
+          headers: { 'Accept': 'application/dns-json' }
+        });
+        const data = await res.json();
+
+        if (spinner) spinner.style.display = 'none';
+        statusBox.style.display = 'block';
+
+        // Status 3 = NXDOMAIN (findes ikke i DNS = ledigt!)
+        if (data && data.Status === 3) {
+          statusBox.className = 'domain-status-box domain-status-available';
+          statusBox.innerHTML = `✅ <strong>${clean} ser ud til at være ledigt!</strong> Ingen aktive navneservere fundet. Webland reserverer og opsætter det til dig.`;
+        } else if (data && data.Status === 0) {
+          statusBox.className = 'domain-status-box domain-status-taken';
+          statusBox.innerHTML = `ℹ️ <strong>${clean} er allerede registreret.</strong> Ejer du allerede dette domæne, eller ønsker du flytning til Simply.com? Vi koordinerer det med dig.`;
+        } else {
+          statusBox.className = 'domain-status-box domain-status-available';
+          statusBox.innerHTML = `🌐 <strong>${clean}</strong> er noteret. Sælgeren verificerer endeligt i registret ved opstart.`;
+        }
+      } catch (err) {
+        if (spinner) spinner.style.display = 'none';
+        statusBox.style.display = 'block';
+        statusBox.className = 'domain-status-box domain-status-available';
+        statusBox.innerHTML = `🌐 <strong>${clean}</strong> er noteret. Sælgeren verificerer endeligt i registret ved opstart.`;
+      }
+    }, 450);
+  });
 }
 
 // 7. FAQ Akkordeon
