@@ -26,13 +26,13 @@ const TEMPLATES_DATA = [
     accentColor: "#d4af37", // Champagne Guld
     icon: "sparkles",
     shortDesc: "Kompromisløst luksusdesign med svungen kursiv typografi, diamantkatalog og privat concierge kontaktformular.",
-    fullDesc: "Skabt til eksklusive guldsmede, diamantstudier og bespoke luksusbrands. Indeholder mørk obsidian-baggrund, guldaccenter, detaljeret ædelstens-specifikation (carat, slibning, klarhed), lookbook og direkte formular til privat VIP-tidsbestilling.",
+    fullDesc: "Skabt til eksklusive guldsmede, diamantstudier og bespoke luksusbrands. Indeholder mørk obsidian-baggrund, guldaccenter, detaljeret ædelstens-specifikation (carat, slibning, klarhed), lookbook og direkte formular til eksklusiv VIP-rådgivning.",
     pages: [
       { name: "Forside", desc: "Hero med svungen kalligrafi, udvalgte diamantsmykker og VIP concierge forespørgsel" },
       { name: "Kollektioner", desc: "Håndlavede ringe, halskæder, armbånd og vielsesringe i 18k guld & platin" },
       { name: "Bespoke & Diamanter", desc: "Specialfremstilling på eget værksted, certificerede diamanter og gemmologi" },
       { name: "Om Guldsmeden", desc: "Mesterens håndværkstradition, bæredygtigt genanvendt guld og atelier" },
-      { name: "Privat Tidsbestilling", desc: "Forespørgsel på diskret rådgivning i salonen eller privat fremvisning via formular" }
+      { name: "VIP Rådgivning & Kontakt", desc: "Forespørgsel på diskret rådgivning i salonen eller privat fremvisning via kontaktformular" }
     ],
     highlights: ["Glitrende fotoflader & ædelstensspecifikationer", "Svungen kursiv luksustypografi", "Privat Concierge kontaktformular", "Diamant & Carat specifikationer"]
   },
@@ -45,19 +45,19 @@ const TEMPLATES_DATA = [
     badge: "Eksklusiv Atmosfære",
     layoutType: "centreret",
     layoutBadge: "🏛️ Centreret Luksus",
-    layoutDesc: "Centreret maritimt luksusbrand med centreret menulinje og direkte værelsesbooking.",
+    layoutDesc: "Centreret maritimt luksusbrand med centreret menulinje og direkte opholdsforespørgsel.",
     accentColor: "#0ea5e9", // Kystblå
     icon: "compass",
-    shortDesc: "Skandinavisk ro, havblik, værelsesoversigt og online bord- og opholdsbooking.",
+    shortDesc: "Skandinavisk ro, havblik, værelsesoversigt og uforpligtende opholdsforespørgsel.",
     fullDesc: "Perfekt til kysthoteller, slotsophold og eksklusive kroer. Lægger vægt på naturskønne omgivelser, sæsonens råvarer og afslappende faciliteter.",
     pages: [
-      { name: "Forside", desc: "Vindblæst kyst-æstetik, havudsigt og direkte booking-modul" },
+      { name: "Forside", desc: "Vindblæst kyst-æstetik, havudsigt og uforpligtende forespørgselsformular" },
       { name: "Værelser & Suiter", desc: "Oversigt over suiter med havudsigt, badekåber og linned" },
       { name: "Restaurant & Gastronomi", desc: "Morgenmad, friskfanget fisk og lokale råvarer fra egnen" },
       { name: "Ophold & Pakker", desc: "Gourmetophold, spa-weekender og romantiske getaways" },
-      { name: "Booking & Kontakt", desc: "Direkte reservation og praktisk ankomstinformation" }
+      { name: "Forespørgsel & Kontakt", desc: "Opholdsforespørgsel og praktisk ankomstinformation" }
     ],
-    highlights: ["Stemningsfuldt fotogalleri", "Værelseskatalog", "Pakkeoversigt", "Online booking flow"]
+    highlights: ["Stemningsfuldt fotogalleri", "Værelseskatalog", "Pakkeoversigt", "Opholdsforespørgsel via formular"]
   },
   {
     id: "frisor-skoenhed",
@@ -68,19 +68,19 @@ const TEMPLATES_DATA = [
     badge: "Stilren & Æstetisk",
     layoutType: "split",
     layoutBadge: "⚡ 50/50 Split-Screen",
-    layoutDesc: "50/50 lodret skærmdeling med direkte bookingmodul i venstre panel og fuldhøjde lookbook i højre.",
+    layoutDesc: "50/50 lodret skærmdeling med overskuelig forespørgselsformular i venstre panel og fuldhøjde lookbook i højre.",
     accentColor: "#ec4899", // Rose
     icon: "sparkles",
     shortDesc: "Harmonisk luksusdesign med svungne seriffer til frisørsaloner, neglestudier og kosmetologer.",
-    fullDesc: "Skabt til at udstråle velvære, ro og luksus. Gør det nemt for kunder at se behandlinger, priser, før/efter resultater og anmode om tid via kontaktformular (eller henvise til dit eksterne system).",
+    fullDesc: "Skabt til at udstråle velvære, ro og luksus. Gør det nemt for kunder at se behandlinger, priser, før/efter resultater og kontakte salonen via formular (eller linke direkte til dit eksterne bookingsystem).",
     pages: [
       { name: "Forside", desc: "Velkomst med svungen typografi, atmosfærebilleder og kontaktformular" },
       { name: "Behandlinger & Priser", desc: "Klip, farvning, balayage, kurbehandlinger og herreklip med faste priser" },
       { name: "Team & Stylister", desc: "Præsentation af salonens frisører, specialeområder og erfaring" },
       { name: "Lookbook & Galleri", desc: "Galleri med hårstyles, negledesign og kunde-makeovers" },
-      { name: "Kontakt & Tidsbestilling", desc: "Adresse, åbningstider, parkering og formular til tidsforespørgsel" }
+      { name: "Kontakt & Åbningstider", desc: "Adresse, åbningstider, parkering og kontaktformular (eller link til eksternt bookingsystem)" }
     ],
-    highlights: ["Formular til tidsforespørgsel", "Overskuelig prisliste", "Instagram lookbook feed", "Behandler-profiler"]
+    highlights: ["Nem kontaktformular", "Overskuelig prisliste", "Instagram lookbook feed", "Behandler-profiler"]
   },
   {
     id: "arkitekt-design",
@@ -187,19 +187,19 @@ const TEMPLATES_DATA = [
     badge: "Hurtig Serviceformular",
     layoutType: "pill",
     layoutBadge: "💊 Flydende Pill-Nav",
-    layoutDesc: "Svævende mørk pillemenu over værkstedsbillede med direkte online tidsbestilling.",
+    layoutDesc: "Svævende mørk pillemenu over værkstedsbillede med direkte værkstedsforespørgsel.",
     accentColor: "#ef4444", // Race rød
     icon: "hammer",
-    shortDesc: "Moderne, maskulint værkstedsdesign med nummerplade-opslag og online serviceformular.",
-    fullDesc: "Bygget til uafhængige autoværksteder og dækcentre. Giver kunden overblik over timepriser, fabriksgaranti, lånebil og direkte online tidsbestilling.",
+    shortDesc: "Moderne, maskulint værkstedsdesign med nummerplade-opslag og uforpligtende tilbudsformular.",
+    fullDesc: "Bygget til uafhængige autoværksteder og dækcentre. Giver kunden overblik over timepriser, fabriksgaranti, lånebil og uforpligtende værkstedsforespørgsel.",
     pages: [
       { name: "Forside", desc: "Hurtig serviceformular, nummerplade-felt, lånebil og fabriksgaranti" },
       { name: "Ydelser & Syn", desc: "Stort/lille serviceeftersyn, dækskift, bremseservice, aircondition og synstjek" },
       { name: "Specialer & Tuning", desc: "Fejlfinding med avanceret tester, 4-hjulsudmåling og motoroptimering" },
       { name: "Om Værkstedet", desc: "Uddannede mekanikere, moderne værkstedsfaciliteter og godkendt garanti" },
-      { name: "Bestil Service & Kontakt", desc: "Kontaktformular til service med dato- og lånebilsvalg" }
+      { name: "Værkstedsforespørgsel & Kontakt", desc: "Uforpligtende kontaktformular med angivelse af bilmodel og lånebilsønske" }
     ],
-    highlights: ["Online serviceformular", "Lånebils-garanti", "Fabriksgaranti bevares", "Fast pris på dækskift"]
+    highlights: ["Uforpligtende prisforespørgsel", "Lånebils-garanti", "Fabriksgaranti bevares", "Fast pris på dækskift"]
   },
   {
     id: "anlaeg-have",
@@ -376,22 +376,22 @@ const TEMPLATES_DATA = [
     title: "Klinik Sundhed & Fysio",
     category: "sundhed",
     target: "Fysioterapeuter, Kiropraktorer & Osteopater",
-    badge: "Klinisk Tidsbestilling",
+    badge: "Sundhed & Fysioterapi",
     layoutType: "b2b",
     layoutBadge: "🏢 B2B Utility-bar",
-    layoutDesc: "2-lags sundhedsheader med Sygeforsikring 'danmark' integration og online tidsbestilling.",
+    layoutDesc: "2-lags sundhedsheader med Sygeforsikring 'danmark' integration og kontaktinformation.",
     accentColor: "#059669", // Mintgrøn
     icon: "activity",
-    shortDesc: "Troværdigt, klinisk design med online tidsbestilling og sygesikringstilskud.",
-    fullDesc: "Henvender sig til autoriserede sundhedsfaglige behandlere. Sætter fokus på smertelindring, evidensbaserede behandlinger, tilskud fra 'danmark' og nem formular til tidsbestilling.",
+    shortDesc: "Troværdigt, klinisk design med overblik over behandlinger og sygesikringstilskud.",
+    fullDesc: "Henvender sig til autoriserede sundhedsfaglige behandlere. Sætter fokus på smertelindring, evidensbaserede behandlinger, tilskud fra 'danmark' og nem kontaktformular (eller direkte link til dit eksterne journalsystem).",
     pages: [
-      { name: "Forside", desc: "Kernebehandlinger, hurtig tidsbestilling, patientanmeldelser og akut-tider" },
+      { name: "Forside", desc: "Kernebehandlinger, patientanmeldelser, akutinformation og kontakt" },
       { name: "Behandlinger & Ydelser", desc: "Manuel terapi, idrætsfysioterapi, chokbølge og ryghold" },
       { name: "Behandlere & Filosofi", desc: "Mød fysioterapeuterne med specialer, erfaring og uddannelse" },
       { name: "Priser & Tilskud", desc: "Overenskomst med Sygesikringen, 'danmark' takster og forsikringsdækning" },
-      { name: "Tidsbestilling & Kontakt", desc: "Tidsbestilling via formular (eller link til journalsystem), handicapvenlig adgang og parkering" }
+      { name: "Kontakt & Klinikinfo", desc: "Kontaktformular, link til dit eksterne journalsystem, handicapvenlig adgang og parkering" }
     ],
-    highlights: ["Hurtig tidsbestillings-widget", "Sygesikring tilskuds-tags", "Behandler-specifikation", "Akuttid inden for 24 timer"]
+    highlights: ["Tydelige kontaktmuligheder", "Sygesikring tilskuds-tags", "Behandler-specifikation", "Akuttid information"]
   },
   {
     id: "tandlaege-klinik",
@@ -402,19 +402,19 @@ const TEMPLATES_DATA = [
     badge: "Tryg Behandling",
     layoutType: "pill",
     layoutBadge: "💊 Flydende Pill-Nav",
-    layoutDesc: "Klinisk ren, svævende cyan pillemenu over praksis med direkte patientbooking.",
+    layoutDesc: "Klinisk ren, svævende cyan pillemenu over praksis med direkte kontaktformular.",
     accentColor: "#0284c7", // Tandlægeblå
     icon: "activity",
     shortDesc: "Tillidsvækkende og lys klinikprofil med fokus på tandlægeskræk og akutte tider.",
-    fullDesc: "Skabt til at fjerne frygt og gøre tandlægebesøget trygt. Viser klinikteamet, transparente priser, smertefri bedøvelse og nem formular til tidsbestilling af eftersyn.",
+    fullDesc: "Skabt til at fjerne frygt og gøre tandlægebesøget trygt. Viser klinikteamet, transparente priser, smertefri bedøvelse og nem kontaktformular til henvendelser.",
     pages: [
-      { name: "Forside", desc: "Tryg atmosfære, smertefri behandling, tandlægeskræk-garanti og online tidsbestilling" },
+      { name: "Forside", desc: "Tryg atmosfære, smertefri behandling, tandlægeskræk-garanti og kontaktinfo" },
       { name: "Behandlinger", desc: "Almindeligt eftersyn, tandrensning, implantater, tandretning og kroner" },
       { name: "Tandlægeskræk & Tryghed", desc: "Vores særlige omsorgsfulde tilgang til patienter med angst" },
       { name: "Priser & Sygeforsikring", desc: "Faste overenskomstpriser, studierabat og tilskud fra 'danmark'" },
       { name: "Find Klinikken & Akuttid", desc: "Adresse tæt på station, gratis parkering og akuttelefon" }
     ],
-    highlights: ["Tandlægeskræk tryghedsgaranti", "Akut smertelindring knap", "Transparent prisliste", "Tidsbestilling via formular"]
+    highlights: ["Tandlægeskræk tryghedsgaranti", "Akut smertelindring knap", "Transparent prisliste", "Nem henvendelsesformular"]
   },
   {
     id: "psykolog-terapi",
@@ -431,7 +431,7 @@ const TEMPLATES_DATA = [
     shortDesc: "Diskret, beroligende design i bløde naturtoner med uforpligtende forsamtale.",
     fullDesc: "Udstråler varme, empati og professionel autoritet. Velegnet til psykologer og psykoterapeuter med fokus på stress, angst, parterapi og krisehjælp.",
     pages: [
-      { name: "Forside", desc: "Beroligende velkomst, terapeutisk tilgang, trygge rammer og tidsbestilling" },
+      { name: "Forside", desc: "Beroligende velkomst, terapeutisk tilgang, trygge rammer og uforpligtende henvendelse" },
       { name: "Områder & Specialer", desc: "Hjælp til stress, angst, depression, parterapi og sorgbearbejdning" },
       { name: "Om Psykologen", desc: "Autorisation fra Psykolognævnet, erfaring, etik og tavshedspligt" },
       { name: "Priser & Henvisning", desc: "Ydernummer, lægehenvisning, private sundhedsforsikringer og klippekort" },
@@ -471,7 +471,7 @@ const TEMPLATES_DATA = [
     badge: "Harmoni & Skema",
     layoutType: "split",
     layoutBadge: "⚡ 50/50 Split-Screen",
-    layoutDesc: "50/50 roligt nordisk panel med dagens holdplan og 99 kr. prøvetidsbooking ved siden af sanseligt yogafoto.",
+    layoutDesc: "50/50 roligt nordisk panel med dagens holdplan og 99 kr. introtilbud ved siden af sanseligt yogafoto.",
     accentColor: "#a855f7", // Blød lilla
     icon: "sun",
     shortDesc: "Harmonisk og jordnært design med live holdskema, introtilbud og workshops.",
@@ -544,7 +544,7 @@ const TEMPLATES_DATA = [
     badge: "C-Level Strategisk",
     layoutType: "b2b",
     layoutBadge: "🏢 B2B Utility-bar",
-    layoutDesc: "2-lags nordisk konsulentheader med strategiske nøgletal, klientportal og booking af strategisk sparring.",
+    layoutDesc: "2-lags nordisk konsulentheader med strategiske nøgletal, klientportal og anmodning om strategisk sparring.",
     accentColor: "#38bdf8", // Lys Cyan
     icon: "briefcase",
     shortDesc: "Dyb marineblå rådgivningsprofil med top KPI-ticker, 3-trins model og SaaS-case.",
